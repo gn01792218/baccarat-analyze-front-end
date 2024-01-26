@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+//base
+@import './scss/variable';
+@import './scss/util';
+
+//road
+@import './scss/roadItems';
+@import './scss/beadPlate';

@@ -1,0 +1,118 @@
+//顏色變數
+$primary_color:#C9B797;
+$accent_green:#36FFBE;
+$mainColor:#644d31;
+$bankerColor:#E3001F;
+$banker_bg_color:linear-gradient(180deg, rgba(227, 0, 31, 0.4) 0%, rgba(96, 0, 13, 0.4) 100%);
+$banker_bg_color_mobile:linear-gradient(180deg, rgba(227, 0, 31, 0.8) 0%, rgba(96, 0, 13, 0.8) 100%);
+$playerColor:#0863B5;
+$player_bg_color:linear-gradient(180deg, rgba(8, 99, 181, 0.4) 0%, rgba(3, 41, 74, 0.4) 100%);
+$player_bg_color_mobile:linear-gradient(180deg, rgba(8, 99, 181, 0.9) 0%, rgba(3, 41, 74, 1) 100%);
+$tieColor:#13A538;
+$grey:rgb(56, 55, 55);
+$font_red:#EF5766;
+$font_yellow:#E1BD33;
+$font_green:#59C68D;
+$mask_color:rgba(2, 1, 1, 0.239);
+$menum_bg_color:rgba(0, 0, 0, 0.586);
+$loading_logo_light_color:#e9d5a2a9;
+//注區顏色
+$betArea_yellow:#E1BD33;
+$betArea_red:#F44224;
+$betArea:black;
+$betArea_infoBar:black;
+$btnlist_coin:#271604;
+//按鈕區
+$betArea_btn_block:black;
+$ask_road_block:white;
+$primary-btn-text-color:white;
+//籌碼
+$coin_size_min:0.7;
+$coin_size_min_540:1;
+$coin_size_min_768:1.5;
+$coin_size_min_1025:1;
+$coin_size_min_1280:1.2;
+//路圖相關顏色
+$game-road-bg:white;
+$other-road-bg:white;
+$game-road-border:rgb(238, 237, 237); //遊戲畫面的路圖
+$other-road-border:rgb(238, 237, 237); 
+$game-road-boundary-border:rgb(238, 237, 237); //路圖邊界
+$other-road-boundary-border:rgb(238, 237, 237);
+//BetInfor 區域
+$betInfor_Area:black;
+//路圖高度
+$switch_table_roadmap_height:80px;
+$hot_table_roadmap_height:80px;
+//路圖格子size
+$sideRoadColumnNum:22;
+$sideRoadRowNum:12;
+$hotTableRoadColumnNum:9;
+$hotTableRoadRowNum:5;
+//各種路圖的RWD變數
+$hot_table_road_min_size:0.06;
+$hot_table_road_min_375_size:0.1;
+$hot_table_road_min_414_size:0.12;
+$hot_table_road_min_540_size:0.14;
+$hot_table_road_min_640_size:0.16;
+$game_road_BeadPlate_min_size:0.1;
+$game_road_BeadPlate_min_320_size:0.12;
+$game_road_BeadPlate_min_375_size:0.14;
+$game_road_BeadPlate_min_414_size:0.16;
+$game_road_BeadPlate_min_540_size:0.22;
+$game_road_BeadPlate_min_640_size:0.26;
+$game_road_BeadPlate_min_768_size:0.3;
+$game_road_BeadPlate_min_1024_size:0.42;
+$game_road_BeadPlate_min_1025_size:0.3;
+$game_road_BeadPlate_min_1280_size:0.35;
+$game_road_BeadPlate_min_1536_size:0.42;
+$game_road_BigRoad_min_size:0.06;
+$game_road_BigRoad_min_414_size:0.08;
+$game_road_BigRoad_min_540_size:0.12;
+$game_road_BigRoad_min_768_size:0.18;
+$game_road_BigRoad_min_1024_size:0.2;
+$game_road_BigRoad_min_1025_size:0.18;
+$game_road_BigRoad_min_1280_size:0.2;
+$game_road_BigRoad_min_1536_size:0.21;
+$game_road_DownThreeRoad_min_size:0.03;
+$game_road_DownThreeRoad_min_414_size:0.04;
+$game_road_DownThreeRoad_min_540_size:0.06;
+$game_road_DownThreeRoad_min_768_size:0.09;
+$game_road_DownThreeRoad_min_1024_size:0.1;
+$game_road_DownThreeRoad_min_1025_size:0.09;
+$game_road_DownThreeRoad_min_1280_size:0.1;
+$game_road_DownThreeRoad_min_1536_size:0.11;
+$table_info_road_BeadPlate_min_size:0.06;
+$table_info_road_BeadPlate_min_320_size:0.08;
+$table_info_road_BeadPlate_min_375_size:0.11;
+$table_info_road_BeadPlate_min_414_size:0.12;
+$table_info_road_BeadPlate_min_640_size:0.22;
+$table_info_road_BigRoad_min_size:0.04;
+$table_info_road_BigRoad_min_320_size:0.05;
+$table_info_road_BigRoad_min_375_size:0.07;
+$table_info_road_BigRoad_min_640_size:0.1;
+$table_info_road_DownThreeRoad_min_size:0.02;
+$table_info_road_DownThreeRoad_min_320_size:0.02;
+$table_info_road_DownThreeRoad_min_375_size:0.03;
+$table_info_road_DownThreeRoad_min_640_size:0.06;
+//問路
+$ask_road_min_size:0.05;
+$ask_road_min_414_size:0.09;
+$ask_road_min_1024_size:0.2;
+//路圖的欄、寬數量
+$beadPlateColumnNum:8;
+$beadPlateRowNum:6;
+$bigRoadColumnNum:22;
+$bigRoadRowNum:6;
+$bigEyesRoadColumnNum:44;
+$bigEyesRoadRowNum:6;
+$smallRoadColumnNum:22;
+$smallRoadRowNum:6;
+$cockroachRoadColumnNum:22;
+$cockroachRoadRowNum:6;
+$hotTableBigRoadColumnNum:9;
+$hotTableBigRoadRowNum:5;
+
+//注意這裡的路徑要放引用的SCSS檔案的相對路徑
+//路圖序列圖
+$historyRoad-spriteImg:url('~/assets/images/road-sprite.png');

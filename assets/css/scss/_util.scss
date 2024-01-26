@@ -1,0 +1,101 @@
+@mixin tiePosition($x, $y, $scale) {
+    $WIDTH: (
+        100*$scale
+    );
+    $HEIGHT: (
+        100*$scale
+    );
+    $POSITIONX: (
+        $x*$scale
+    );
+    $POSITIONY: (
+        $y*$scale
+    );
+    $BGSIZEX: (
+        100*$WIDTH/100
+    );
+    width: $WIDTH+px;
+    height: $HEIGHT+px;
+    background-position: $POSITIONX+px $POSITIONY+px;
+    background-size: $BGSIZEX+px auto;
+}
+
+@mixin hisRoadSpritePosition($x, $y, $scale) {
+    //路圖圖案切圖縮放
+    $WIDTH: (
+        100*$scale
+    );
+    $HEIGHT: (
+        100*$scale
+    );
+    $POSITIONX: (
+        $x*$scale
+    );
+    $POSITIONY: (
+        $y*$scale
+    );
+    $BGSIZEX: (
+        1600*$WIDTH/100
+    );
+    width: $WIDTH+px;
+    height: $HEIGHT+px;
+    background-position: $POSITIONX+px $POSITIONY+px;
+    background-size: $BGSIZEX+px auto;
+}
+
+@mixin calcRoadMapWidth($columnNum) {
+    //用來計算路每一column要多寬的方法(單位/欄)
+    width: calc(100%/$columnNum);
+}
+
+@mixin calcRoadMapHeight($rowNum) {
+    height: calc(100%/$rowNum);
+}
+
+@mixin tieNumberPosition($x, $y, $scale) {
+    $WIDTH: (
+        100*$scale
+    );
+    $HEIGHT: (
+        100*$scale
+    );
+    $POSITIONX: (
+        $x*$scale
+    );
+    $POSITIONY: (
+        $y*$scale
+    );
+    $BGSIZEX: (
+        900*$WIDTH/100
+    );
+    width: $WIDTH+px;
+    height: $HEIGHT+px;
+    background-position: $POSITIONX+px $POSITIONY+px;
+    background-size: $BGSIZEX+px auto;
+}
+
+//共用
+%hisRoad {
+    cursor: pointer;
+    background-image: $historyRoad-spriteImg;
+}
+
+%tie {
+    //路圖第一局和局狀況的圖檔
+    cursor: pointer;
+    background-image: url('../../images/T.png');
+}
+
+%tieNumber {
+    background-image: url('../../images/tieNumber.png');
+}
+
+%textOverFlowEllipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+%bet-Area-text-base {
+    color: white;
+}

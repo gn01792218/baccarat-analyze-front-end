@@ -1,0 +1,387 @@
+@charset "UTF-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.cockroachRoad-blue, .cockroachRoad-red, .bigEyesRoad-blue, .bigEyesRoad-red, .smallRoad-blue, .smallRoad-red, .big-PT-BothPair, .big-PT-PPair, .big-PT-BPair, .big-PT, .big-P-BothPair, .big-P-PPair, .big-P-BPair, .big-P, .big-BT-BothPair, .big-BT-PPair, .big-BT-BPair, .big-BT, .big-B-BothPair, .big-B-PPair, .big-B-BPair, .big-B, .BeadPlate-T-BothPair, .BeadPlate-T-PPair, .BeadPlate-T-BPair, .BeadPlate-T, .BeadPlate-P-BothPair, .BeadPlate-P-PPair, .BeadPlate-P-BPair, .BeadPlate-P, .BeadPlate-B-BothPair, .BeadPlate-B-PPair, .BeadPlate-B-BPair, .BeadPlate-B, .roadImg-preLoad {
+  cursor: pointer;
+  background-image: url("~/assets/images/road-sprite.png");
+}
+
+.big-T {
+  cursor: pointer;
+  background-image: url("../../images/T.png");
+}
+
+.tie8, .tie7, .tie6, .tie5, .tie4, .tie3, .tie2, .tie1 {
+  background-image: url("../../images/tieNumber.png");
+}
+
+.BeadPlate-B {
+  width: 35px;
+  height: 35px;
+  background-position: 0px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-B-BPair {
+  width: 35px;
+  height: 35px;
+  background-position: -35px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-B-PPair {
+  width: 35px;
+  height: 35px;
+  background-position: -70px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-B-BothPair {
+  width: 35px;
+  height: 35px;
+  background-position: -105px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-P {
+  width: 35px;
+  height: 35px;
+  background-position: -140px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-P-BPair {
+  width: 35px;
+  height: 35px;
+  background-position: -175px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-P-PPair {
+  width: 35px;
+  height: 35px;
+  background-position: -210px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-P-BothPair {
+  width: 35px;
+  height: 35px;
+  background-position: -245px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-T {
+  width: 35px;
+  height: 35px;
+  background-position: -280px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-T-BPair {
+  width: 35px;
+  height: 35px;
+  background-position: -315px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-T-PPair {
+  width: 35px;
+  height: 35px;
+  background-position: -350px 0px;
+  background-size: 560px auto;
+}
+
+.BeadPlate-T-BothPair {
+  width: 35px;
+  height: 35px;
+  background-position: -385px 0px;
+  background-size: 560px auto;
+}
+
+.big-T {
+  width: 19px;
+  height: 19px;
+  background-position: 0px 0px;
+  background-size: 19px auto;
+}
+
+.big-B {
+  width: 19px;
+  height: 19px;
+  background-position: 0px 19px;
+  background-size: 304px auto;
+}
+
+.big-B-BPair {
+  width: 19px;
+  height: 19px;
+  background-position: -19px 19px;
+  background-size: 304px auto;
+}
+
+.big-B-PPair {
+  width: 19px;
+  height: 19px;
+  background-position: -38px 19px;
+  background-size: 304px auto;
+}
+
+.big-B-BothPair {
+  width: 19px;
+  height: 19px;
+  background-position: -57px 19px;
+  background-size: 304px auto;
+}
+
+.big-BT {
+  width: 19px;
+  height: 19px;
+  background-position: -76px 19px;
+  background-size: 304px auto;
+}
+
+.big-BT-BPair {
+  width: 19px;
+  height: 19px;
+  background-position: -95px 19px;
+  background-size: 304px auto;
+}
+
+.big-BT-PPair {
+  width: 19px;
+  height: 19px;
+  background-position: -114px 19px;
+  background-size: 304px auto;
+}
+
+.big-BT-BothPair {
+  width: 19px;
+  height: 19px;
+  background-position: -133px 19px;
+  background-size: 304px auto;
+}
+
+.big-P {
+  width: 19px;
+  height: 19px;
+  background-position: -152px 19px;
+  background-size: 304px auto;
+}
+
+.big-P-BPair {
+  width: 19px;
+  height: 19px;
+  background-position: -171px 19px;
+  background-size: 304px auto;
+}
+
+.big-P-PPair {
+  width: 19px;
+  height: 19px;
+  background-position: -190px 19px;
+  background-size: 304px auto;
+}
+
+.big-P-BothPair {
+  width: 19px;
+  height: 19px;
+  background-position: -209px 19px;
+  background-size: 304px auto;
+}
+
+.big-PT {
+  width: 19px;
+  height: 19px;
+  background-position: -228px 19px;
+  background-size: 304px auto;
+}
+
+.big-PT-BPair {
+  width: 19px;
+  height: 19px;
+  background-position: -247px 19px;
+  background-size: 304px auto;
+}
+
+.big-PT-PPair {
+  width: 19px;
+  height: 19px;
+  background-position: -266px 19px;
+  background-size: 304px auto;
+}
+
+.big-PT-BothPair {
+  width: 19px;
+  height: 19px;
+  background-position: -285px 19px;
+  background-size: 304px auto;
+}
+
+.smallRoad-red {
+  width: 10px;
+  height: 10px;
+  background-position: -120px 0px;
+  background-size: 160px auto;
+}
+
+.smallRoad-blue {
+  width: 10px;
+  height: 10px;
+  background-position: -140px 0px;
+  background-size: 160px auto;
+}
+
+.bigEyesRoad-red {
+  width: 11px;
+  height: 11px;
+  background-position: 0px 11px;
+  background-size: 176px auto;
+}
+
+.bigEyesRoad-blue {
+  width: 11px;
+  height: 11px;
+  background-position: -88px 11px;
+  background-size: 176px auto;
+}
+
+.cockroachRoad-red {
+  width: 10px;
+  height: 10px;
+  background-position: -130px 0px;
+  background-size: 160px auto;
+}
+
+.cockroachRoad-blue {
+  width: 10px;
+  height: 10px;
+  background-position: -150px 0px;
+  background-size: 160px auto;
+}
+
+.tie1 {
+  width: 19px;
+  height: 19px;
+  background-position: 0px 0px;
+  background-size: 171px auto;
+}
+
+.tie2 {
+  width: 19px;
+  height: 19px;
+  background-position: -19px 0px;
+  background-size: 171px auto;
+}
+
+.tie3 {
+  width: 19px;
+  height: 19px;
+  background-position: -38px 0px;
+  background-size: 171px auto;
+}
+
+.tie4 {
+  width: 19px;
+  height: 19px;
+  background-position: -57px 0px;
+  background-size: 171px auto;
+}
+
+.tie5 {
+  width: 19px;
+  height: 19px;
+  background-position: -76px 0px;
+  background-size: 171px auto;
+}
+
+.tie6 {
+  width: 19px;
+  height: 19px;
+  background-position: -95px 0px;
+  background-size: 171px auto;
+}
+
+.tie7 {
+  width: 19px;
+  height: 19px;
+  background-position: -114px 0px;
+  background-size: 171px auto;
+}
+
+.tie8 {
+  width: 19px;
+  height: 19px;
+  background-position: -133px 0px;
+  background-size: 171px auto;
+}
+
+.beadPlateGrid {
+  background-color: aqua;
+  width: 40%;
+  height: 100%;
+  /*調整欄寬 */
+  background-color: white;
+}
+
+.beadPlate-container {
+  width: 40%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.beadPlate-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome Safari */
+}
+
+.beadPlate {
+  /* width:auto; */
+  height: 100%;
+}
+
+.beadPlateGrid-column {
+  width: 12.5%;
+  height: 100%;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+
+.beadPlate-column {
+  border: 1px solid rgb(238, 237, 237);
+  width: 12.5%;
+  height: 100%;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+
+.beadPlateGrid-row {
+  border: 1px solid rgb(238, 237, 237);
+  width: 100%;
+  height: 16.6666666667%;
+  justify-content: space-around;
+  border-right: 0px;
+}
+
+.main-row {
+  width: 40%;
+  /*調整欄寬 */
+  left: 0;
+  height: 100%;
+}
+
+.beadPlate-item {
+  width: 100%;
+  height: 16.6666666667%;
+  align-items: center;
+  justify-content: center;
+}
+
+.beadPlateboundary {
+  border-right: solid 1px rgba(0, 0, 0, 0.719);
+}/*# sourceMappingURL=main.css.map */

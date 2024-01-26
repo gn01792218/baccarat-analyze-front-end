@@ -1,0 +1,186 @@
+.roadImg-preLoad {  //預載資源
+    @extend %hisRoad;
+}
+
+//路圖圖示區
+//珠仔路
+.BeadPlate-B{  //莊
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(0,0,0.35);
+}
+.BeadPlate-B-BPair{  //莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-100,0,0.35);
+}
+.BeadPlate-B-PPair{  //莊、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-200,0,0.35);
+}
+.BeadPlate-B-BothPair{  //莊對、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-300,0,0.35);
+}
+.BeadPlate-P{  //閒
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-400,0,0.35);
+}
+.BeadPlate-P-BPair{  //閒、莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-500,0,0.35);
+}
+.BeadPlate-P-PPair{  //閒、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-600,0,0.35);
+}
+.BeadPlate-P-BothPair{  //閒對、莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-700,0,0.35);
+}
+.BeadPlate-T{  //和
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-800,0,0.35);
+}
+.BeadPlate-T-BPair{  //和、莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-900,0,0.35);
+}
+.BeadPlate-T-PPair{  //和、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1000,0,0.35);
+}
+.BeadPlate-T-BothPair{  //和、閒對、莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1100,0,0.35);
+}
+//大路
+.big-T{
+    @extend %tie;
+    @include tiePosition(0,0,0.19);
+}
+.big-B{ //莊
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(0,100,0.19);
+}
+.big-B-BPair{ //莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-100,100,0.19);
+}
+.big-B-PPair{ //莊、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-200,100,0.19);
+}
+.big-B-BothPair{ // 莊對、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-300,100,0.19);
+}
+.big-BT{  //莊和
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-400,100,0.19);
+}
+.big-BT-BPair{  //莊和 莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-500,100,0.19);
+}
+.big-BT-PPair{  //莊和 閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-600,100,0.19);
+}
+.big-BT-BothPair{  //莊和 莊閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-700,100,0.19);
+}
+.big-P{ //閒
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-800,100,0.19);
+}
+.big-P-BPair{ //閒、莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-900,100,0.19);
+}
+.big-P-PPair{ //閒、閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1000,100,0.19);
+}
+.big-P-BothPair{ // 閒對、莊對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1100,100,0.19);
+}
+.big-PT{  //閒和
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1200,100,0.19);
+}
+.big-PT-BPair{  //閒和 閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1300,100,0.19);
+}
+.big-PT-PPair{  //閒和 閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1400,100,0.19);
+}
+.big-PT-BothPair{  //閒和 莊閒對
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1500,100,0.19);
+}
+//小路(左下角)
+.smallRoad-red{
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1200,0,0.1);
+}
+.smallRoad-blue{
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1400,0,0.1);
+}
+//大眼仔路(中間)
+.bigEyesRoad-red{
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(0,100,0.11);
+}
+.bigEyesRoad-blue{
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-800,100,0.11);
+}
+//蟑螂路
+.cockroachRoad-red{
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1300,0,0.1);
+}
+.cockroachRoad-blue{
+    @extend %hisRoad;
+    @include hisRoadSpritePosition(-1500,0,0.1);
+}
+
+
+
+//和局數字
+.tie1{
+    @extend %tieNumber;
+    @include tieNumberPosition(0,0,0.19);
+}
+.tie2{
+    @extend %tieNumber;
+    @include tieNumberPosition(-100,0,0.19);
+}
+.tie3{
+    @extend %tieNumber;
+    @include tieNumberPosition(-200,0,0.19);
+}
+.tie4{
+    @extend %tieNumber;
+    @include tieNumberPosition(-300,0,0.19);
+}
+.tie5{
+    @extend %tieNumber;
+    @include tieNumberPosition(-400,0,0.19);
+}
+.tie6{
+    @extend %tieNumber;
+    @include tieNumberPosition(-500,0,0.19);
+}
+.tie7{
+    @extend %tieNumber;
+    @include tieNumberPosition(-600,0,0.19);
+}
+.tie8{
+    @extend %tieNumber;
+    @include tieNumberPosition(-700,0,0.19);
+}

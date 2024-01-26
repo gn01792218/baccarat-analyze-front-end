@@ -1,0 +1,69 @@
+//豬盤路
+.beadPlateGrid {
+  background-color: aqua;
+  width: 40%;
+  height: 100%;
+  /*調整欄寬 */
+  background-color: $game-road-bg;
+}
+
+.beadPlate-container {
+  width: 40%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.beadPlate-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome Safari */
+}
+
+.beadPlate {
+  /* width:auto; */
+  height: 100%;
+}
+
+.beadPlateGrid-column {
+  @include calcRoadMapWidth($beadPlateColumnNum);
+  height: 100%;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+
+.beadPlate-column {
+  border: 1px solid $game-road-border;
+  @include calcRoadMapWidth($beadPlateColumnNum);
+  height: 100%;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+
+.beadPlateGrid-row {
+  border: 1px solid $game-road-border;
+  width: 100%;
+  @include calcRoadMapHeight($beadPlateRowNum);
+  justify-content: space-around;
+  border-right: 0px;
+}
+
+.main-row {
+  width: 40%;
+  /*調整欄寬 */
+  left: 0;
+  height: 100%;
+}
+
+.beadPlate-item {
+  width: 100%;
+  @include calcRoadMapHeight($beadPlateRowNum);
+  align-items: center;
+  justify-content: center;
+}
+
+.beadPlateboundary {
+  border-right: solid 1px rgba(0, 0, 0, 0.719);
+}
