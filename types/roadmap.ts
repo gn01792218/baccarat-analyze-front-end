@@ -2,6 +2,9 @@
 export interface BeadPlate {
   blocks: RoadBlock[] | null;
 }
+export interface BigRoad {
+  columns: RoadColumn[] | null;
+}
 export enum RoadSymbol {
   BlockDefault = 0,
   Banker = 1,
@@ -28,6 +31,9 @@ export enum RoadSymbol {
 interface RoadBlock {
   symbol: RoadSymbol;
   tieCount: number | null;
+}
+interface RoadColumn{
+  blocks?:RoadBlock[] | null
 }
 //G : 遊戲路圖
 //T : 大廳桌牌路圖
