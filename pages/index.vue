@@ -20,18 +20,18 @@ import useRoadAPI from "~/api/useRoadAPI";
 const { initRoadRequest, drawRoadRequest } = useRoadAPI()
 const beadPlate = ref<BeadPlate>({
     blocks: [
-        {
-            symbol: RoadSymbol.Banker,
-            tieCount: 0
-        },
-        {
-            symbol: RoadSymbol.BankerAndBankerPair,
-            tieCount: 0
-        },
-        {
-            symbol: RoadSymbol.Player,
-            tieCount: 1
-        }
+        // {
+        //     symbol: RoadSymbol.Banker,
+        //     tieCount: 0
+        // },
+        // {
+        //     symbol: RoadSymbol.BankerAndBankerPair,
+        //     tieCount: 0
+        // },
+        // {
+        //     symbol: RoadSymbol.Player,
+        //     tieCount: 1
+        // }
     ]
 })
 let bigRoad = ref<BigRoad>({
@@ -58,12 +58,10 @@ const roadUuid = ref<string>('')
 init()
 async function init() {
     roadUuid.value = await initRoadRequest({ name: 'road' })
-    console.log(roadUuid.value)
 }
 async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
     const roadMap = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
     if (roadMap.bigRoad) bigRoad.value = roadMap.bigRoad
-    console.log(roadMap)
-
+    if(roadMap.beadPlate) beadPlate.value = roadMap.beadPlate
 }
 </script>
