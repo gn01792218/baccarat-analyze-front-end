@@ -1,15 +1,23 @@
 <template>
-    <div class="w-full bg-red-100">
+    <!-- <div class="w-full bg-red-100">
         <RoadBeadPlateMain class="" :roadmap="beadPlate" tableNum="A" />
-    </div>
-    <div class="w-[1000px] h-[200px] bg-slate-600 relative">
-        <RoadBigRoadMain :roadmap="bigRoad" tableNum="B"/>
-    </div>
+    </div> -->
+    <UContainer class="w-full h-[200px] flex">
+        <UCard class="w-[1000px] h-full relative">
+            <RoadBigRoadMain :roadmap="bigRoad" tableNum="B" />
+        </UCard>
+        <div class="w-[100px] h-full flex flex-col justify-around items-center">
+            <UButton class="block w-[50px]" label="莊" color="red" @click="fetchDrawRoadRequest(RoadSymbol.Banker)" />
+            <UButton class="block w-[50px]" label="閒" color="blue" @click="fetchDrawRoadRequest(RoadSymbol.Player)" />
+            <UButton class="block w-[50px]" label="和" color="green" @click="fetchDrawRoadRequest(RoadSymbol.Tie)" />
+        </div>
+    </UContainer>
 </template>
 
 <script setup lang="ts">
 import { type BeadPlate, RoadSymbol, type BigRoad } from "~/types/roadmap";
-
+import useRoadAPI from "~/api/useRoadAPI";
+const { initRoadRequest, drawRoadRequest } = useRoadAPI()
 const beadPlate = ref<BeadPlate>({
     blocks: [
         {
@@ -26,25 +34,36 @@ const beadPlate = ref<BeadPlate>({
         }
     ]
 })
-const bigRoad = ref<BigRoad>({
-    columns:[
-        {
-            blocks: [
-                {
-                    symbol: RoadSymbol.Banker,
-                    tieCount: 0
-                },
-                {
-                    symbol: RoadSymbol.BankerAndBankerPair,
-                    tieCount: 0
-                },
-                {
-                    symbol: RoadSymbol.Player,
-                    tieCount: 1
-                }
-            ]
-        }
+let bigRoad = ref<BigRoad>({
+    columns: [
+        // {
+        //     blocks: [
+        //         {
+        //             symbol: RoadSymbol.Banker,
+        //             tieCount: 0
+        //         },
+        //         {
+        //             symbol: RoadSymbol.BankerAndBankerPair,
+        //             tieCount: 0
+        //         },
+        //         {
+        //             symbol: RoadSymbol.Player,
+        //             tieCount: 1
+        //         }
+        //     ]
+        // }
     ],
 })
+const roadUuid = ref<string>('')
+init()
+async function init() {
+    roadUuid.value = await initRoadRequest({ name: 'road' })
+    console.log(roadUuid.value)
+}
+async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
+    const roadMap = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
+    if (roadMap.bigRoad) bigRoad.value = roadMap.bigRoad
+    console.log(roadMap)
 
+}
 </script>

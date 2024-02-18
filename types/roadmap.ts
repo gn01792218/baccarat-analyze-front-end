@@ -1,10 +1,26 @@
-
+export interface Roadmap {
+  beadPlate: BeadPlate | null;
+  bigRoad: BigRoad | null;
+  bigEyeRoad: BigEyeRoad | null;
+  smallRoad: SmallRoad | null;
+  cockroachRoad: CockroachRoad | null;
+}
 export interface BeadPlate {
   blocks: RoadBlock[] | null;
 }
 export interface BigRoad {
   columns: RoadColumn[] | null;
 }
+export interface BigEyeRoad {
+  columns: RoadColumn[] | null;
+}
+export interface SmallRoad {
+  columns: RoadColumn[] | null;
+}
+export interface CockroachRoad {
+  columns: RoadColumn[] | null;
+}
+
 export enum RoadSymbol {
   BlockDefault = 0,
   Banker = 1,
@@ -32,8 +48,8 @@ interface RoadBlock {
   symbol: RoadSymbol;
   tieCount: number | null;
 }
-interface RoadColumn{
-  blocks?:RoadBlock[] | null
+interface RoadColumn {
+  blocks?: RoadBlock[] | null;
 }
 //G : 遊戲路圖
 //T : 大廳桌牌路圖
@@ -65,4 +81,10 @@ export enum RoadDomName {
   BIGEYESROAD = "bigEyesRoad",
   SMALLROAD = "smallRoad",
   COCKROACHROAD = "cockroachRoad",
+}
+export interface RoadInitRequest {
+  name: string; //目前名稱隨意帶就好
+}
+export interface DrawRoadRequest {
+  result: RoadSymbol;
 }
