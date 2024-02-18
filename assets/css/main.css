@@ -9,11 +9,11 @@
 
 .big-T {
   cursor: pointer;
-  background-image: url("../../images/T.png");
+  background-image: url("~/assets/images/T.png");
 }
 
 .tie8, .tie7, .tie6, .tie5, .tie4, .tie3, .tie2, .tie1 {
-  background-image: url("../../images/tieNumber.png");
+  background-image: url("~/assets/images/tieNumber.png");
 }
 
 .BeadPlate-B {
