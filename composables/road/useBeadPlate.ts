@@ -136,13 +136,15 @@ export default function useBeadPlate(
     beadPlateContainer.removeChild(firstChild); //刪除第一行
     let newCol = document.createElement("div");
     newCol.classList.add("beadPlate-column");
-    newCol.classList.add("d-flex");
+    newCol.classList.add("border-[1px]")
+    newCol.classList.add("flex");
     newCol.id = `beadPlate-column-${tableNum}-${roadColumnCount.value}`;
     for (let i = 0; i < roadRows.length; i++) {
       let newColItem = document.createElement("div");
       let itemDiv = document.createElement("div");
       newColItem.classList.add("beadPlate-item");
-      newColItem.classList.add("d-flex");
+      newColItem.classList.add("border-[1px]")
+      newColItem.classList.add("flex");
       newColItem.classList.add(`beadPlate-item${i}`);
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);
@@ -167,13 +169,15 @@ export default function useBeadPlate(
     for (let i = 0; i < roadColumns.length; i++) {
       let col = document.createElement("div");
       col.classList.add("beadPlate-column");
-      col.classList.add("d-flex");
+      col.classList.add("border-[1px]")
+      col.classList.add("flex");
       col.id = `beadPlate-column-${tableNum}-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
         let colItem = document.createElement("div");
         let itemDiv = document.createElement("div");
         colItem.classList.add("beadPlate-item");
-        colItem.classList.add("d-flex");
+        colItem.classList.add("border-[1px]")
+        colItem.classList.add("flex");
         colItem.classList.add(`beadPlate-item${i}`);
         colItem.appendChild(itemDiv);
         col.appendChild(colItem);

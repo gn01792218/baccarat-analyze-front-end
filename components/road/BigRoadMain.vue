@@ -22,7 +22,7 @@ const props = defineProps<{
 //如果要修改路圖size，除了修改這裡外，
 //還要到assets/css/scss/base/_variable.scss
 //修改對應的css變數
-const roadColumns = new Array(22); //寬有幾個columns
+const roadColumns = new Array(40); //寬有幾個columns
 const roadRows = new Array(6);     //高有幾個row
 
 const {

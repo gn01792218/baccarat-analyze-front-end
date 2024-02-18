@@ -319,14 +319,14 @@
 
 .beadPlateGrid {
   background-color: aqua;
-  width: 40%;
+  width: 100%;
   height: 100%;
   /*調整欄寬 */
   background-color: white;
 }
 
 .beadPlate-container {
-  width: 40%;
+  width: 100%;
   height: 100%;
   overflow: auto;
   scrollbar-width: none;
