@@ -51,33 +51,22 @@ interface RoadBlock {
 interface RoadColumn {
   blocks?: RoadBlock[] | null;
 }
-//G : 遊戲路圖
-//T : 大廳桌牌路圖
-//H : 熱門牌桌路圖
-//S : 切桌路圖
+//M : 主要路圖
 export enum RoadType {
-  G_BEADPLATE,
-  G_BIGROAD,
-  G_BIGEYESROAD,
-  G_SMALLROAD,
-  G_COCKROACHROAD,
-  T_BEADPLATE,
+  M_BEADPLATE,
+  M_BIGROAD,
   T_BIGROAD,
-  T_BIGEYESROAD,
-  T_SMALLROAD,
-  T_COCKROACHROAD,
-  H_BIGROAD,
-  S_BIGROAD,
+  M_BIGEYESROAD,
+  M_SMALLROAD,
+  M_COCKROACHROAD,
 }
 //各種路圖的DOM元素使用的名稱
 //以後要修改class或id名稱，只需要修改這裡以及css檔案
 //無須修改vue檔案裏頭的template元素
 export enum RoadDomName {
   BEADPLATE = "beadPlat",
-  G_BIGROAD = "bigRoad",
-  T_BIGROAD = "table-bigRoad",
-  H_BIGROAD = "hotTable-bigRoad",
-  S_BIGROAD = "switchTable-bigRoad",
+  M_BIGROAD = "bigRoad-main", //主要大路
+  T_BIGROAD = "bigRoad-total", //合計大路圖
   BIGEYESROAD = "bigEyesRoad",
   SMALLROAD = "smallRoad",
   COCKROACHROAD = "cockroachRoad",

@@ -11,9 +11,7 @@
     $POSITIONY: (
         $y*$scale
     );
-    $BGSIZEX: (
-        100*$WIDTH/100
-    );
+    $BGSIZEX: calc(100*$WIDTH/100);
     width: $WIDTH+px;
     height: $HEIGHT+px;
     background-position: $POSITIONX+px $POSITIONY+px;
@@ -34,9 +32,7 @@
     $POSITIONY: (
         $y*$scale
     );
-    $BGSIZEX: (
-        1600*$WIDTH/100
-    );
+    $BGSIZEX: calc(1600*$WIDTH/100);
     width: $WIDTH+px;
     height: $HEIGHT+px;
     background-position: $POSITIONX+px $POSITIONY+px;
@@ -65,9 +61,7 @@
     $POSITIONY: (
         $y*$scale
     );
-    $BGSIZEX: (
-        900*$WIDTH/100
-    );
+    $BGSIZEX: calc( 900*$WIDTH/100 );
     width: $WIDTH+px;
     height: $HEIGHT+px;
     background-position: $POSITIONX+px $POSITIONY+px;

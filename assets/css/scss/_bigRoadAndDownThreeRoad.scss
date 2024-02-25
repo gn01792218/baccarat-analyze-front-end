@@ -1,9 +1,3 @@
-//大路
-.bigRoad {
-  top: 0;
-  right: 0;
-}
-
 .bigRoad-column {
   @include calcRoadMapWidth($bigRoadColumnNum);
   height: 100%;
@@ -18,13 +12,6 @@
 }
 
 //大眼路
-.bigEyesRoad {
-  width: 100%;
-  height: 25%;
-  right: 0;
-  top: 50%;
-}
-
 .bigEyesRoad-column {
   @include calcRoadMapWidth($bigEyesRoadColumnNum);
   height: 100%;
@@ -35,28 +22,6 @@
   width: 100%;
   @include calcRoadMapHeight($bigEyesRoadRowNum);
   flex-direction: column;
-}
-
-.sideWidth {
-  /*用來統一調整sideRode佔寬比 */
-  width: 60%;
-}
-
-//小路、蟑螂路
-.bottomRoad {
-  height: 25%;
-  right: 0;
-  bottom: 0;
-}
-
-.smallRoad,
-.cockroachRoad {
-  height: 100%;
-}
-
-.bottomRoad-w10 {
-  width: 9%;
-  height: 100%;
 }
 
 .smallRoad-column {

@@ -102,16 +102,14 @@ $ask_road_min_1024_size:0.2;
 //路圖的欄、寬數量
 $beadPlateColumnNum:8;
 $beadPlateRowNum:6;
-$bigRoadColumnNum:22;
+$bigRoadColumnNum:40;
 $bigRoadRowNum:6;
-$bigEyesRoadColumnNum:44;
+$bigEyesRoadColumnNum:40;
 $bigEyesRoadRowNum:6;
-$smallRoadColumnNum:22;
+$smallRoadColumnNum:40;
 $smallRoadRowNum:6;
-$cockroachRoadColumnNum:22;
+$cockroachRoadColumnNum:40;
 $cockroachRoadRowNum:6;
-$hotTableBigRoadColumnNum:9;
-$hotTableBigRoadRowNum:5;
 
 //注意這裡的路徑要放引用的SCSS檔案的相對路徑
 //路圖序列圖

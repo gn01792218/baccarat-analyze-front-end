@@ -3,7 +3,7 @@
     <!-- BeadPlate -->
     <div class="beadPlate-container absolute">
       <div :id="RoadDomName.BEADPLATE" class="beadPlate flex">
-        <div class="beadPlate-column flex border-[1px]" :id="`beadPlate-column-${tableNum}-${index}`"
+        <div class="beadPlate-column flex border-[1px]" :id="`beadPlate-column-${index}`"
           v-for="(mc, index) in roadColumns" :key="index">
           <div class="beadPlate-item flex border-[1px]" v-for="(mr, index) in roadRows" :key="index"
             :class="[`beadPlate-item${index}`]">
@@ -20,7 +20,6 @@ import { type BeadPlate, RoadType, RoadDomName } from "@/types/roadmap";
 import useBeadPlate from "../../composables/road/useBeadPlate";
 const props = defineProps<{
   roadmap: BeadPlate
-  tableNum: string
 }>();
 //如果要修改路圖size，除了修改這裡外，
 //還要到assets/css/scss/base/_variable.scss
@@ -31,8 +30,7 @@ const {
   showAllRoad,
   resetRoad
 } = useBeadPlate(
-  props.tableNum,
-  RoadType.G_BEADPLATE,
+  RoadType.M_BEADPLATE,
   roadColumns,
   roadRows
 );

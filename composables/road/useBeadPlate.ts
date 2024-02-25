@@ -1,7 +1,6 @@
 import { ref } from "vue";
 import { type BeadPlate, RoadType, RoadDomName, RoadSymbol } from "@/types/roadmap";
 export default function useBeadPlate(
-  tableNum: string,
   roadType: RoadType,
   roadColumns: Array<number>,
   roadRows: Array<number>
@@ -13,18 +12,12 @@ export default function useBeadPlate(
   const asking = ref(false); //是否在問路中
   function getRoadDomName() {
     switch (roadType) {
-      case RoadType.G_BEADPLATE:
-      case RoadType.T_BEADPLATE:
+      case RoadType.M_BEADPLATE:
         return RoadDomName.BEADPLATE;
     }
   }
   function getRoadContainerElement() {
-    switch (roadType) {
-      case RoadType.G_BEADPLATE:
-        return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
-      case RoadType.T_BEADPLATE:
-        return document.getElementById(`${getRoadDomName()}-${tableNum}`) as HTMLElement;
-    }
+    return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
   }
   async function putRoad(
     columnNum: number,
@@ -32,7 +25,7 @@ export default function useBeadPlate(
     gameResult: number
   ) {
     let beadPlateCol = document.getElementById(
-      `beadPlate-column-${tableNum}-${columnNum}`
+      `beadPlate-column-${columnNum}`
     ) as HTMLElement;
 
     let beadPlateColItem = beadPlateCol.children[roadnum]
@@ -91,7 +84,7 @@ export default function useBeadPlate(
     showRoad(askRoadResult);
     //4.添加動畫
     let column = document.getElementById(
-      `beadPlate-column-${tableNum}-${roadColumnCount.value}`
+      `beadPlate-column-${roadColumnCount.value}`
     ) as HTMLElement;
     let road: HTMLElement;
     if (roadIndex.value > 0) {
@@ -138,7 +131,7 @@ export default function useBeadPlate(
     newCol.classList.add("beadPlate-column");
     newCol.classList.add("border-[1px]")
     newCol.classList.add("flex");
-    newCol.id = `beadPlate-column-${tableNum}-${roadColumnCount.value}`;
+    newCol.id = `beadPlate-column-${roadColumnCount.value}`;
     for (let i = 0; i < roadRows.length; i++) {
       let newColItem = document.createElement("div");
       let itemDiv = document.createElement("div");
@@ -171,7 +164,7 @@ export default function useBeadPlate(
       col.classList.add("beadPlate-column");
       col.classList.add("border-[1px]")
       col.classList.add("flex");
-      col.id = `beadPlate-column-${tableNum}-${i}`;
+      col.id = `beadPlate-column-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
         let colItem = document.createElement("div");
         let itemDiv = document.createElement("div");

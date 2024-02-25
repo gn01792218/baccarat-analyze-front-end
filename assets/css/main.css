@@ -382,13 +382,8 @@
   border-right: solid 1px rgba(0, 0, 0, 0.719);
 }
 
-.bigRoad {
-  top: 0;
-  right: 0;
-}
-
 .bigRoad-column {
-  width: 4.5454545455%;
+  width: 2.5%;
   height: 100%;
   flex-direction: column;
 }
@@ -400,15 +395,8 @@
   justify-content: center;
 }
 
-.bigEyesRoad {
-  width: 100%;
-  height: 25%;
-  right: 0;
-  top: 50%;
-}
-
 .bigEyesRoad-column {
-  width: 2.2727272727%;
+  width: 2.5%;
   height: 100%;
   flex-direction: column;
 }
@@ -419,29 +407,8 @@
   flex-direction: column;
 }
 
-.sideWidth {
-  /*用來統一調整sideRode佔寬比 */
-  width: 60%;
-}
-
-.bottomRoad {
-  height: 25%;
-  right: 0;
-  bottom: 0;
-}
-
-.smallRoad,
-.cockroachRoad {
-  height: 100%;
-}
-
-.bottomRoad-w10 {
-  width: 9%;
-  height: 100%;
-}
-
 .smallRoad-column {
-  width: 4.5454545455%;
+  width: 2.5%;
   height: 100%;
   flex-direction: column;
 }
@@ -453,7 +420,7 @@
 }
 
 .cockroachRoad-column {
-  width: 4.5454545455%;
+  width: 2.5%;
   height: 100%;
   flex-direction: column;
 }

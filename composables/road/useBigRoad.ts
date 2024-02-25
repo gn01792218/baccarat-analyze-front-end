@@ -2,7 +2,6 @@ import { RoadType, RoadDomName, RoadSymbol, type BigRoad } from "@/types/roadmap
 import useRoadBase from "@/composables/road/useRoadBase";
 
 export default function useDownThreeRoad(
-  tableNum: string,
   roadType: RoadType,
   roadColumns: Array<number>,
   roadRows: Array<number>
@@ -25,25 +24,14 @@ export default function useDownThreeRoad(
   //方法
   function getRoadDomName() {
     switch (roadType) {
-      case RoadType.G_BIGROAD:
-        return RoadDomName.G_BIGROAD;
-      case RoadType.H_BIGROAD:
-        return RoadDomName.H_BIGROAD;
-      case RoadType.S_BIGROAD:
-        return RoadDomName.S_BIGROAD;
+      case RoadType.M_BIGROAD:
+        return RoadDomName.M_BIGROAD;
       case RoadType.T_BIGROAD:
         return RoadDomName.T_BIGROAD;
     }
   }
   function getRoadContainerElement() {
-    switch (roadType) {
-      case RoadType.G_BIGROAD:
-        return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
-      case RoadType.H_BIGROAD:
-      case RoadType.S_BIGROAD:
-      case RoadType.T_BIGROAD:
-        return document.getElementById(`${getRoadDomName()}-${tableNum}`) as HTMLElement;
-    }
+    return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
   }
   function recordBigRoad(gameResult: number) {
     switch (gameResult) {
@@ -71,7 +59,7 @@ export default function useDownThreeRoad(
   }
   function putBigRoad(gameResult: number, tieCount: number) {
     let bigRoadCol = document.getElementById(
-      `${getRoadDomName()}-column-${tableNum}-${roadColumn.value}`
+      `${getRoadDomName()}-column-${roadColumn.value}`
     ) as HTMLElement;
     if (!bigRoadCol) return;
     let bigRoadColItem = bigRoadCol.children[roadItemIndex.value]
@@ -280,7 +268,7 @@ export default function useDownThreeRoad(
     let newCol = document.createElement("div");
     newCol.classList.add("bigRoad-column");
     newCol.classList.add("border-[1px]")
-    newCol.id = `${getRoadDomName()}-column-${tableNum}-${roadColumn.value}`;
+    newCol.id = `${getRoadDomName()}-column-${roadColumn.value}`;
     for (let i = 0; i < roadRows.length; i++) {
       let newColItem = document.createElement("div");
       let itemDiv = document.createElement("div");
@@ -312,7 +300,7 @@ export default function useDownThreeRoad(
       col.classList.add("bigRoad-column");
       col.classList.add("border-[1px]")
       col.classList.add("flex");
-      col.id = `${getRoadDomName()}-column-${tableNum}-${i}`;
+      col.id = `${getRoadDomName()}-column-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
         let colItem = document.createElement("div");
         let itemDiv = document.createElement("div");
@@ -355,7 +343,7 @@ export default function useDownThreeRoad(
     showRoad(askRoadResult,0); //問路只有莊閒，不需要莊的數字
     //4.添加動畫
     let column = document.getElementById(
-      `bigRoad-column-${tableNum}-${roadColumn.value}`
+      `bigRoad-column-${roadColumn.value}`
     ) as HTMLElement;
     let road: HTMLElement;
     if (roadItemIndex.value > 0) {
