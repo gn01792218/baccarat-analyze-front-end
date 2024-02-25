@@ -16,6 +16,20 @@
   background-image: url("~/assets/images/tieNumber.png");
 }
 
+::-webkit-scrollbar {
+  width: 5px; /*竖向滚动条的宽度*/
+}
+
+::-webkit-scrollbar-thumb { /*滚动条里面的小方块*/
+  background: #6a7fc1;
+  border-radius: 44px;
+}
+
+::-webkit-scrollbar-track { /*滚动条轨道的样式*/
+  background: #6a7fc1;
+  border-radius: 44px;
+}
+
 .BeadPlate-B {
   width: 35px;
   height: 35px;

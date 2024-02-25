@@ -20,27 +20,35 @@
         </div>
     </UContainer>
 
-    <UDivider class="my-5" label="路圖顯示" :ui="{ label: 'text-xl text-primary-500 dark:text-primary-400' }" />
+    <UDivider class="my-5" label="路圖顯示" size="sm" color="orange"  :ui="{ label: 'text-xl text-primary-500 dark:text-primary-400' }" />
 
     <UContainer class="w-full h-[200px] flex max-w-none justify-center mb-2">
         <UCard class="w-[1300px] h-full relative">
             <RoadBigRoadMain :roadmap="bigRoad" />
         </UCard>
+        <div class="w-[100px] h-full flex flex-col justify-around items-center">
+        </div>
     </UContainer>
     <UContainer class="w-full h-[200px] flex max-w-none justify-center mb-2">
         <UCard class="w-[1300px] h-full relative">
             <RoadBigEyesRoadMain :roadmap="bigEyesRoad" />
         </UCard>
+        <div class="w-[100px] h-full flex flex-col justify-around items-center">
+        </div>
     </UContainer>
     <UContainer class="w-full h-[200px] flex max-w-none justify-center mb-2">
         <UCard class="w-[1300px] h-full relative">
             <RoadSmallRoadMain :roadmap="smallRoad" />
         </UCard>
+        <div class="w-[100px] h-full flex flex-col justify-around items-center">
+        </div>
     </UContainer>
     <UContainer class="w-full h-[200px] flex max-w-none justify-center">
         <UCard class="w-[1300px] h-full relative">
             <RoadCockroachMain :roadmap="cockroachRoad" />
         </UCard>
+         <div class="w-[100px] h-full flex flex-col justify-around items-center">
+        </div>
     </UContainer>
 </template>
 
@@ -49,40 +57,10 @@ import { type BeadPlate, RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRo
 import useRoadAPI from "~/api/useRoadAPI";
 const { initRoadRequest, drawRoadRequest } = useRoadAPI()
 const beadPlate = ref<BeadPlate>({
-    blocks: [
-        // {
-        //     symbol: RoadSymbol.Banker,
-        //     tieCount: 0
-        // },
-        // {
-        //     symbol: RoadSymbol.BankerAndBankerPair,
-        //     tieCount: 0
-        // },
-        // {
-        //     symbol: RoadSymbol.Player,
-        //     tieCount: 1
-        // }
-    ]
+    blocks: []
 })
 const bigRoad = ref<BigRoad>({
-    columns: [
-        // {
-        //     blocks: [
-        //         {
-        //             symbol: RoadSymbol.Banker,
-        //             tieCount: 0
-        //         },
-        //         {
-        //             symbol: RoadSymbol.BankerAndBankerPair,
-        //             tieCount: 0
-        //         },
-        //         {
-        //             symbol: RoadSymbol.Player,
-        //             tieCount: 1
-        //         }
-        //     ]
-        // }
-    ],
+    columns: [],
 })
 const bigEyesRoad = ref<BigEyeRoad>({
     columns: []

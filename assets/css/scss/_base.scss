@@ -1,0 +1,12 @@
+::-webkit-scrollbar{
+    width: 5px;/*竖向滚动条的宽度*/
+    // height: 20px;/*横向滚动条的高度*/
+}
+::-webkit-scrollbar-thumb{/*滚动条里面的小方块*/
+    background: #6a7fc1;
+    border-radius: 44px;
+}
+::-webkit-scrollbar-track{/*滚动条轨道的样式*/
+    background: #6a7fc1;
+    border-radius: 44px;
+}
