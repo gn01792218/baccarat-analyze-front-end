@@ -130,6 +130,7 @@ export default function useBeadPlate(
     let newCol = document.createElement("div");
     newCol.classList.add("beadPlate-column");
     newCol.classList.add("border-[1px]")
+    newCol.classList.add("border-slate-500")
     newCol.classList.add("flex");
     newCol.id = `beadPlate-column-${roadColumnCount.value}`;
     for (let i = 0; i < roadRows.length; i++) {
@@ -137,6 +138,7 @@ export default function useBeadPlate(
       let itemDiv = document.createElement("div");
       newColItem.classList.add("beadPlate-item");
       newColItem.classList.add("border-[1px]")
+      newColItem.classList.add("border-slate-500")
       newColItem.classList.add("flex");
       newColItem.classList.add(`beadPlate-item${i}`);
       newColItem.appendChild(itemDiv);

@@ -4,14 +4,14 @@
     :class="[`${RoadDomName.BIGEYESROAD}`]"
     >
     <div
-      :class="[`${RoadDomName.BIGEYESROAD}-column border-[1px]`]"
+      :class="[`${RoadDomName.BIGEYESROAD}-column border-[1px] border-slate-500`]"
       :id="`${RoadDomName.BIGEYESROAD}-column-${index}`"
       v-for="(cc, index) in roadColumns"
       :key="index"
     >
       <div
         :class="[
-          `${RoadDomName.BIGEYESROAD}-item${index} border-[1px] items-center justify-center`,
+          `${RoadDomName.BIGEYESROAD}-item${index} border-[1px]  border-slate-500 items-center justify-center`,
           `${RoadDomName.BIGEYESROAD}-item`]"
         v-for="(cci, index) in roadRows"
         :key="index"

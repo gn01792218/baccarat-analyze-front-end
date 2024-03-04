@@ -1,5 +1,5 @@
 import useApiBase from "./useApiBase"
-import {  type DrawRoadRequest, type RoadInitRequest, type Roadmap } from "~/types/roadmap";
+import {  type DrawRoadRequest, type RoadInitRequest, type DrawRoadRespon } from "~/types/roadmap";
 import useFormData from "~/composables/road/useFormData";
 export default () => {
   const { getFormData } = useFormData()
@@ -11,8 +11,8 @@ export default () => {
    return uuid as string
   }
   async function drawRoadRequest(uuid:string ,payload: DrawRoadRequest) {
-    const { roadmaps } = await fetchApiBase(`/roadmap/${uuid}`,"patch", getFormData(payload));
-    return roadmaps as Roadmap
+    const res = await fetchApiBase(`/roadmap/${uuid}`,"patch", getFormData(payload));
+    return res as DrawRoadRespon
   }
  
   return {

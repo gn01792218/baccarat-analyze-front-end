@@ -77,3 +77,21 @@ export interface RoadInitRequest {
 export interface DrawRoadRequest {
   result: RoadSymbol;
 }
+export interface DrawRoadRespon {
+  roadmaps:Roadmap,
+  result_counter:{
+    BigRoadCounts:RoadResultCounter,
+    BigEyeRoadCounts:RoadResultCounter,
+    SmallRoadCounts:RoadResultCounter
+    CockroachRoadCounts:RoadResultCounter
+  }
+}
+export interface RoadResultCounter{
+  TieCount:number
+  PlayerCount:number
+  BankerCount:number
+}
+export interface RoadCounter{
+  total:number,
+  win:number
+}

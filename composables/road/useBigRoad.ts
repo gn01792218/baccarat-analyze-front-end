@@ -268,12 +268,14 @@ export default function useDownThreeRoad(
     let newCol = document.createElement("div");
     newCol.classList.add("bigRoad-column");
     newCol.classList.add("border-[1px]")
+    newCol.classList.add("border-slate-900")
     newCol.id = `${getRoadDomName()}-column-${roadColumn.value}`;
     for (let i = 0; i < roadRows.length; i++) {
       let newColItem = document.createElement("div");
       let itemDiv = document.createElement("div");
       newColItem.classList.add("bigRoad-item");
       newColItem.classList.add("border-[1px]")
+      newColItem.classList.add("border-slate-900")
       newColItem.classList.add("flex");
       newColItem.classList.add(`bigRoad-item${i}`);
       newColItem.appendChild(itemDiv);
@@ -299,6 +301,7 @@ export default function useDownThreeRoad(
       let col = document.createElement("div");
       col.classList.add("bigRoad-column");
       col.classList.add("border-[1px]")
+      col.classList.add("border-slate-500")
       col.classList.add("flex");
       col.id = `${getRoadDomName()}-column-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
@@ -306,6 +309,7 @@ export default function useDownThreeRoad(
         let itemDiv = document.createElement("div");
         colItem.classList.add("bigRoad-item");
         colItem.classList.add("border-[1px]")
+        colItem.classList.add("border-slate-500")
         colItem.classList.add("flex");
         colItem.classList.add(`bigRoad-item${i}`);
         colItem.appendChild(itemDiv);

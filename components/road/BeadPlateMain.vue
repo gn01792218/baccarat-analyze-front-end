@@ -3,9 +3,9 @@
     <!-- BeadPlate -->
     <div class="beadPlate-container absolute">
       <div :id="RoadDomName.BEADPLATE" class="beadPlate flex">
-        <div class="beadPlate-column flex border-[1px]" :id="`beadPlate-column-${index}`"
+        <div class="beadPlate-column flex border-[1px] border-slate-500" :id="`beadPlate-column-${index}`"
           v-for="(mc, index) in roadColumns" :key="index">
-          <div class="beadPlate-item flex border-[1px]" v-for="(mr, index) in roadRows" :key="index"
+          <div class="beadPlate-item flex border-[1px] border-slate-500" v-for="(mr, index) in roadRows" :key="index"
             :class="[`beadPlate-item${index}`]">
             <div></div>
           </div>
