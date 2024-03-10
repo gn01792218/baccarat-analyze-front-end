@@ -3,10 +3,7 @@
         <section class="flex">
             <UDivider class="my-5 w-[300px] mr-auto" :label="title" size="xl" color="orange" type="dotted"
                 :ui="{ label: 'text-xl text-primary-500 dark:text-primary-400' }" />
-            <div class="w-[300px] bg-primary-500 flex justify-around items-center">
-                <p> 合計 {{ roadCounter.total }}</p>
-                <p :class="[roadCounter.win >= 0 ? 'text-black' : 'text-red-500']"> 上下 {{ roadCounter.win }}</p>
-            </div>
+            <RoadCounter class="p-2" :road-counter="roadCounter"/>
         </section>
         <section class="flex h-[200px]">
             <div class="w-[1300px] h-full relative">

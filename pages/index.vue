@@ -1,22 +1,17 @@
 <template>
-    <!-- <UContainer class="w-full h-[200px] flex max-w-none justify-center">
-        <UCard class="w-[1300px] h-full relative">
-            <RoadBeadPlateMain :roadmap="beadPlate" />
-        </UCard>
-        <div class="w-[100px] h-full flex flex-col justify-around items-center">
-            <UButton class="block w-[50px]" label="莊" color="red" @click="fetchDrawRoadRequest(RoadSymbol.Banker)" />
-            <UButton class="block w-[50px]" label="閒" color="blue" @click="fetchDrawRoadRequest(RoadSymbol.Player)" />
-            <UButton class="block w-[50px]" label="和" color="green" @click="fetchDrawRoadRequest(RoadSymbol.Tie)" />
-        </div>
-    </UContainer> -->
+    <Header :road-counter="{
+        total:15,
+        win:0
+    }"/>
     <UContainer class="w-full h-[200px] flex max-w-none justify-center mb-10">
         <UCard class="w-[1300px] h-full relative">
             <RoadBigRoadTotal :roadmap="bigRoad" />
         </UCard>
-        <div class="w-[100px] h-full flex flex-col justify-around items-center">
-            <UButton class="block w-[50px]" label="莊" color="red" @click="fetchDrawRoadRequest(RoadSymbol.Banker)" />
-            <UButton class="block w-[50px]" label="閒" color="blue" @click="fetchDrawRoadRequest(RoadSymbol.Player)" />
-            <UButton class="block w-[50px]" label="和" color="green" @click="fetchDrawRoadRequest(RoadSymbol.Tie)" />
+        <div class="h-full flex flex-col justify-around items-center p-2">
+            <UButton class="block w-[55px]" :label="`莊 ${bigRoadResultCount.BankerCount}`" color="red" @click="fetchDrawRoadRequest(RoadSymbol.Banker)" />
+            <UButton class="block w-[55px]" :label="`閒 ${bigRoadResultCount.PlayerCount}`" color="blue" @click="fetchDrawRoadRequest(RoadSymbol.Player)" />
+            <UButton class="block w-[55px]" :label="`和 ${bigRoadResultCount.TieCount}`" color="green" @click="fetchDrawRoadRequest(RoadSymbol.Tie)" />
+            <MyChip :counter="bigRoadResultCount.BankerCount + bigRoadResultCount.PlayerCount + bigRoadResultCount.TieCount" position="總" title="局數" color="primary"/>
         </div>
     </UContainer>
 
@@ -43,12 +38,10 @@
 </template>
 
 <script setup lang="ts">
-import { type BeadPlate, RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter } from "~/types/roadmap";
+import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter } from "~/types/roadmap";
 import useRoadAPI from "~/api/useRoadAPI";
 const { initRoadRequest, drawRoadRequest } = useRoadAPI()
-// const beadPlate = ref<BeadPlate>({
-//     blocks: []
-// })
+
 const bigRoad = ref<BigRoad>({
     columns: [],
 })
@@ -94,7 +87,7 @@ async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
         bigRoad.value = roadmaps.bigRoad
         bigRoadResultCount.value = result_counter.BigRoadCounts
     }
-    // if (roadMap.beadPlate) beadPlate.value = roadMap.beadPlate
+
     if (roadmaps.bigEyeRoad) {
         bigEyesRoad.value = roadmaps.bigEyeRoad
         bigEyesRoadResultCount.value = result_counter.BigEyeRoadCounts
