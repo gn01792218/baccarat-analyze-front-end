@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full h-full absolute top-0 left-0" 
+  <div class="flex w-full h-full absolute top-0 left-0 bg-white" 
   :id="`${RoadDomName.COCKROACHROAD}`"
   :class="[`${RoadDomName.COCKROACHROAD}`]"
   >

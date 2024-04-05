@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full h-full flex absolute top-0 left-0"  
+  <section class="w-full h-full flex absolute top-0 left-0 bg-white"  
     :id="`${RoadDomName.BIGEYESROAD}`"
     :class="[`${RoadDomName.BIGEYESROAD}`]"
     >
