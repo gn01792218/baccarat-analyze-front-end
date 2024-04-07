@@ -1,34 +1,33 @@
 <template>
-    <Header 
-        :road-counter="{
-            total:15,
-            win:-55
-        }"
-        :big-road-result-count="bigRoadResultCount"
-        :draw-road-request="fetchDrawRoadRequest"
-    />
-    <UContainer class="h-[200px] flex justify-center mb-3">
-        <UCard class="w-[1300px] h-full relative">
-            <RoadBigRoadTotal :roadmap="bigRoad" />
-        </UCard>
+    <Header :road-counter="{
+        total: 15,
+        win: -55
+    }" :big-road-result-count="bigRoadResultCount" :draw-road-request="fetchDrawRoadRequest" />
+
+    <UContainer class="w-[1300px] mb-3">
+        <RoadBigRoadTotal :roadmap="bigRoad" />
     </UContainer>
 
-    <RoadContainer class="mb-1" :result-counter="bigRoadResultCount" :road-counter="{total:15, win:10}" title="大路合計" :total="5" :win="5">
+    <RoadContainer class="mb-1" :result-counter="bigRoadResultCount" :road-counter="{ total: 15, win: 10 }" title="大路合計"
+        :total="5" :win="5">
         <template #roadmap>
             <RoadBigRoadMain :roadmap="bigRoad" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :result-counter="bigEyesRoadResultCount" title="大眼路合計" :road-counter="{total:23, win:-149}" :total="15" :win="5">
+    <RoadContainer class="mb-1" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
+        :road-counter="{ total: 23, win: -149 }" :total="15" :win="5">
         <template #roadmap>
-            <RoadBigEyesRoadMain :roadmap="bigEyesRoad"/>
+            <RoadBigEyesRoadMain :roadmap="bigEyesRoad" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :result-counter="smallRoadResultCount" title="小路合計" :road-counter="{total:5, win:-1}" :total="20" :win="-5">
+    <RoadContainer class="mb-1" :result-counter="smallRoadResultCount" title="小路合計"
+        :road-counter="{ total: 5, win: -1 }" :total="20" :win="-5">
         <template #roadmap>
             <RoadSmallRoadMain :roadmap="smallRoad" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :result-counter="cockroachRoadResultCount" title="蟑螂路合計" :road-counter="{total:1, win:99}" :total="0" :win="0">
+    <RoadContainer class="mb-1" :result-counter="cockroachRoadResultCount" title="蟑螂路合計"
+        :road-counter="{ total: 1, win: 99 }" :total="0" :win="0">
         <template #roadmap>
             <RoadCockroachMain :roadmap="cockroachRoad" />
         </template>
@@ -53,24 +52,24 @@ const cockroachRoad = ref<CockroachRoad>({
     columns: []
 })
 const bigRoadResultCount = ref<RoadResultCounter>({
-    TieCount:0,
-    PlayerCount:0,
-    BankerCount:0
+    TieCount: 0,
+    PlayerCount: 0,
+    BankerCount: 0
 })
 const bigEyesRoadResultCount = ref<RoadResultCounter>({
-    TieCount:0,
-    PlayerCount:0,
-    BankerCount:0
+    TieCount: 0,
+    PlayerCount: 0,
+    BankerCount: 0
 })
 const smallRoadResultCount = ref<RoadResultCounter>({
-    TieCount:0,
-    PlayerCount:0,
-    BankerCount:0
+    TieCount: 0,
+    PlayerCount: 0,
+    BankerCount: 0
 })
 const cockroachRoadResultCount = ref<RoadResultCounter>({
-    TieCount:0,
-    PlayerCount:0,
-    BankerCount:0
+    TieCount: 0,
+    PlayerCount: 0,
+    BankerCount: 0
 })
 const roadUuid = ref<string>('')
 
@@ -83,6 +82,113 @@ async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
     const { roadmaps, result_counter } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
     if (roadmaps.bigRoad) {
         bigRoad.value = roadmaps.bigRoad
+        // bigRoad.value = {
+        //     columns: [
+        //         {
+        //             total: -1,
+        //             blocks: [
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             total: 5,
+        //             blocks: [
+        //                 {
+        //                     symbol: 2,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 2,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     "symbol": 2,
+        //                     "tieCount": 0
+        //                 },
+        //                 {
+        //                     "symbol": 17,
+        //                     "tieCount": 2
+        //                 },
+        //                 {
+        //                     "symbol": 2,
+        //                     "tieCount": 0
+        //                 },
+        //                 {
+        //                     symbol: 2,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     "symbol": 2,
+        //                     "tieCount": 0
+        //                 },
+        //             ]
+        //         },
+        //         {
+        //             total: 252,
+        //             blocks: [
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //                 {
+        //                     symbol: 1,
+        //                     tieCount: 0
+        //                 },
+        //             ]
+        //         },
+        //     ]
+        // }
         bigRoadResultCount.value = result_counter.BigRoadCounts
     }
 

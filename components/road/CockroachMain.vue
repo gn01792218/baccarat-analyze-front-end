@@ -35,7 +35,6 @@ const roadRows = new Array(6);
 const { 
   showAllRoad, 
   resetRoad,
-  askRoad
  }  = useDownThreeRoad( RoadType.M_COCKROACHROAD, roadColumns, roadRows)
  
 watch(()=>props.roadmap, () => {

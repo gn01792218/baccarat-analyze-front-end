@@ -38,7 +38,6 @@ const roadRows = new Array(6);
 const { 
   showAllRoad, 
   resetRoad,
-  askRoad
  }  = useDownThreeRoad(RoadType.M_BIGEYESROAD, roadColumns, roadRows)
 
 watch(

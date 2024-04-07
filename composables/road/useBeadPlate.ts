@@ -1,5 +1,4 @@
-import { ref } from "vue";
-import { type BeadPlate, RoadType, RoadDomName, RoadSymbol } from "@/types/roadmap";
+import { type BeadPlate, RoadType, RoadDomName, RoadSymbol, type RoadBlock } from "@/types/roadmap";
 export default function useBeadPlate(
   roadType: RoadType,
   roadColumns: Array<number>,
@@ -8,8 +7,7 @@ export default function useBeadPlate(
   const roadColumnCount = ref(0); //畫到第幾欄
   const roadIndex = ref(0); //畫到第幾格
   const overflowCount = ref(0);
-  const timer = ref();
-  const asking = ref(false); //是否在問路中
+  
   function getRoadDomName() {
     switch (roadType) {
       case RoadType.M_BEADPLATE:
@@ -70,39 +68,8 @@ export default function useBeadPlate(
     }
     roadIndex.value++;
   }
-  function askRoad(roadMap:BeadPlate,askRoadResult: number) {
-    //有人問路時，就啟動
-    asking.value = true;
-    //1.先清除計時器
-    if (timer.value) {
-      clearTimeout(timer.value);
-    }
-    //2.重置路圖
-    resetRoad();
-    showAllRoad(roadMap);
-    //3.放置問路
-    showRoad(askRoadResult);
-    //4.添加動畫
-    let column = document.getElementById(
-      `beadPlate-column-${roadColumnCount.value}`
-    ) as HTMLElement;
-    let road: HTMLElement;
-    if (roadIndex.value > 0) {
-      road = column.children[roadIndex.value - 1].firstChild as HTMLElement;
-    } else {
-      road = column.children[roadIndex.value].firstChild as HTMLElement;
-    }
-    road.classList.add("askRoadanimation");
-    //5.畫完之後等二秒就reset路圖，並重新畫
-    timer.value = setTimeout(() => {
-      resetRoad();
-      showAllRoad(roadMap);
-      road.classList.remove("askRoadanimation");
-      asking.value = false;
-    }, 2000);
-  }
   function showAllRoad(roadMap: BeadPlate) {
-    roadMap.blocks?.forEach((i: any) => {
+    roadMap.blocks?.forEach((i: RoadBlock) => {
       showRoad(i.symbol);
     });
   }
@@ -183,7 +150,6 @@ export default function useBeadPlate(
     roadIndex.value = 0;
   }
   return {
-    askRoad,
     showAllRoad,
     resetRoad,
   };

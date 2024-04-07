@@ -1,5 +1,3 @@
-import { ref, watch } from "vue";
-
 //往後有其他需要點擊自身以外關閉的元素
 //直接來這裡添加id即可
 const watcherElementsId = ["bet-set-1","bet-set-2"];

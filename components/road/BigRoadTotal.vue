@@ -1,9 +1,22 @@
 <template>
-  <section :id="`${RoadDomName.T_BIGROAD}`" class="bigRoad bg-white flex w-full h-full absolute top-0 left-0">
-    <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.T_BIGROAD}-column-${index}`"
-      v-for="(tc, index) in roadColumns" :key="index">
-      <div class="bigRoad-item flex border-[1px] border-slate-500" :class="[`bigRoad-item${index}`]" v-for="(tci, index) in roadRows" :key="index">
-        <div></div>
+  <section class="w-full h-[200px] relative">
+    <div :id="`${RoadDomName.T_BIGROAD}`" class="bigRoad bg-white flex w-full h-full absolute top-0 left-0">
+      <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.T_BIGROAD}-column-${index}`"
+        v-for="(tc, index) in roadColumns" :key="index">
+        <div class="bigRoad-item flex border-[1px] border-slate-500" :class="[`bigRoad-item${index}`]"
+          v-for="(tci, index) in roadRows" :key="index">
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="w-full h-[30px] bg-red-200 mt-2 relative">
+   <div :id="`${RoadDomName.T_BIGROAD_COUNT}`" class="bigRoad bg-white flex w-full h-full absolute top-0 left-0">
+      <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.T_BIGROAD_COUNT}-column-${index}`"
+        v-for="(tc, index) in roadColumns" :key="index">
+        <div class="h-full border-[1px] border-slate-500 flex justify-center items-center">
+          <span class="total"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -32,7 +45,7 @@ const {
   roadColumns, roadRows)
 
 onMounted(() => {
-showAllRoad(props.roadmap)
+  showAllRoad(props.roadmap)
 })
 
 watch(() => props.roadmap, () => {

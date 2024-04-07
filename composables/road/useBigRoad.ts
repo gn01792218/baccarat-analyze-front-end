@@ -1,7 +1,14 @@
-import { RoadType, RoadDomName, RoadSymbol, type BigRoad } from "@/types/roadmap";
+import {
+  RoadType,
+  RoadDomName,
+  RoadSymbol,
+  type BigRoad,
+  type RoadColumn,
+  type RoadBlock,
+} from "@/types/roadmap";
 import useRoadBase from "@/composables/road/useRoadBase";
 
-export default function useDownThreeRoad(
+export default function useBigRoad(
   roadType: RoadType,
   roadColumns: Array<number>,
   roadRows: Array<number>
@@ -17,9 +24,6 @@ export default function useDownThreeRoad(
   const roadOverFlowerTimes = ref(0); //超出格子幾次
   const bigRoadTie = ref(false); //是否有和局狀態
   const addRoadColumnCount = ref(0);
-  //問路相關
-  const timer = ref();
-  const asking = ref(false); //是否在問路中
 
   //方法
   function getRoadDomName() {
@@ -253,29 +257,49 @@ export default function useDownThreeRoad(
     putBigRoad(gameResult, tieCount);
   }
   function showAllRoad(road: BigRoad) {
-    road!.columns!.forEach((i: any) => {
+    road!.columns!.forEach((i: RoadColumn) => {
       // console.log(i.blocks) //初始化時所有都畫
-      i.blocks.forEach((item: any) => {
-        showRoad(item.symbol, item.tieCount);
+      i.blocks?.forEach((item: RoadBlock, index: number) => {
+        showRoad(item.symbol, item.tieCount!);
+        if (index === 0) {
+          //寫上統計
+          writeColumnTotal(i.total);
+        }
       });
     });
   }
+  function writeColumnTotal(total: number) {
+    const resultCountColumn = document.getElementById(
+      `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`
+    );
+    console.log(resultCountColumn);
+    const resultText = resultCountColumn?.querySelector(
+      ".total"
+    ) as HTMLSpanElement;
+    resultText.innerHTML = total.toString();
+    if (total < 0) resultText.style.color = "red";
+  }
+
   function addBigRoadColumn() {
+    //添加ResultTotal的格子
+    addTotalColumn();
+
     //滿格時一次增加一格的方法
-    let bigRoad = getRoadContainerElement()!
-    let firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
+    const bigRoad = getRoadContainerElement()!;
+    const firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
     bigRoad.removeChild(firstChild); //刪除第一行
-    let newCol = document.createElement("div");
+    console.log(bigRoad);
+    const newCol = document.createElement("div");
     newCol.classList.add("bigRoad-column");
-    newCol.classList.add("border-[1px]")
-    newCol.classList.add("border-slate-900")
+    newCol.classList.add("border-[1px]");
+    newCol.classList.add("border-slate-500");
     newCol.id = `${getRoadDomName()}-column-${roadColumn.value}`;
     for (let i = 0; i < roadRows.length; i++) {
-      let newColItem = document.createElement("div");
-      let itemDiv = document.createElement("div");
+      const newColItem = document.createElement("div");
+      const itemDiv = document.createElement("div");
       newColItem.classList.add("bigRoad-item");
-      newColItem.classList.add("border-[1px]")
-      newColItem.classList.add("border-slate-900")
+      newColItem.classList.add("border-[1px]");
+      newColItem.classList.add("border-slate-500");
       newColItem.classList.add("flex");
       newColItem.classList.add(`bigRoad-item${i}`);
       newColItem.appendChild(itemDiv);
@@ -288,8 +312,35 @@ export default function useDownThreeRoad(
     addRoadColumnCount.value++;
     // roadOverFlowerTimes.value++
   }
+  function addTotalColumn() {
+    const resultCountColumnElement = document.getElementById(
+      `${RoadDomName.T_BIGROAD_COUNT}`
+    );
+    const firstResultChild =
+      resultCountColumnElement?.firstElementChild as HTMLElement;
+    resultCountColumnElement?.removeChild(firstResultChild);
+    const newResultCol = document.createElement("div");
+    newResultCol.classList.add("bigRoad-column");
+    newResultCol.classList.add("border-[1px]");
+    newResultCol.classList.add("border-slate-500");
+    newResultCol.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`;
+
+    let newColItem = document.createElement("div");
+    let span = document.createElement("span");
+    newColItem.classList.add("!h-full");
+    newColItem.classList.add("bigRoad-item");
+    newColItem.classList.add("border-[1px]");
+    newColItem.classList.add("border-slate-500");
+    newColItem.classList.add("flex");
+    span.classList.add("total");
+    newColItem.appendChild(span);
+    newResultCol.appendChild(newColItem);
+    resultCountColumnElement?.append(newResultCol);
+  }
+
   function resetRoad() {
     //1.直接刪除所有的column
+    resetTotalColumns();
     let bigRoadColContainer = getRoadContainerElement()!;
     let lastChild = bigRoadColContainer.lastElementChild;
     while (lastChild) {
@@ -300,16 +351,16 @@ export default function useDownThreeRoad(
     for (let i = 0; i < roadColumns.length; i++) {
       let col = document.createElement("div");
       col.classList.add("bigRoad-column");
-      col.classList.add("border-[1px]")
-      col.classList.add("border-slate-500")
+      col.classList.add("border-[1px]");
+      col.classList.add("border-slate-500");
       col.classList.add("flex");
       col.id = `${getRoadDomName()}-column-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
         let colItem = document.createElement("div");
         let itemDiv = document.createElement("div");
         colItem.classList.add("bigRoad-item");
-        colItem.classList.add("border-[1px]")
-        colItem.classList.add("border-slate-500")
+        colItem.classList.add("border-[1px]");
+        colItem.classList.add("border-slate-500");
         colItem.classList.add("flex");
         colItem.classList.add(`bigRoad-item${i}`);
         colItem.appendChild(itemDiv);
@@ -334,41 +385,41 @@ export default function useDownThreeRoad(
     roadColArr = newbigRoadArr;
     bigRoadTie.value = false;
   }
-  function askRoad(roadmap:BigRoad,askRoadResult:number){
-    asking.value = true;
-    //1.先清除計時器
-    if (timer.value) {
-      clearTimeout(timer.value);
+  function resetTotalColumns() {
+    //1.直接刪除所有的column
+    let totalColumnsContainer = document.getElementById(
+      `${RoadDomName.T_BIGROAD_COUNT}`
+    )!;
+    let lastChild = totalColumnsContainer.lastElementChild;
+    while (lastChild) {
+      totalColumnsContainer.removeChild(lastChild); //移除行數
+      lastChild = totalColumnsContainer.lastElementChild; //抓下一個child
     }
-    //2.重置路圖
-    resetRoad();
-    showAllRoad(roadmap);
-    //3.放置問路
-    showRoad(askRoadResult,0); //問路只有莊閒，不需要莊的數字
-    //4.添加動畫
-    let column = document.getElementById(
-      `bigRoad-column-${roadColumn.value}`
-    ) as HTMLElement;
-    let road: HTMLElement;
-    if (roadItemIndex.value > 0) {
-      road = column.children[roadItemIndex.value - 1]
-        .firstChild as HTMLElement;
-    } else {
-      road = column.children[roadItemIndex.value].firstChild as HTMLElement;
-    }
-    road.classList.add("askRoadanimation");
-    //5.畫完之後等二秒就reset路圖，並重新畫
-    timer.value = setTimeout(() => {
-      resetRoad();
-      showAllRoad(roadmap);
-      road.classList.remove("askRoadanimation");
-      asking.value = false;
-    }, 2000);
-  }
+    //2.建立新的n條col
+    for (let i = 0; i < roadColumns.length; i++) {
+      let col = document.createElement("div");
+      col.classList.add("bigRoad-column");
+      col.classList.add("border-[1px]");
+      col.classList.add("border-slate-500");
+      col.classList.add("flex");
+      col.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${i}`;
 
+      let colItem = document.createElement("div");
+      let span = document.createElement("span");
+      span.classList.add("total");
+      colItem.appendChild(span);
+      colItem.classList.add("!h-full");
+      colItem.classList.add("bigRoad-item");
+      colItem.classList.add("border-[1px]");
+      colItem.classList.add("border-slate-500");
+      colItem.classList.add("flex");
+      col.appendChild(colItem);
+
+      totalColumnsContainer.appendChild(col);
+    }
+  }
   return {
     showAllRoad,
     resetRoad,
-    askRoad
   };
 }

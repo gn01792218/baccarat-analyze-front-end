@@ -44,14 +44,16 @@ export enum RoadSymbol {
   PlayerAndPlayerPairAndTie = 19,
   PlayerAndBothPairAndTie = 20,
 }
-interface RoadBlock {
+export interface RoadBlock {
   symbol: RoadSymbol;
   tieCount: number | null;
 }
-interface RoadColumn {
+export interface RoadColumn {
   blocks?: RoadBlock[] | null;
+  total:number
 }
 //M : 主要路圖
+//T : 統計路圖
 export enum RoadType {
   M_BEADPLATE,
   M_BIGROAD,
@@ -67,6 +69,7 @@ export enum RoadDomName {
   BEADPLATE = "beadPlat",
   M_BIGROAD = "bigRoad-main", //主要大路
   T_BIGROAD = "bigRoad-total", //合計大路圖
+  T_BIGROAD_COUNT = "bigRoad-total-count", //合計大路圖的統計欄位
   BIGEYESROAD = "bigEyesRoad",
   SMALLROAD = "smallRoad",
   COCKROACHROAD = "cockroachRoad",

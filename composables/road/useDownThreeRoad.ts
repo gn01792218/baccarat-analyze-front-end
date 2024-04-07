@@ -1,5 +1,4 @@
-import { ref } from "vue";
-import { RoadSymbol, RoadType, RoadDomName, type BigEyeRoad, type SmallRoad, type CockroachRoad } from "@/types/roadmap";
+import { RoadSymbol, RoadType, RoadDomName, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadColumn, type RoadBlock } from "@/types/roadmap";
 import useRoadBase from "@/composables/road/useRoadBase"
 export default function useDownThreeRoad(
   roadType: RoadType,
@@ -18,8 +17,6 @@ export default function useDownThreeRoad(
   const addRoadColumnCount = ref(0);
   const lastRoadDataLength = ref(0);
   const lastDataColumnLength = ref(0);
-  const askRoadtimer = ref(); //問路的計時器
-  const asking = ref(false); //是否在問路中
   
   function getRoadDomName() {
     switch (roadType) {
@@ -212,48 +209,14 @@ export default function useDownThreeRoad(
   function showAllRoad(
     road: CockroachRoad | SmallRoad | BigEyeRoad
   ) {
-    road.columns?.forEach((item: any) => {
-      item.blocks.forEach((i: any) => showRoad(i.symbol, road));
+    road.columns?.forEach((item: RoadColumn) => {
+      item.blocks?.forEach((i: RoadBlock) => showRoad(i.symbol, road));
     });
     // console.log('全劃路圖')
   }
-  function askRoad(
-    roadmap: CockroachRoad | SmallRoad | BigEyeRoad,
-    askRoadSymbol: number
-  ) {
-    asking.value = true;
-    //1.先清除計時器
-    if (askRoadtimer.value) {
-      clearTimeout(askRoadtimer.value);
-    }
-    //2.重置路圖
-    resetRoad();
-    showAllRoad(roadmap);
-    //3.放置問路
-    // let roadNum = askRoadSymbol?.cockroachRoadNext?.symbol!;
-    showRoad(askRoadSymbol, roadmap);
-    //4.添加動畫
-    let column = document.getElementById(
-      `${getRoadDomName()}-column-${roadColumn.value}`
-    ) as HTMLElement;
-    let road: HTMLElement;
-    if (roadItemIndex.value > 0) {
-      road = column.children[roadItemIndex.value - 1].firstChild as HTMLElement;
-    } else {
-      road = column.children[roadItemIndex.value].firstChild as HTMLElement;
-    }
-    road.classList.add("askRoadanimation");
-    //5.畫完之後等二秒就reset路圖，並重新畫
-    askRoadtimer.value = setTimeout(() => {
-      resetRoad();
-      showAllRoad(roadmap);
-      road.classList.remove("askRoadanimation");
-      asking.value = false;
-    }, 2000);
-  }
+
   return {
     showAllRoad,
     resetRoad,
-    askRoad,
   };
 }
