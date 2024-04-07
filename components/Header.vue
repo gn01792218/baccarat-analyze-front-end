@@ -5,11 +5,10 @@
             <UButton class="block" label="存檔" color="blue" variant="outline" />
         </section>
         <section class="flex h-full">
-            <div class="flex flex-col items-center justify-between h-full mr-5">
-                <div class="flex flex-col items-center">
-                    <p>套路</p>
-                    <p>D</p>
-                </div>
+            <div class="flex items-center justify-between h-full mr-5">
+                <BetSetSelector id="bet-set-1" :set-number="1" :set-values="['A','B','C','D']"/>
+                <p> + </p>
+                <BetSetSelector id="bet-set-2" :set-number="2" :set-values="['A','E','D','G']"/>
             </div>
             <div class="h-full flex flex-col justify-between  mr-5">
                 <div class="flex">
