@@ -188,7 +188,7 @@ export default function useBigRoad(
     lastRoadResult.value = currentroadResult.value; //將這次陣營記錄到下一次的陣營中
     // console.log("現在是第",bigRoadCol,"行；","下一格格子",roadItemIndex.value)
   }
-  function showRoad(gameResult: number, tieCount: number) {
+  function showRoad(gameResult: number, tieCount: number, blockResult: number) {
     recordBigRoad(gameResult); //1.紀錄陣營
     //換行一:不同陣營
     if (
@@ -254,19 +254,32 @@ export default function useBigRoad(
         roadColArr[roadColumn.value][i] = 1;
       }
     }
+    writeBlockResult(blockResult);
     putBigRoad(gameResult, tieCount);
   }
   function showAllRoad(road: BigRoad) {
     road!.columns!.forEach((i: RoadColumn) => {
       // console.log(i.blocks) //初始化時所有都畫
       i.blocks?.forEach((item: RoadBlock, index: number) => {
-        showRoad(item.symbol, item.tieCount!);
+        showRoad(item.symbol, item.tieCount!, item.result);
         if (index === 0) {
           //寫上統計
           writeColumnTotal(i.result);
         }
       });
     });
+  }
+  function writeBlockResult(result: number) {
+    const column = document.getElementById(
+      `${getRoadDomName()}-column-${roadColumn.value}`
+    );
+    const block = column?.querySelector(`.bigRoad-item${roadItemIndex.value}`);
+    const blockDiv = block?.firstChild as HTMLDivElement;
+    const resultText = blockDiv?.querySelector(
+      ".item-result"
+    ) as HTMLSpanElement;
+    resultText.innerHTML = result.toString();
+    if (result < 0) resultText.style.color = "red";
   }
   function writeColumnTotal(total: number) {
     const resultCountColumn = document.getElementById(
@@ -278,11 +291,9 @@ export default function useBigRoad(
     resultText.innerHTML = total.toString();
     if (total < 0) resultText.style.color = "red";
   }
-
   function addBigRoadColumn() {
     //添加ResultTotal的格子
     addTotalColumn();
-
     //滿格時一次增加一格的方法
     const bigRoad = getRoadContainerElement()!;
     const firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
@@ -296,11 +307,17 @@ export default function useBigRoad(
     for (let i = 0; i < roadRows.length; i++) {
       const newColItem = document.createElement("div");
       const itemDiv = document.createElement("div");
+      const itemResultText = document.createElement("span");
       newColItem.classList.add("bigRoad-item");
       newColItem.classList.add("border-[1px]");
       newColItem.classList.add("border-slate-500");
       newColItem.classList.add("flex");
       newColItem.classList.add(`bigRoad-item${i}`);
+      itemDiv.classList.add("text-center");
+      itemDiv.classList.add("text-[12px]");
+      itemResultText.classList.add("item-result");
+      itemResultText.classList.add("dark:text-black");
+      itemDiv.appendChild(itemResultText);
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);
     }
@@ -337,7 +354,6 @@ export default function useBigRoad(
     newResultCol.appendChild(newColItem);
     resultCountColumnElement?.append(newResultCol);
   }
-
   function resetRoad() {
     //1.直接刪除所有的column
     resetTotalColumns();
@@ -358,11 +374,17 @@ export default function useBigRoad(
       for (let i = 0; i < roadRows.length; i++) {
         let colItem = document.createElement("div");
         let itemDiv = document.createElement("div");
+        const itemResultText = document.createElement("span");
         colItem.classList.add("bigRoad-item");
         colItem.classList.add("border-[1px]");
         colItem.classList.add("border-slate-500");
         colItem.classList.add("flex");
         colItem.classList.add(`bigRoad-item${i}`);
+        itemDiv.classList.add("text-center");
+        itemDiv.classList.add("text-[12px]");
+        itemResultText.classList.add("item-result");
+        itemResultText.classList.add("dark:text-black");
+        itemDiv.appendChild(itemResultText);
         colItem.appendChild(itemDiv);
         col.appendChild(colItem);
       }

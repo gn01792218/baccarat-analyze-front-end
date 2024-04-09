@@ -5,8 +5,8 @@
         v-for="(tc, index) in roadColumns" :key="index">
         <div class="bigRoad-item flex border-[1px] border-slate-500" :class="[`bigRoad-item${index}`]"
           v-for="(tci, index) in roadRows" :key="index">
-          <div >
-            
+          <div>
+            <span class="item-result dark:text-black"></span>
           </div>
         </div>
       </div>

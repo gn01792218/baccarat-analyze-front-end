@@ -46,7 +46,7 @@
 import { type RoadResultCounter, type RoadCounter, RoadSymbol, type RoadMapPatterns, PatternSelector } from "~/types/roadmap"
 import useRoadAPI from '~/api/useRoadAPI';
 
-const props = defineProps<{
+defineProps<{
     roadUuid:string,
     roadCounter: RoadCounter,
     bigRoadResultCount:RoadResultCounter,
@@ -56,9 +56,6 @@ const props = defineProps<{
 const { getRoadMapPatterns } = useRoadAPI()
 const roadPatterns = ref<RoadMapPatterns | {}>({})
 init()
-watch(()=>props.roadUuid,()=>{
-    console.log('Header',props.roadUuid)
-})
 
 async function init(){
     roadPatterns.value = await getRoadMapPatterns()
