@@ -11,12 +11,16 @@
     >
       <div
         :class="[
-          `${RoadDomName.BIGEYESROAD}-item${index} border-[1px]  border-slate-500 items-center justify-center`,
-          `${RoadDomName.BIGEYESROAD}-item`]"
+          `border-[1px]  border-slate-500 items-center justify-center`,
+          `${RoadDomName.BIGEYESROAD}-item`,
+          `${RoadDomName.BIGEYESROAD}-item${index}`
+          ]"
         v-for="(cci, index) in roadRows"
         :key="index"
       >
-        <div></div>
+        <div>
+          <span class="item-result dark:text-black"></span>
+        </div>
       </div>
     </div>
   </section>

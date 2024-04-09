@@ -1,12 +1,21 @@
-import { RoadSymbol, RoadType, RoadDomName, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadColumn, type RoadBlock } from "@/types/roadmap";
-import useRoadBase from "@/composables/road/useRoadBase"
+import {
+  RoadSymbol,
+  RoadType,
+  RoadDomName,
+  type BigEyeRoad,
+  type SmallRoad,
+  type CockroachRoad,
+  type RoadColumn,
+  type RoadBlock,
+} from "@/types/roadmap";
+import useRoadBase from "@/composables/road/useRoadBase";
 export default function useDownThreeRoad(
   roadType: RoadType,
   roadColumns: Array<number>,
   roadRows: Array<number>
 ) {
   //roadBase
-  const { initRoadColArr } = useRoadBase(roadColumns.length, roadRows.length)
+  const { initRoadColArr } = useRoadBase(roadColumns.length, roadRows.length);
 
   let roadColArr = initRoadColArr(); //大路的Array
   const roadColumn = ref(0); //畫到第幾欄
@@ -17,7 +26,7 @@ export default function useDownThreeRoad(
   const addRoadColumnCount = ref(0);
   const lastRoadDataLength = ref(0);
   const lastDataColumnLength = ref(0);
-  
+
   function getRoadDomName() {
     switch (roadType) {
       case RoadType.M_BIGEYESROAD:
@@ -52,7 +61,8 @@ export default function useDownThreeRoad(
     roadItemIndex.value++; //增加當前的index
     lastRoadResult.value = currentRoadResult.value; //將這次陣營記錄到下一次的陣營中
     const roadmapColumns = roadmap.columns;
-    const preColumnsBlocks = roadmapColumns[roadmapColumns?.length! - 1].blocks!;
+    const preColumnsBlocks =
+      roadmapColumns[roadmapColumns?.length! - 1].blocks!;
     lastRoadDataLength.value = preColumnsBlocks.length;
     lastDataColumnLength.value = roadmapColumns?.length!;
     // console.log("現在是第",roadColumn.value,"行；","下一格格子",roadItemIndex.value)
@@ -74,18 +84,24 @@ export default function useDownThreeRoad(
     let newCol = document.createElement("div");
     newCol.classList.add(`${getRoadDomName()}-column`);
     newCol.id = `${getRoadDomName()}-column-${roadColumn.value}`;
-    newCol.classList.add("border-[1px]")
-    newCol.classList.add("border-slate-500")
+    newCol.classList.add("border-[1px]");
+    newCol.classList.add("border-slate-500");
     for (let i = 0; i < roadRows.length; i++) {
-      let newColItem = document.createElement("div");
-      let itemDiv = document.createElement("div");
+      const newColItem = document.createElement("div");
+      const itemDiv = document.createElement("div");
+      const itemResultText = document.createElement("span");
+      newColItem.classList.add(`${getRoadDomName()}-item-${i}`);
       newColItem.classList.add(`${getRoadDomName()}-item`);
       newColItem.classList.add("flex");
-      newColItem.classList.add(`${getRoadDomName()}-item${i}`);
-      newColItem.classList.add("border-[1px]")
-      newColItem.classList.add("border-slate-500")
-      newColItem.classList.add("justify-center")
-      newColItem.classList.add("items-center")
+      newColItem.classList.add("border-[1px]");
+      newColItem.classList.add("border-slate-500");
+      newColItem.classList.add("justify-center");
+      newColItem.classList.add("items-center");
+      itemDiv.classList.add("text-center");
+      itemDiv.classList.add("text-[12px]");
+      itemResultText.classList.add("item-result");
+      itemResultText.classList.add("dark:text-black");
+      itemDiv.appendChild(itemResultText);
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);
     }
@@ -110,19 +126,25 @@ export default function useDownThreeRoad(
       let col = document.createElement("div");
       col.classList.add(`${getRoadDomName()}-column`);
       col.classList.add("flex");
-      col.classList.add("border-[1px]")
-      col.classList.add("border-slate-500")
+      col.classList.add("border-[1px]");
+      col.classList.add("border-slate-500");
       col.id = `${getRoadDomName()}-column-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
-        let colItem = document.createElement("div");
-        let itemDiv = document.createElement("div");
+        const colItem = document.createElement("div");
+        const itemDiv = document.createElement("div");
+        const itemResultText = document.createElement("span");
+        colItem.classList.add(`${getRoadDomName()}-item-${i}`);
         colItem.classList.add(`${getRoadDomName()}-item`);
         colItem.classList.add("flex");
-        colItem.classList.add(`${getRoadDomName()}-item${i}`);
-        colItem.classList.add("border-[1px]")
-        colItem.classList.add("border-slate-500")
-        colItem.classList.add("justify-center")
-        colItem.classList.add("items-center")
+        colItem.classList.add("border-[1px]");
+        colItem.classList.add("border-slate-500");
+        colItem.classList.add("justify-center");
+        colItem.classList.add("items-center");
+        itemDiv.classList.add("text-center");
+        itemDiv.classList.add("text-[12px]");
+        itemResultText.classList.add("item-result");
+        itemResultText.classList.add("dark:text-black");
+        itemDiv.appendChild(itemResultText);
         colItem.appendChild(itemDiv);
         col.appendChild(colItem);
       }
@@ -141,7 +163,8 @@ export default function useDownThreeRoad(
   }
   function showRoad(
     roadNum: number,
-    road: CockroachRoad | SmallRoad | BigEyeRoad
+    road: CockroachRoad | SmallRoad | BigEyeRoad,
+    blockResult: number
   ) {
     recordRoad(roadNum);
     if (
@@ -204,15 +227,30 @@ export default function useDownThreeRoad(
         roadColArr[roadColumn.value][i] = 1;
       }
     }
+    writeBlockResult(blockResult);
     putRoad(roadNum, road);
   }
-  function showAllRoad(
-    road: CockroachRoad | SmallRoad | BigEyeRoad
-  ) {
+  function showAllRoad(road: CockroachRoad | SmallRoad | BigEyeRoad) {
     road.columns?.forEach((item: RoadColumn) => {
-      item.blocks?.forEach((i: RoadBlock) => showRoad(i.symbol, road));
+      item.blocks?.forEach((i: RoadBlock) =>
+        showRoad(i.symbol, road, i.result)
+      );
     });
     // console.log('全劃路圖')
+  }
+  function writeBlockResult(result: number) {
+    const column = document.getElementById(
+      `${getRoadDomName()}-column-${roadColumn.value}`
+    );
+    const block = column?.querySelector(
+      `.${getRoadDomName()}-item-${roadItemIndex.value}`
+    );
+    const blockDiv = block?.firstChild as HTMLDivElement;
+    const resultText = blockDiv?.querySelector(
+      ".item-result"
+    ) as HTMLSpanElement;
+    resultText.innerHTML = result.toString();
+    if (result < 0) resultText.style.color = "red";
   }
 
   return {

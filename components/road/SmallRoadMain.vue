@@ -12,11 +12,13 @@
       :key="index"
     >
       <div
-        :class="[`${RoadDomName.SMALLROAD}-item border-[1px] border-slate-500 items-center justify-center`]"
+        :class="[`${RoadDomName.SMALLROAD}-item-${index} ${RoadDomName.SMALLROAD}-item border-[1px] border-slate-500 items-center justify-center`]"
         v-for="(bi, index) in roadRows"
         :key="index"
       >
-        <div></div>
+        <div>
+          <span class="item-result dark:text-black"></span>
+        </div>
       </div>
     </div>
   </div>

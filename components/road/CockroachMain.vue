@@ -4,17 +4,19 @@
   :class="[`${RoadDomName.COCKROACHROAD}`]"
   >
     <div
-      :class="[`${RoadDomName.COCKROACHROAD}-column border-[1px] border-slate-500`]"
       :id="`${RoadDomName.COCKROACHROAD}-column-${index}`"
+      :class="[`${RoadDomName.COCKROACHROAD}-column border-[1px] border-slate-500`]"
       v-for="(b1, index) in roadColumns"
       :key="index"
     >
       <div
-        :class="[`${RoadDomName.COCKROACHROAD}-item border-[1px] border-slate-500 items-center justify-center`]"
+        :class="[`${RoadDomName.COCKROACHROAD}-item${index} ${RoadDomName.COCKROACHROAD}-item border-[1px] border-slate-500 items-center justify-center`]"
         v-for="(bi, index) in roadRows"
         :key="index"
       >
-        <div></div>
+        <div>
+          <span class="item-result dark:text-black"></span>
+        </div>
       </div>
     </div>
   </div>

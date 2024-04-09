@@ -298,7 +298,6 @@ export default function useBigRoad(
     const bigRoad = getRoadContainerElement()!;
     const firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
     bigRoad.removeChild(firstChild); //刪除第一行
-    console.log(bigRoad);
     const newCol = document.createElement("div");
     newCol.classList.add("bigRoad-column");
     newCol.classList.add("border-[1px]");
@@ -372,8 +371,8 @@ export default function useBigRoad(
       col.classList.add("flex");
       col.id = `${getRoadDomName()}-column-${i}`;
       for (let i = 0; i < roadRows.length; i++) {
-        let colItem = document.createElement("div");
-        let itemDiv = document.createElement("div");
+        const colItem = document.createElement("div");
+        const itemDiv = document.createElement("div");
         const itemResultText = document.createElement("span");
         colItem.classList.add("bigRoad-item");
         colItem.classList.add("border-[1px]");
