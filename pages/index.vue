@@ -1,5 +1,7 @@
 <template>
-    <Header :road-counter="{
+    <Header
+    :road-uuid="roadUuid" 
+    :road-counter="{
         total: 15,
         win: -55
     }" :big-road-result-count="bigRoadResultCount" :draw-road-request="fetchDrawRoadRequest" />
@@ -82,113 +84,6 @@ async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
     const { roadmaps, result_counter } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
     if (roadmaps.bigRoad) {
         bigRoad.value = roadmaps.bigRoad
-        // bigRoad.value = {
-        //     columns: [
-        //         {
-        //             total: -1,
-        //             blocks: [
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 }
-        //             ]
-        //         },
-        //         {
-        //             total: 5,
-        //             blocks: [
-        //                 {
-        //                     symbol: 2,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 2,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     "symbol": 2,
-        //                     "tieCount": 0
-        //                 },
-        //                 {
-        //                     "symbol": 17,
-        //                     "tieCount": 2
-        //                 },
-        //                 {
-        //                     "symbol": 2,
-        //                     "tieCount": 0
-        //                 },
-        //                 {
-        //                     symbol: 2,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     "symbol": 2,
-        //                     "tieCount": 0
-        //                 },
-        //             ]
-        //         },
-        //         {
-        //             total: 252,
-        //             blocks: [
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //                 {
-        //                     symbol: 1,
-        //                     tieCount: 0
-        //                 },
-        //             ]
-        //         },
-        //     ]
-        // }
         bigRoadResultCount.value = result_counter.BigRoadCounts
     }
 

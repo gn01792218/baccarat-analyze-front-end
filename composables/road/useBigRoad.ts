@@ -263,7 +263,7 @@ export default function useBigRoad(
         showRoad(item.symbol, item.tieCount!);
         if (index === 0) {
           //寫上統計
-          writeColumnTotal(i.total);
+          writeColumnTotal(i.result);
         }
       });
     });

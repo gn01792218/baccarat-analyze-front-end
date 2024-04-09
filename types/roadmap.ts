@@ -5,6 +5,10 @@ export interface Roadmap {
   smallRoad: SmallRoad | null;
   cockroachRoad: CockroachRoad | null;
 }
+export enum PatternSelector{
+  SELECTOR1 = "1",
+  SELECTOR2 = "2"
+}
 export interface BeadPlate {
   blocks: RoadBlock[] | null;
 }
@@ -47,10 +51,11 @@ export enum RoadSymbol {
 export interface RoadBlock {
   symbol: RoadSymbol;
   tieCount: number | null;
+  result:number
 }
 export interface RoadColumn {
   blocks?: RoadBlock[] | null;
-  total:number
+  result:number
 }
 //M : 主要路圖
 //T : 統計路圖
@@ -97,4 +102,12 @@ export interface RoadResultCounter{
 export interface RoadCounter{
   total:number,
   win:number
+}
+export interface UpdateRoadMapPatternsRequest{
+  pattern1:string,
+  pattern2:string
+}
+export interface RoadMapPatterns{
+ "1":string,
+ "2":string
 }

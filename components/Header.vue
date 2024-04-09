@@ -6,9 +6,9 @@
         </section>
         <section class="flex h-full">
             <div class="flex items-center justify-between h-full mr-5">
-                <BetSetSelector id="bet-set-1" :set-number="1" :set-values="['A','B','C','D']"/>
+                <BetSetSelector id="bet-set-1" :road-uuid="roadUuid" :pattern-selector="PatternSelector.SELECTOR1" :patterns="roadPatterns"/>
                 <p> + </p>
-                <BetSetSelector id="bet-set-2" :set-number="2" :set-values="['A','E','D','G']"/>
+                <BetSetSelector id="bet-set-2" :road-uuid="roadUuid" :pattern-selector="PatternSelector.SELECTOR2" :patterns="roadPatterns"/>
             </div>
             <div class="h-full flex flex-col justify-between  mr-5">
                 <div class="flex">
@@ -43,11 +43,24 @@
 </template>
 
 <script setup lang="ts">
-import { type RoadResultCounter, type RoadCounter, RoadSymbol } from "~/types/roadmap"
-defineProps<{
+import { type RoadResultCounter, type RoadCounter, RoadSymbol, type RoadMapPatterns, PatternSelector } from "~/types/roadmap"
+import useRoadAPI from '~/api/useRoadAPI';
+
+const props = defineProps<{
+    roadUuid:string,
     roadCounter: RoadCounter,
     bigRoadResultCount:RoadResultCounter,
     drawRoadRequest:(symbol:RoadSymbol)=>void
 }>()
 
+const { getRoadMapPatterns } = useRoadAPI()
+const roadPatterns = ref<RoadMapPatterns | {}>({})
+init()
+watch(()=>props.roadUuid,()=>{
+    console.log('Header',props.roadUuid)
+})
+
+async function init(){
+    roadPatterns.value = await getRoadMapPatterns()
+}
 </script>
