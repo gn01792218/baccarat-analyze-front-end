@@ -332,6 +332,7 @@ export default function useBigRoad(
     newColItem.classList.add("border-slate-500");
     newColItem.classList.add("flex");
     span.classList.add("total");
+    span.classList.add("dark:text-black");
     newColItem.appendChild(span);
     newResultCol.appendChild(newColItem);
     resultCountColumnElement?.append(newResultCol);
@@ -406,6 +407,7 @@ export default function useBigRoad(
       let colItem = document.createElement("div");
       let span = document.createElement("span");
       span.classList.add("total");
+      span.classList.add("dark:text-black");
       colItem.appendChild(span);
       colItem.classList.add("!h-full");
       colItem.classList.add("bigRoad-item");
