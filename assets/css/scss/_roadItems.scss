@@ -182,12 +182,12 @@
 //小路(左下角)
 .smallRoad-red {
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1200, 0, $game_road_DownThreeRoad_min_size);
+    @include hisRoadSpritePosition(0, 100, $game_road_DownThreeRoad_min_size);
 }
 
 .smallRoad-blue {
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1400, 0, $game_road_DownThreeRoad_min_size);
+    @include hisRoadSpritePosition(-800, 100, $game_road_DownThreeRoad_min_size);
 }
 
 //大眼仔路(中間)
@@ -204,12 +204,12 @@
 //蟑螂路
 .cockroachRoad-red {
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1300, 0, $game_road_DownThreeRoad_min_size);
+    @include hisRoadSpritePosition(0, 100, $game_road_DownThreeRoad_min_size);
 }
 
 .cockroachRoad-blue {
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1500, 0, $game_road_DownThreeRoad_min_size);
+    @include hisRoadSpritePosition(-800, 100, $game_road_DownThreeRoad_min_size);
 }
 
 //和局數字
@@ -255,11 +255,11 @@
 
 @media screen and (min-width:1024px) {
     .smallRoad-red {
-        @include hisRoadSpritePosition(-1200, 0, $game_road_DownThreeRoad_min_1024_size);
+        @include hisRoadSpritePosition(0, 100, $game_road_DownThreeRoad_min_1024_size);
     }
 
     .smallRoad-blue {
-        @include hisRoadSpritePosition(-1400, 0, $game_road_DownThreeRoad_min_1024_size);
+        @include hisRoadSpritePosition(-800, 100, $game_road_DownThreeRoad_min_1024_size);
     }
 
     .bigEyesRoad-red {
@@ -271,10 +271,10 @@
     }
 
     .cockroachRoad-red {
-        @include hisRoadSpritePosition(-1300, 0, $game_road_DownThreeRoad_min_1024_size);
+        @include hisRoadSpritePosition(0, 100, $game_road_DownThreeRoad_min_1024_size);
     }
 
     .cockroachRoad-blue {
-        @include hisRoadSpritePosition(-1500, 0, $game_road_DownThreeRoad_min_1024_size);
+        @include hisRoadSpritePosition(-800, 100, $game_road_DownThreeRoad_min_1024_size);
     }
 }

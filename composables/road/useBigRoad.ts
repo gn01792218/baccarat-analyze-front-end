@@ -272,7 +272,6 @@ export default function useBigRoad(
     const resultCountColumn = document.getElementById(
       `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`
     );
-    console.log(resultCountColumn);
     const resultText = resultCountColumn?.querySelector(
       ".total"
     ) as HTMLSpanElement;
