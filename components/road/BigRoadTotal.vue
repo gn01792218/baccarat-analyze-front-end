@@ -15,7 +15,7 @@
       <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.T_BIGROAD_COUNT}-column-${index}`"
         v-for="(tc, index) in roadColumns" :key="index">
         <div class="h-full border-[1px] border-slate-500 flex justify-center items-center">
-          <span class="total"></span>
+          <span class="total dark:text-black"></span>
         </div>
       </div>
     </div>
