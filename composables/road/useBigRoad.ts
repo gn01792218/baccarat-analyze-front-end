@@ -298,11 +298,18 @@ export default function useBigRoad(
     const bigRoad = getRoadContainerElement()!;
     const firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
     bigRoad.removeChild(firstChild); //刪除第一行
+    bigRoad.appendChild(createNewColumn(roadColumn.value));
+    //記得也要增加bigRoadArr
+    roadColArr.push([0, 0, 0, 0, 0, 0]);
+    addRoadColumnCount.value++;
+    // roadOverFlowerTimes.value++
+  }
+  function createNewColumn(roadColumnIndex:number) {
     const newCol = document.createElement("div");
     newCol.classList.add("bigRoad-column");
     newCol.classList.add("border-[1px]");
     newCol.classList.add("border-slate-500");
-    newCol.id = `${getRoadDomName()}-column-${roadColumn.value}`;
+    newCol.id = `${getRoadDomName()}-column-${roadColumnIndex}`;
     for (let i = 0; i < roadRows.length; i++) {
       const newColItem = document.createElement("div");
       const itemDiv = document.createElement("div");
@@ -320,13 +327,9 @@ export default function useBigRoad(
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);
     }
-    //貼上去
-    bigRoad.appendChild(newCol);
-    //記得也要增加bigRoadArr
-    roadColArr.push([0, 0, 0, 0, 0, 0]);
-    addRoadColumnCount.value++;
-    // roadOverFlowerTimes.value++
+    return newCol;
   }
+
   function addTotalColumn() {
     const resultCountColumnElement = document.getElementById(
       `${RoadDomName.T_BIGROAD_COUNT}`
@@ -364,30 +367,7 @@ export default function useBigRoad(
     }
     //2.建立新的n條col
     for (let i = 0; i < roadColumns.length; i++) {
-      let col = document.createElement("div");
-      col.classList.add("bigRoad-column");
-      col.classList.add("border-[1px]");
-      col.classList.add("border-slate-500");
-      col.classList.add("flex");
-      col.id = `${getRoadDomName()}-column-${i}`;
-      for (let i = 0; i < roadRows.length; i++) {
-        const colItem = document.createElement("div");
-        const itemDiv = document.createElement("div");
-        const itemResultText = document.createElement("span");
-        colItem.classList.add("bigRoad-item");
-        colItem.classList.add("border-[1px]");
-        colItem.classList.add("border-slate-500");
-        colItem.classList.add("flex");
-        colItem.classList.add(`bigRoad-item${i}`);
-        itemDiv.classList.add("text-center");
-        itemDiv.classList.add("text-[12px]");
-        itemResultText.classList.add("item-result");
-        itemResultText.classList.add("dark:text-black");
-        itemDiv.appendChild(itemResultText);
-        colItem.appendChild(itemDiv);
-        col.appendChild(colItem);
-      }
-      bigRoadColContainer.appendChild(col);
+      bigRoadColContainer.appendChild(createNewColumn(i));
     }
     //3.計數器規0
     roadColumn.value = 0;
