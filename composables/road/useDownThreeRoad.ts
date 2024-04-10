@@ -81,9 +81,17 @@ export default function useDownThreeRoad(
     let Road = getRoadContainerElement()!;
     let firstChild = Road.firstElementChild as HTMLElement; //抓取第一個元素
     Road.removeChild(firstChild); //刪除第一行
+    Road.appendChild(createNewRoadColumn(roadColumn.value)); //貼上新的一行column
+    //記得也要增加bigRoadArr
+    roadColArr.push([0, 0, 0, 0, 0, 0]);
+    // console.log("加了一行","行",cockroachRoadColumn.value)
+    addRoadColumnCount.value++;
+    // roadOverFlowerTimes.value++
+  }
+  function createNewRoadColumn(roadColumn:number) {
     let newCol = document.createElement("div");
+    newCol.id = `${getRoadDomName()}-column-${roadColumn}`;
     newCol.classList.add(`${getRoadDomName()}-column`);
-    newCol.id = `${getRoadDomName()}-column-${roadColumn.value}`;
     newCol.classList.add("border-[1px]");
     newCol.classList.add("border-slate-500");
     for (let i = 0; i < roadRows.length; i++) {
@@ -105,14 +113,9 @@ export default function useDownThreeRoad(
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);
     }
-    //貼上去
-    Road.appendChild(newCol);
-    //記得也要增加bigRoadArr
-    roadColArr.push([0, 0, 0, 0, 0, 0]);
-    // console.log("加了一行","行",cockroachRoadColumn.value)
-    addRoadColumnCount.value++;
-    // roadOverFlowerTimes.value++
+    return newCol;
   }
+
   function resetRoad() {
     //1.直接刪除所有column
     let RoadColContainer = getRoadContainerElement()!;
@@ -123,32 +126,7 @@ export default function useDownThreeRoad(
     }
     //2.建立新的四十四條col
     for (let i = 0; i < roadColumns.length; i++) {
-      let col = document.createElement("div");
-      col.classList.add(`${getRoadDomName()}-column`);
-      col.classList.add("flex");
-      col.classList.add("border-[1px]");
-      col.classList.add("border-slate-500");
-      col.id = `${getRoadDomName()}-column-${i}`;
-      for (let i = 0; i < roadRows.length; i++) {
-        const colItem = document.createElement("div");
-        const itemDiv = document.createElement("div");
-        const itemResultText = document.createElement("span");
-        colItem.classList.add(`${getRoadDomName()}-item-${i}`);
-        colItem.classList.add(`${getRoadDomName()}-item`);
-        colItem.classList.add("flex");
-        colItem.classList.add("border-[1px]");
-        colItem.classList.add("border-slate-500");
-        colItem.classList.add("justify-center");
-        colItem.classList.add("items-center");
-        itemDiv.classList.add("text-center");
-        itemDiv.classList.add("text-[12px]");
-        itemResultText.classList.add("item-result");
-        itemResultText.classList.add("dark:text-black");
-        itemDiv.appendChild(itemResultText);
-        colItem.appendChild(itemDiv);
-        col.appendChild(colItem);
-      }
-      RoadColContainer.appendChild(col);
+      RoadColContainer.appendChild(createNewRoadColumn(i));
     }
     //3.計數器規0
     roadColumn.value = 0;
