@@ -13,19 +13,25 @@
         <div class="h-full flex flex-col justify-between  mr-5">
             <div class="flex">
                 <p class="mr-2">下局預測</p>
-                <UButton class="flex w-[30px] justify-center" label="莊" color="red" />
+                <UButton v-show="roadPrediction?.betArea === BetArea.BANKER" class="flex w-[30px] justify-center"
+                    :label="predictBetArea" color="red" />
+                <UButton v-show="roadPrediction?.betArea === BetArea.PLAYER" class="flex w-[30px] justify-center"
+                    :label="predictBetArea" color="blue" />
             </div>
             <div class="flex">
                 <p class="mr-2">下局注碼</p>
-                <p>1</p>
+                <p v-show="roadPrediction && roadPrediction.bet >0">{{ roadPrediction?.bet }}</p>
             </div>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
-import { type RoadCounter } from "~/types/roadmap"
-defineProps<{
+import { type RoadCounter, type RoadPrediction, BetArea } from "~/types/roadmap"
+const props = defineProps<{
     roadCounter: RoadCounter
-}>() 
+    roadPrediction: RoadPrediction | undefined
+}>()
+const { getPredictionText } = usePrediction()
+const predictBetArea = computed(()=>getPredictionText(props.roadPrediction?.betArea))
 </script>

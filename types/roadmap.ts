@@ -93,11 +93,26 @@ export interface DrawRoadRespon {
     SmallRoadCounts:RoadResultCounter
     CockroachRoadCounts:RoadResultCounter
   }
+  predictions:Predictions
 }
 export interface RoadResultCounter{
   TieCount:number
   PlayerCount:number
   BankerCount:number
+}
+export interface Predictions{
+    bigRoad:RoadPrediction,
+    bigEyeRoad: RoadPrediction
+    smallRoad: RoadPrediction
+    cockroachRoad:RoadPrediction
+}
+export interface RoadPrediction{
+  bet:number,  //下局注碼
+  betArea:BetArea //下局預測
+}
+export enum BetArea{
+  BANKER = 1,
+  PLAYER = 2
 }
 export interface RoadCounter{
   total:number,

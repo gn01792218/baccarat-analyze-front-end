@@ -31,7 +31,7 @@
                 </div>
             </div>
         </section>
-        <RoadHeaderCounter class="w-[250px] h-full" :road-counter="roadCounter" />
+        <RoadHeaderCounter class="w-[250px] h-full" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
         <div class="h-full flex justify-around items-center p-2 ml-auto">
             <UButton class="block w-[55px] mr-5" :label="`莊 ${bigRoadResultCount.BankerCount}`" color="red" @click="drawRoadRequest(RoadSymbol.Banker)" />
             <UButton class="block w-[55px] mr-5" :label="`閒 ${bigRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />
@@ -43,13 +43,14 @@
 </template>
 
 <script setup lang="ts">
-import { type RoadResultCounter, type RoadCounter, RoadSymbol, type RoadMapPatterns, PatternSelector } from "~/types/roadmap"
+import { type RoadResultCounter, type RoadCounter, RoadSymbol, type RoadMapPatterns, PatternSelector, type RoadPrediction } from "~/types/roadmap"
 import useRoadAPI from '~/api/useRoadAPI';
 
 defineProps<{
     roadUuid:string,
     roadCounter: RoadCounter,
     bigRoadResultCount:RoadResultCounter,
+    roadPrediction:RoadPrediction | undefined
     drawRoadRequest:(symbol:RoadSymbol)=>void
 }>()
 

@@ -1,34 +1,38 @@
 <template>
     <Header
     :road-uuid="roadUuid" 
+    :road-prediction="predictions?.bigRoad"
     :road-counter="{
         total: 15,
         win: -55
-    }" :big-road-result-count="bigRoadResultCount" :draw-road-request="fetchDrawRoadRequest" />
+    }" 
+    :big-road-result-count="bigRoadResultCount" 
+    :draw-road-request="fetchDrawRoadRequest" 
+    />
 
     <UContainer class="w-[1300px] mb-3">
         <RoadBigRoadTotal :roadmap="bigRoad" />
     </UContainer>
 
-    <RoadContainer class="mb-1" :result-counter="bigRoadResultCount" :road-counter="{ total: 15, win: 10 }" title="大路合計"
+    <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-counter="{ total: 15, win: 10 }" title="大路合計"
         :total="5" :win="5">
         <template #roadmap>
             <RoadBigRoadMain :roadmap="bigRoad" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
+    <RoadContainer class="mb-1" :road-prediction="predictions?.bigEyeRoad" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
         :road-counter="{ total: 23, win: -149 }" :total="15" :win="5">
         <template #roadmap>
             <RoadBigEyesRoadMain :roadmap="bigEyesRoad" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :result-counter="smallRoadResultCount" title="小路合計"
+    <RoadContainer class="mb-1" :road-prediction="predictions?.smallRoad" :result-counter="smallRoadResultCount" title="小路合計"
         :road-counter="{ total: 5, win: -1 }" :total="20" :win="-5">
         <template #roadmap>
             <RoadSmallRoadMain :roadmap="smallRoad" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :result-counter="cockroachRoadResultCount" title="蟑螂路合計"
+    <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="蟑螂路合計"
         :road-counter="{ total: 1, win: 99 }" :total="0" :win="0">
         <template #roadmap>
             <RoadCockroachMain :roadmap="cockroachRoad" />
@@ -37,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter } from "~/types/roadmap";
+import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter, type Predictions } from "~/types/roadmap";
 import useRoadAPI from "~/api/useRoadAPI";
 const { initRoadRequest, drawRoadRequest } = useRoadAPI()
 
@@ -73,6 +77,7 @@ const cockroachRoadResultCount = ref<RoadResultCounter>({
     PlayerCount: 0,
     BankerCount: 0
 })
+const predictions = ref<Predictions>() //各條路的下局預測、下局注碼
 const roadUuid = ref<string>('')
 
 init()
@@ -81,7 +86,8 @@ async function init() {
     roadUuid.value = await initRoadRequest({ name: 'road' })
 }
 async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
-    const { roadmaps, result_counter } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
+    const { roadmaps, result_counter, predictions : predictionsRes } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
+    predictions.value = predictionsRes
     if (roadmaps.bigRoad) {
         bigRoad.value = roadmaps.bigRoad
         bigRoadResultCount.value = result_counter.BigRoadCounts
