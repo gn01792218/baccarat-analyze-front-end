@@ -278,7 +278,7 @@ export default function useBigRoad(
     const resultText = blockDiv?.querySelector(
       ".item-result"
     ) as HTMLSpanElement;
-    resultText.innerHTML = result.toString();
+    if(result !== 0)resultText.innerHTML = result.toString();
     if (result < 0) resultText.style.color = "red";
   }
   function writeColumnTotal(total: number) {
@@ -288,7 +288,8 @@ export default function useBigRoad(
     const resultText = resultCountColumn?.querySelector(
       ".total"
     ) as HTMLSpanElement;
-    resultText.innerHTML = total.toString();
+
+    if(total !== 0) resultText.innerHTML = total.toString();
     if (total < 0) resultText.style.color = "red";
   }
   function addBigRoadColumn() {

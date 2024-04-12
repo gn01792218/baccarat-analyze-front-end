@@ -227,7 +227,8 @@ export default function useDownThreeRoad(
     const resultText = blockDiv?.querySelector(
       ".item-result"
     ) as HTMLSpanElement;
-    resultText.innerHTML = result.toString();
+
+    if(result !== 0)resultText.innerHTML = result.toString();
     if (result < 0) resultText.style.color = "red";
   }
 
