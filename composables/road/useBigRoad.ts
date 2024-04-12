@@ -262,7 +262,7 @@ export default function useBigRoad(
       // console.log(i.blocks) //初始化時所有都畫
       i.blocks?.forEach((item: RoadBlock, index: number) => {
         showRoad(item.symbol, item.tieCount!, item.result);
-        if (index === 0) {
+        if (index === 0 && roadType === RoadType.T_BIGROAD) { //只要寫統計路即可
           //寫上統計
           writeColumnTotal(i.result);
         }
@@ -293,7 +293,7 @@ export default function useBigRoad(
   }
   function addBigRoadColumn() {
     //添加ResultTotal的格子
-    addTotalColumn();
+    if(roadType === RoadType.T_BIGROAD) addTotalColumn();
     //滿格時一次增加一格的方法
     const bigRoad = getRoadContainerElement()!;
     const firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
@@ -304,61 +304,9 @@ export default function useBigRoad(
     addRoadColumnCount.value++;
     // roadOverFlowerTimes.value++
   }
-  function createNewColumn(roadColumnIndex:number) {
-    const newCol = document.createElement("div");
-    newCol.classList.add("bigRoad-column");
-    newCol.classList.add("border-[1px]");
-    newCol.classList.add("border-slate-500");
-    newCol.id = `${getRoadDomName()}-column-${roadColumnIndex}`;
-    for (let i = 0; i < roadRows.length; i++) {
-      const newColItem = document.createElement("div");
-      const itemDiv = document.createElement("div");
-      const itemResultText = document.createElement("span");
-      newColItem.classList.add("bigRoad-item");
-      newColItem.classList.add("border-[1px]");
-      newColItem.classList.add("border-slate-500");
-      newColItem.classList.add("flex");
-      newColItem.classList.add(`bigRoad-item${i}`);
-      itemDiv.classList.add("text-center");
-      itemDiv.classList.add("text-[12px]");
-      itemResultText.classList.add("item-result");
-      itemResultText.classList.add("dark:text-black");
-      itemDiv.appendChild(itemResultText);
-      newColItem.appendChild(itemDiv);
-      newCol.appendChild(newColItem);
-    }
-    return newCol;
-  }
-
-  function addTotalColumn() {
-    const resultCountColumnElement = document.getElementById(
-      `${RoadDomName.T_BIGROAD_COUNT}`
-    );
-    const firstResultChild =
-      resultCountColumnElement?.firstElementChild as HTMLElement;
-    resultCountColumnElement?.removeChild(firstResultChild);
-    const newResultCol = document.createElement("div");
-    newResultCol.classList.add("bigRoad-column");
-    newResultCol.classList.add("border-[1px]");
-    newResultCol.classList.add("border-slate-500");
-    newResultCol.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`;
-
-    let newColItem = document.createElement("div");
-    let span = document.createElement("span");
-    newColItem.classList.add("!h-full");
-    newColItem.classList.add("bigRoad-item");
-    newColItem.classList.add("border-[1px]");
-    newColItem.classList.add("border-slate-500");
-    newColItem.classList.add("flex");
-    span.classList.add("total");
-    span.classList.add("dark:text-black");
-    newColItem.appendChild(span);
-    newResultCol.appendChild(newColItem);
-    resultCountColumnElement?.append(newResultCol);
-  }
-  function resetRoad() {
+   function resetRoad() {
     //1.直接刪除所有的column
-    resetTotalColumns();
+    if(roadType === RoadType.T_BIGROAD) resetTotalColumns();
     let bigRoadColContainer = getRoadContainerElement()!;
     let lastChild = bigRoadColContainer.lastElementChild;
     while (lastChild) {
@@ -385,6 +333,57 @@ export default function useBigRoad(
     }
     roadColArr = newbigRoadArr;
     bigRoadTie.value = false;
+  }
+  function createNewColumn(roadColumnIndex:number) {
+    const newCol = document.createElement("div");
+    newCol.classList.add("bigRoad-column");
+    newCol.classList.add("border-[1px]");
+    newCol.classList.add("border-slate-500");
+    newCol.id = `${getRoadDomName()}-column-${roadColumnIndex}`;
+    for (let i = 0; i < roadRows.length; i++) {
+      const newColItem = document.createElement("div");
+      const itemDiv = document.createElement("div");
+      const itemResultText = document.createElement("span");
+      newColItem.classList.add("bigRoad-item");
+      newColItem.classList.add("border-[1px]");
+      newColItem.classList.add("border-slate-500");
+      newColItem.classList.add("flex");
+      newColItem.classList.add(`bigRoad-item${i}`);
+      itemDiv.classList.add("text-center");
+      itemDiv.classList.add("text-[12px]");
+      itemResultText.classList.add("item-result");
+      itemResultText.classList.add("dark:text-black");
+      itemDiv.appendChild(itemResultText);
+      newColItem.appendChild(itemDiv);
+      newCol.appendChild(newColItem);
+    }
+    return newCol;
+  }
+  function addTotalColumn() {
+    const resultCountColumnElement = document.getElementById(
+      `${RoadDomName.T_BIGROAD_COUNT}`
+    );
+    const firstResultChild =
+      resultCountColumnElement?.firstElementChild as HTMLElement;
+    resultCountColumnElement?.removeChild(firstResultChild);
+    const newResultCol = document.createElement("div");
+    newResultCol.classList.add("bigRoad-column");
+    newResultCol.classList.add("border-[1px]");
+    newResultCol.classList.add("border-slate-500");
+    newResultCol.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`;
+
+    let newColItem = document.createElement("div");
+    let span = document.createElement("span");
+    newColItem.classList.add("!h-full");
+    newColItem.classList.add("bigRoad-item");
+    newColItem.classList.add("border-[1px]");
+    newColItem.classList.add("border-slate-500");
+    newColItem.classList.add("flex");
+    span.classList.add("total");
+    span.classList.add("dark:text-black");
+    newColItem.appendChild(span);
+    newResultCol.appendChild(newColItem);
+    resultCountColumnElement?.append(newResultCol);
   }
   function resetTotalColumns() {
     //1.直接刪除所有的column

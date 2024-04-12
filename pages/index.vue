@@ -6,12 +6,12 @@
         total: 15,
         win: -55
     }" 
-    :big-road-result-count="bigRoadResultCount" 
+    :total-road-result-count="totalRoadResultCount" 
     :draw-road-request="fetchDrawRoadRequest" 
     />
 
     <UContainer class="w-[1300px] mb-3">
-        <RoadBigRoadTotal :roadmap="bigRoad" />
+        <RoadBigRoadTotal :roadmap="totalRoad" />
     </UContainer>
 
     <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-counter="{ total: 15, win: 10 }" title="大路合計"
@@ -45,6 +45,9 @@ import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type Cockroa
 import useRoadAPI from "~/api/useRoadAPI";
 const { initRoadRequest, drawRoadRequest } = useRoadAPI()
 
+const totalRoad = ref<BigRoad>({
+    columns:[]
+})
 const bigRoad = ref<BigRoad>({
     columns: [],
 })
@@ -56,6 +59,11 @@ const smallRoad = ref<SmallRoad>({
 })
 const cockroachRoad = ref<CockroachRoad>({
     columns: []
+})
+const totalRoadResultCount = ref<RoadResultCounter>({
+    TieCount: 0,
+    PlayerCount: 0,
+    BankerCount: 0
 })
 const bigRoadResultCount = ref<RoadResultCounter>({
     TieCount: 0,
@@ -88,6 +96,11 @@ async function init() {
 async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
     const { roadmaps, result_counter, predictions : predictionsRes } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
     predictions.value = predictionsRes
+
+    if (roadmaps.totalRoad) {
+        totalRoad.value = roadmaps.totalRoad
+        totalRoadResultCount.value = result_counter.BigRoadCounts
+    }
     if (roadmaps.bigRoad) {
         bigRoad.value = roadmaps.bigRoad
         bigRoadResultCount.value = result_counter.BigRoadCounts

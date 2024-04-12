@@ -1,4 +1,5 @@
 export interface Roadmap {
+  totalRoad:BigRoad | null //目前和大路是一模一樣的
   beadPlate: BeadPlate | null;
   bigRoad: BigRoad | null;
   bigEyeRoad: BigEyeRoad | null;

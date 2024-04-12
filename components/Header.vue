@@ -33,24 +33,24 @@
         </section>
         <RoadHeaderCounter class="w-[250px] h-full" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
         <div class="h-full flex justify-around items-center p-2 ml-auto">
-            <UButton class="block w-[55px] mr-5" :label="`莊 ${bigRoadResultCount.BankerCount}`" color="red" @click="drawRoadRequest(RoadSymbol.Banker)" />
-            <UButton class="block w-[55px] mr-5" :label="`閒 ${bigRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />
-            <UButton class="block w-[55px] mr-5" :label="`和 ${bigRoadResultCount.TieCount}`" color="green" @click="drawRoadRequest(RoadSymbol.Tie)" />
-            <MyChip :counter="bigRoadResultCount.BankerCount + bigRoadResultCount.PlayerCount + bigRoadResultCount.TieCount" position="總" title="局數" color="primary"/>
+            <UButton class="block w-[55px] mr-5" :label="`莊 ${totalRoadResultCount.BankerCount}`" color="red" @click="drawRoadRequest(RoadSymbol.Banker)" />
+            <UButton class="block w-[55px] mr-5" :label="`閒 ${totalRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />
+            <UButton class="block w-[55px] mr-5" :label="`和 ${totalRoadResultCount.TieCount}`" color="green" @click="drawRoadRequest(RoadSymbol.Tie)" />
+            <MyChip :counter="totalRoadResultCount.BankerCount + totalRoadResultCount.PlayerCount + totalRoadResultCount.TieCount" position="總" title="局數" color="primary"/>
         </div>
         <UButton class="block ml-auto" label="返回上局" color="blue" variant="outline" />
     </UContainer>
 </template>
 
 <script setup lang="ts">
-import { type RoadResultCounter, type RoadCounter, RoadSymbol, type RoadMapPatterns, PatternSelector, type RoadPrediction } from "~/types/roadmap"
+import { type RoadResultCounter, type RoadCounter, RoadSymbol, type RoadMapPatterns, PatternSelector, type RoadPrediction as totalRoadResultCount } from "~/types/roadmap"
 import useRoadAPI from '~/api/useRoadAPI';
 
 defineProps<{
     roadUuid:string,
     roadCounter: RoadCounter,
-    bigRoadResultCount:RoadResultCounter,
-    roadPrediction:RoadPrediction | undefined
+    totalRoadResultCount:RoadResultCounter,
+    roadPrediction:totalRoadResultCount | undefined
     drawRoadRequest:(symbol:RoadSymbol)=>void
 }>()
 

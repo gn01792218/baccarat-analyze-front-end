@@ -31,10 +31,6 @@ const {
   RoadType.M_BIGROAD,
   roadColumns, roadRows)
 
-onMounted(() => {
-showAllRoad(props.roadmap)
-})
-
 watch(() => props.roadmap, () => {
   resetRoad();
   showAllRoad(props.roadmap);
