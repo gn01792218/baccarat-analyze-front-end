@@ -8,6 +8,7 @@
     }" 
     :total-road-result-count="totalRoadResultCount" 
     :draw-road-request="fetchDrawRoadRequest" 
+    :road-back-request="fetchRoadBackRequest"
     />
 
     <UContainer class="w-[1300px] mb-3">
@@ -41,9 +42,9 @@
 </template>
 
 <script setup lang="ts">
-import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter, type Predictions } from "~/types/roadmap";
+import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter, type Predictions, type Roadmap } from "~/types/roadmap";
 import useRoadAPI from "~/api/useRoadAPI";
-const { initRoadRequest, drawRoadRequest } = useRoadAPI()
+const { initRoadRequest, drawRoadRequest, roadBackRequest } = useRoadAPI()
 
 const totalRoad = ref<BigRoad>({
     columns:[]
@@ -94,29 +95,37 @@ async function init() {
     roadUuid.value = await initRoadRequest({ name: 'road' })
 }
 async function fetchDrawRoadRequest(roadSymbol: RoadSymbol) {
-    const { roadmaps, result_counter, predictions : predictionsRes } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
-    predictions.value = predictionsRes
+    const { roadmaps, result_counter, predictions } = await drawRoadRequest(roadUuid.value, { result: roadSymbol })
+    setRoadMaps(predictions, roadmaps, result_counter);
+}
+async function fetchRoadBackRequest(){
+    const { roadmaps, result_counter, predictions } = await roadBackRequest(roadUuid.value)
+    setRoadMaps(predictions, roadmaps, result_counter);
+}
+function setRoadMaps(predictionsRes: Predictions, roadmaps: Roadmap, result_counter: { BigRoadCounts: RoadResultCounter; BigEyeRoadCounts: RoadResultCounter; SmallRoadCounts: RoadResultCounter; CockroachRoadCounts: RoadResultCounter; }) {
+  predictions.value=predictionsRes;
 
-    if (roadmaps.totalRoad) {
-        totalRoad.value = roadmaps.totalRoad
-        totalRoadResultCount.value = result_counter.BigRoadCounts
-    }
-    if (roadmaps.bigRoad) {
-        bigRoad.value = roadmaps.bigRoad
-        bigRoadResultCount.value = result_counter.BigRoadCounts
-    }
+  if(roadmaps.totalRoad) {
+    totalRoad.value=roadmaps.totalRoad;
+    totalRoadResultCount.value=result_counter.BigRoadCounts;
+  }
+  if(roadmaps.bigRoad) {
+    bigRoad.value=roadmaps.bigRoad;
+    bigRoadResultCount.value=result_counter.BigRoadCounts;
+  }
 
-    if (roadmaps.bigEyeRoad) {
-        bigEyesRoad.value = roadmaps.bigEyeRoad
-        bigEyesRoadResultCount.value = result_counter.BigEyeRoadCounts
-    }
-    if (roadmaps.smallRoad) {
-        smallRoad.value = roadmaps.smallRoad
-        smallRoadResultCount.value = result_counter.SmallRoadCounts
-    }
-    if (roadmaps.cockroachRoad) {
-        cockroachRoad.value = roadmaps.cockroachRoad
-        cockroachRoadResultCount.value = result_counter.CockroachRoadCounts
-    }
+  if(roadmaps.bigEyeRoad) {
+    bigEyesRoad.value=roadmaps.bigEyeRoad;
+    bigEyesRoadResultCount.value=result_counter.BigEyeRoadCounts;
+  }
+  if(roadmaps.smallRoad) {
+    smallRoad.value=roadmaps.smallRoad;
+    smallRoadResultCount.value=result_counter.SmallRoadCounts;
+  }
+  if(roadmaps.cockroachRoad) {
+    cockroachRoad.value=roadmaps.cockroachRoad;
+    cockroachRoadResultCount.value=result_counter.CockroachRoadCounts;
+    
+  }
 }
 </script>

@@ -96,6 +96,16 @@ export interface DrawRoadRespon {
   }
   predictions:Predictions
 }
+export interface RestoreRoadRespon {
+  roadmaps:Roadmap,
+  result_counter:{
+    BigRoadCounts:RoadResultCounter,
+    BigEyeRoadCounts:RoadResultCounter,
+    SmallRoadCounts:RoadResultCounter
+    CockroachRoadCounts:RoadResultCounter
+  }
+  predictions:Predictions
+}
 export interface RoadResultCounter{
   TieCount:number
   PlayerCount:number

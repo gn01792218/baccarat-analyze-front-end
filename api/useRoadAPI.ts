@@ -3,6 +3,7 @@ import {
   type DrawRoadRequest, 
   type RoadInitRequest, 
   type DrawRoadRespon, 
+  type RestoreRoadRespon,
   type UpdateRoadMapPatternsRequest,
   type RoadMapPatterns 
 } from "~/types/roadmap";
@@ -27,6 +28,10 @@ export default () => {
     const { patterns } = await fetchApiBase(`/roadmap/${uuid}/patterns`,"patch", getFormData(payload))
     return patterns
   }
+  async function roadBackRequest(uuid:string){
+    const res = await fetchApiBase(`/roadmap/${uuid}/restore`,'patch')
+    return res as RestoreRoadRespon
+  }
 
  
   return {
@@ -36,5 +41,6 @@ export default () => {
     drawRoadRequest,
     getRoadMapPatterns,
     updateRoadMapPatterns,
+    roadBackRequest
   }
 };
