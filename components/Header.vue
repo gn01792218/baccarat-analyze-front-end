@@ -39,7 +39,7 @@
             <UButton class="block mr-5" icon="i-heroicons-arrow-uturn-left" color="gray" variant="solid" @click="roadBackRequest" />
             <MyChip :counter="totalRoadResultCount.BankerCount + totalRoadResultCount.PlayerCount + totalRoadResultCount.TieCount" position="總" title="局數" color="primary"/>
         </div>
-        <UButton class="block ml-auto" label="返回上局" color="blue" variant="outline" />
+        <!-- <UButton class="block ml-auto" label="返回上局" color="blue" variant="outline" /> -->
     </UContainer>
 </template>
 
