@@ -3,8 +3,8 @@
     :road-uuid="roadUuid" 
     :road-prediction="predictions?.bigRoad"
     :road-counter="{
-        total: 15,
-        win: -55
+        total: 0,
+        win: 0
     }" 
     :total-road-result-count="totalRoadResultCount" 
     :draw-road-request="fetchDrawRoadRequest" 
@@ -15,26 +15,26 @@
         <RoadBigRoadTotal :roadmap="totalRoad" />
     </UContainer>
 
-    <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-counter="{ total: 15, win: 10 }" title="大路合計"
-        :total="5" :win="5">
+    <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-counter="{ total: 0, win: 0 }" title="大路合計"
+        :total="0" :win="0">
         <template #roadmap>
             <RoadBigRoadMain :roadmap="bigRoad" />
         </template>
     </RoadContainer>
     <RoadContainer class="mb-1" :road-prediction="predictions?.bigEyeRoad" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
-        :road-counter="{ total: 23, win: -149 }" :total="15" :win="5">
+        :road-counter="{ total: 0, win: 0 }" :total="0" :win="0">
         <template #roadmap>
             <RoadBigEyesRoadMain :roadmap="bigEyesRoad" />
         </template>
     </RoadContainer>
     <RoadContainer class="mb-1" :road-prediction="predictions?.smallRoad" :result-counter="smallRoadResultCount" title="小路合計"
-        :road-counter="{ total: 5, win: -1 }" :total="20" :win="-5">
+        :road-counter="{ total: 0, win: 0 }" :total="0" :win="0">
         <template #roadmap>
             <RoadSmallRoadMain :roadmap="smallRoad" />
         </template>
     </RoadContainer>
     <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="蟑螂路合計"
-        :road-counter="{ total: 1, win: 99 }" :total="0" :win="0">
+        :road-counter="{ total: 0, win: 0 }" :total="0" :win="0">
         <template #roadmap>
             <RoadCockroachMain :roadmap="cockroachRoad" />
         </template>
