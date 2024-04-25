@@ -37,7 +37,7 @@
             <UButton class="block w-[55px] mr-5" :label="`閒 ${totalRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />
             <UButton class="block w-[55px] mr-5" :label="`和 ${totalRoadResultCount.TieCount}`" color="green" @click="drawRoadRequest(RoadSymbol.Tie)" />
             <UButton class="block mr-5" icon="i-heroicons-arrow-uturn-left" color="gray" variant="solid" @click="roadBackRequest" />
-            <MyChip :counter="totalRoadResultCount.BankerCount + totalRoadResultCount.PlayerCount + totalRoadResultCount.TieCount" position="總" title="局數" color="primary"/>
+            <MyChip :counter="totalRoadResultCount.BankerCount + totalRoadResultCount.PlayerCount + totalRoadResultCount.TieCount" position="總" title="" color="primary"/>
         </div>
         <!-- <UButton class="block ml-auto" label="返回上局" color="blue" variant="outline" /> -->
     </UContainer>
