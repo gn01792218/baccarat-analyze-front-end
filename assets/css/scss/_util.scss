@@ -2,20 +2,20 @@
     $WIDTH: (
         100*$scale
     );
-    $HEIGHT: (
-        100*$scale
-    );
-    $POSITIONX: (
-        $x*$scale
-    );
-    $POSITIONY: (
-        $y*$scale
-    );
-    $BGSIZEX: calc(100*$WIDTH/100);
-    width: $WIDTH+px;
-    height: $HEIGHT+px;
-    background-position: $POSITIONX+px $POSITIONY+px;
-    background-size: $BGSIZEX+px auto;
+$HEIGHT: (
+    100*$scale
+);
+$POSITIONX: (
+    $x*$scale
+);
+$POSITIONY: (
+    $y*$scale
+);
+$BGSIZEX: calc(100*$WIDTH/100);
+width: $WIDTH+px;
+height: $HEIGHT+px;
+background-position: $POSITIONX+px $POSITIONY+px;
+background-size: $BGSIZEX+px auto;
 }
 
 @mixin hisRoadSpritePosition($x, $y, $scale) {
@@ -23,20 +23,20 @@
     $WIDTH: (
         100*$scale
     );
-    $HEIGHT: (
-        100*$scale
-    );
-    $POSITIONX: (
-        $x*$scale
-    );
-    $POSITIONY: (
-        $y*$scale
-    );
-    $BGSIZEX: calc(1600*$WIDTH/100);
-    width: $WIDTH+px;
-    height: $HEIGHT+px;
-    background-position: $POSITIONX+px $POSITIONY+px;
-    background-size: $BGSIZEX+px auto;
+$HEIGHT: (
+    100*$scale
+);
+$POSITIONX: (
+    $x*$scale
+);
+$POSITIONY: (
+    $y*$scale
+);
+$BGSIZEX: calc(1600*$WIDTH/100);
+width: $WIDTH+px;
+height: $HEIGHT+px;
+background-position: $POSITIONX+px $POSITIONY+px;
+background-size: $BGSIZEX+px auto;
 }
 
 @mixin calcRoadMapWidth($columnNum) {
@@ -52,20 +52,20 @@
     $WIDTH: (
         100*$scale
     );
-    $HEIGHT: (
-        100*$scale
-    );
-    $POSITIONX: (
-        $x*$scale
-    );
-    $POSITIONY: (
-        $y*$scale
-    );
-    $BGSIZEX: calc( 900*$WIDTH/100 );
-    width: $WIDTH+px;
-    height: $HEIGHT+px;
-    background-position: $POSITIONX+px $POSITIONY+px;
-    background-size: $BGSIZEX+px auto;
+$HEIGHT: (
+    100*$scale
+);
+$POSITIONX: (
+    $x*$scale
+);
+$POSITIONY: (
+    $y*$scale
+);
+$BGSIZEX: calc(900*$WIDTH/100);
+width: $WIDTH+px;
+height: $HEIGHT+px;
+background-position: $POSITIONX+px $POSITIONY+px;
+background-size: $BGSIZEX+px auto;
 }
 
 //共用
@@ -92,4 +92,10 @@
 
 %bet-Area-text-base {
     color: white;
+}
+
+%border-right-none {
+    &:not(:last-child) {
+        border-right: none;
+    }
 }

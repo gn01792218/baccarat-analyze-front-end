@@ -12,7 +12,7 @@ defineProps<{
     counter:number,
     position:string
     title:string,
-    color:'primary' | 'blue' | 'red' | 'green'
+    color:'primary' | 'blue' | 'red' | 'green'|'none'
 }>()
 
 </script>

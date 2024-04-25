@@ -5,9 +5,9 @@
                 :ui="{ label: 'text-xl text-primary-500 dark:text-primary-400' }" />
             <RoadCounter class="p-1 h-auto mr-5" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
             <div class="flex justify-between items-center">
-                <MyChip class="mr-5" :counter="resultCounter.BankerCount" position="莊" title=""/>
-                <MyChip class="mr-5" :counter="resultCounter.PlayerCount" position="閒" title=""/>
-                <MyChip class="mr-5" :counter="resultCounter.TieCount" position="和" title=""/>
+                <MyChip class="mr-5" :counter="resultCounter.BankerCount" position="莊" title="" color="none"/>
+                <MyChip class="mr-5" :counter="resultCounter.PlayerCount" position="閒" title="" color="none"/>
+                <MyChip class="mr-5" :counter="resultCounter.TieCount" position="和" title="" color="none"/>
                 <MyChip :counter="total" position="總" title="" color="primary"/>
             </div>
         </section>

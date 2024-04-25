@@ -1,10 +1,13 @@
 .bigRoad-column {
+  @extend %border-right-none;
   @include calcRoadMapWidth($bigRoadColumnNum);
   height: 100%;
   flex-direction: column;
+  background-color: white;
 }
 
 .bigRoad-item {
+  border-right: none;
   @include calcRoadMapHeight($bigRoadRowNum);
   flex-direction: column;
   align-items: center;
@@ -13,37 +16,46 @@
 
 //大眼路
 .bigEyesRoad-column {
+  @extend %border-right-none;
   @include calcRoadMapWidth($bigEyesRoadColumnNum);
   height: 100%;
   flex-direction: column;
+  background-color: white;
 }
 
 .bigEyesRoad-item {
+  border-right: none;
   width: 100%;
   @include calcRoadMapHeight($bigEyesRoadRowNum);
   flex-direction: column;
 }
 
 .smallRoad-column {
+  @extend %border-right-none;
   @include calcRoadMapWidth($smallRoadColumnNum);
   height: 100%;
   flex-direction: column;
+  background-color: white;
 }
 
 .smallRoad-item {
+  border-right: none;
   width: 100%;
   @include calcRoadMapHeight($smallRoadRowNum);
   flex-direction: column;
 }
 
 .cockroachRoad-column {
+  @extend %border-right-none;
   @include calcRoadMapWidth($cockroachRoadColumnNum);
   height: 100%;
   flex-direction: column;
+  background-color: white;
 }
 
 
 .cockroachRoad-item {
+  border-right: none;
   width: 100%;
   @include calcRoadMapHeight($cockroachRoadRowNum);
   flex-direction: column;
