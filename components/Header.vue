@@ -20,7 +20,7 @@
                     <p>0050</p>
                 </div>
             </div>
-            <div class="h-full flex flex-col justify-between  mr-5">
+            <div class="h-full flex flex-col justify-between">
                 <div class="flex">
                     <p class="mr-2">檯面</p>
                     <p>50</p>
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </section>
-        <RoadHeaderCounter class="w-[250px] h-full" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
+        <RoadHeaderCounter class="h-full" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
         <div class="h-full flex justify-around items-center p-2 ml-auto">
             <UButton class="block w-[55px] mr-5" :label="`莊 ${totalRoadResultCount.BankerCount}`" color="red" @click="drawRoadRequest(RoadSymbol.Banker)" />
             <UButton class="block w-[55px] mr-5" :label="`閒 ${totalRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />

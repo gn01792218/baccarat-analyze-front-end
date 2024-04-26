@@ -1,6 +1,6 @@
 <template>
     <section class="flex h-full">
-        <div class="h-full flex flex-col justify-between  mr-5">
+        <div class="h-full flex flex-col justify-between mx-12">
             <div class="flex" :class="[roadCounter.win >= 0 ? 'text-black' : 'text-red-500']">
                 <p class="mr-2">上下</p>
                 <p>{{ roadCounter.win }}</p>
