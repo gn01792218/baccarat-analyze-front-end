@@ -112,6 +112,7 @@ export interface RoadResultCounter{
   BankerCount:number
 }
 export interface Predictions{
+    totalRoad: RoadPrediction,
     bigRoad:RoadPrediction,
     bigEyeRoad: RoadPrediction
     smallRoad: RoadPrediction

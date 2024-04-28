@@ -1,7 +1,7 @@
 <template>
     <Header
     :road-uuid="roadUuid" 
-    :road-prediction="predictions?.bigRoad"
+    :road-prediction="predictions?.totalRoad"
     :road-counter="{
         total: 0,
         win: 0
