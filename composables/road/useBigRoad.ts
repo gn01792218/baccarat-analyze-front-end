@@ -59,7 +59,7 @@ export default function useBigRoad(
       case RoadSymbol.PlayerAndBothPairAndTie:
         currentroadResult.value = 2;
         break;
-      case RoadSymbol.OnlyResult: //有選擇套路時會出現在統計路圖上
+      case RoadSymbol.OnlyResultAndNewLine: //有選擇套路時會出現在統計路圖上
         currentroadResult.value = 3
         break
     }
