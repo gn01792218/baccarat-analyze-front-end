@@ -308,7 +308,7 @@ export default function useBigRoad(
     addRoadColumnCount.value++;
     // roadOverFlowerTimes.value++
   }
-   function resetRoad() {
+  function resetRoad() {
     //1.直接刪除所有的column
     if(roadType === RoadType.T_BIGROAD) resetTotalColumns();
     let bigRoadColContainer = getRoadContainerElement()!;
