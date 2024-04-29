@@ -48,6 +48,7 @@ export enum RoadSymbol {
   PlayerAndBankerPairAndTie = 18,
   PlayerAndPlayerPairAndTie = 19,
   PlayerAndBothPairAndTie = 20,
+  OnlyResult = 21, //專門給統計路使用的
 }
 export interface RoadBlock {
   symbol: RoadSymbol;
