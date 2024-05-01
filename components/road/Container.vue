@@ -1,14 +1,19 @@
 <template>
     <UContainer class="w-full">
         <section class="flex items-center justify-between p-1">
-            <UDivider class="my-1 mr-5 w-[300px]" :label="title" size="xl" color="orange" type="dotted"
-                :ui="{ label: 'text-xl text-primary-500 dark:text-primary-400' }" />
+            <UDivider class="my-1 mr-5 w-[300px]" :label="title" size="xl" type="dotted"
+                :ui="{ 
+                    label: 'text-xl text-black dark:text-black',
+                    border: {
+                        base: 'border-gray-800' 
+                    }
+            }" />
             <RoadCounter class="p-1 h-auto mr-5" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
             <div class="flex justify-between items-center">
-                <MyChip class="mr-5" :counter="resultCounter.BankerCount" position="莊" title="" color="none"/>
-                <MyChip class="mr-5" :counter="resultCounter.PlayerCount" position="閒" title="" color="none"/>
-                <MyChip class="mr-5" :counter="resultCounter.TieCount" position="和" title="" color="none"/>
-                <MyChip :counter="total" position="總" title="" color="primary"/>
+                <MyChip class="mr-5" :counter="resultCounter.BankerCount" text="莊" color="red"/>
+                <MyChip class="mr-5" :counter="resultCounter.PlayerCount" text="閒" color="blue"/>
+                <MyChip class="mr-5" :counter="resultCounter.TieCount" text="和" color="green"/>
+                <MyChip :counter="total" text="總" color="gray"/>
             </div>
         </section>
         <section class="flex h-[200px]">

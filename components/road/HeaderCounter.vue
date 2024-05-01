@@ -11,17 +11,18 @@
             </div>
         </div>
         <div class="h-full flex flex-col justify-between  mr-5">
-            <div class="flex">
+            <div class="flex items-center">
                 <p class="mr-2">下局預測</p>
                 <UButton v-show="roadPrediction?.betArea === BetArea.BANKER" class="flex w-[30px] justify-center"
                     :label="predictBetArea" color="red" />
-                <UButton v-show="roadPrediction?.betArea === BetArea.PLAYER" class="flex w-[30px] justify-center"
+                <UButton v-show="roadPrediction?.betArea === BetArea.PLAYER" class="flex w-[30px] justify-center mr-1"
                     :label="predictBetArea" color="blue" />
-            </div>
-            <div class="flex">
-                <p class="mr-2">下局注碼</p>
                 <p v-show="roadPrediction && roadPrediction.bet >0">{{ roadPrediction?.bet }}</p>
             </div>
+            <!-- <div class="flex">
+                <p class="mr-2">下局注碼</p>
+                <p v-show="roadPrediction && roadPrediction.bet >0">{{ roadPrediction?.bet }}</p>
+            </div> -->
         </div>
     </section>
 </template>

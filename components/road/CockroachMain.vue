@@ -5,16 +5,16 @@
   >
     <div
       :id="`${RoadDomName.COCKROACHROAD}-column-${index}`"
-      :class="[`${RoadDomName.COCKROACHROAD}-column border-[1px] border-slate-500`]"
+      :class="[`${RoadDomName.COCKROACHROAD}-column`]"
       v-for="(b1, index) in roadColumns"
       :key="index"
     >
       <div
-        :class="[`${RoadDomName.COCKROACHROAD}-item${index} ${RoadDomName.COCKROACHROAD}-item border-[1px] border-slate-500 items-center justify-center`]"
+        :class="[`${RoadDomName.COCKROACHROAD}-item${index} ${RoadDomName.COCKROACHROAD}-item`]"
         v-for="(bi, index) in roadRows"
         :key="index"
       >
-        <div>
+        <div class="road-item-result">
           <span class="item-result dark:text-black"></span>
         </div>
       </div>

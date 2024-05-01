@@ -33,11 +33,11 @@
         </section>
         <RoadHeaderCounter class="h-full" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
         <div class="h-full flex justify-around items-center p-2 ml-auto">
-            <UButton class="block w-[55px] mr-5" :label="`莊 ${totalRoadResultCount.BankerCount}`" color="red" @click="drawRoadRequest(RoadSymbol.Banker)" />
-            <UButton class="block w-[55px] mr-5" :label="`閒 ${totalRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />
-            <UButton class="block w-[55px] mr-5" :label="`和 ${totalRoadResultCount.TieCount}`" color="green" @click="drawRoadRequest(RoadSymbol.Tie)" />
+            <UButton class="block w-[55px] mr-5 text-black" :label="`莊 ${totalRoadResultCount.BankerCount}`" color="red" @click="drawRoadRequest(RoadSymbol.Banker)" />
+            <UButton class="block w-[55px] mr-5 text-black" :label="`閒 ${totalRoadResultCount.PlayerCount}`" color="blue" @click="drawRoadRequest(RoadSymbol.Player)" />
+            <UButton class="block w-[55px] mr-5 text-black" :label="`和 ${totalRoadResultCount.TieCount}`" color="green" @click="drawRoadRequest(RoadSymbol.Tie)" />
             <UButton class="block mr-5" icon="i-heroicons-arrow-uturn-left" color="gray" variant="solid" @click="roadBackRequest" />
-            <MyChip :counter="totalRoadResultCount.BankerCount + totalRoadResultCount.PlayerCount + totalRoadResultCount.TieCount" position="總" title="" color="primary"/>
+            <MyChip :counter="totalRoadResultCount.BankerCount + totalRoadResultCount.PlayerCount + totalRoadResultCount.TieCount" text="總" color="gray"/>
         </div>
         <!-- <UButton class="block ml-auto" label="返回上局" color="blue" variant="outline" /> -->
     </UContainer>

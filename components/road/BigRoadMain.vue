@@ -1,9 +1,9 @@
 <template>
   <section :id="`${RoadDomName.M_BIGROAD}`" class="bigRoad flex w-full h-full absolute top-0 left-0">
-    <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.M_BIGROAD}-column-${index}`"
+    <div class="bigRoad-column" :id="`${RoadDomName.M_BIGROAD}-column-${index}`"
       v-for="(tc, index) in roadColumns" :key="index">
-      <div class="bigRoad-item flex border-[1px] border-slate-500" :class="[`bigRoad-item${index}`]" v-for="(tci, index) in roadRows" :key="index">
-        <div></div>
+      <div class="bigRoad-item" :class="[`bigRoad-item${index}`]" v-for="(tci, index) in roadRows" :key="index">
+        <div class="road-item-result"></div>
       </div>
     </div>
   </section>

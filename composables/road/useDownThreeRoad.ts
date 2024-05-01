@@ -92,23 +92,14 @@ export default function useDownThreeRoad(
     let newCol = document.createElement("div");
     newCol.id = `${getRoadDomName()}-column-${roadColumn}`;
     newCol.classList.add(`${getRoadDomName()}-column`);
-    newCol.classList.add("border-[1px]");
-    newCol.classList.add("border-slate-500");
     for (let i = 0; i < roadRows.length; i++) {
       const newColItem = document.createElement("div");
       const itemDiv = document.createElement("div");
       const itemResultText = document.createElement("span");
       newColItem.classList.add(`${getRoadDomName()}-item-${i}`);
       newColItem.classList.add(`${getRoadDomName()}-item`);
-      newColItem.classList.add("flex");
-      newColItem.classList.add("border-[1px]");
-      newColItem.classList.add("border-slate-500");
-      newColItem.classList.add("justify-center");
-      newColItem.classList.add("items-center");
-      itemDiv.classList.add("text-center");
-      itemDiv.classList.add("text-[12px]");
+      itemDiv.classList.add("road-item-result");
       itemResultText.classList.add("item-result");
-      itemResultText.classList.add("dark:text-black");
       itemDiv.appendChild(itemResultText);
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);

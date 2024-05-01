@@ -3,6 +3,10 @@
     @extend %hisRoad;
 }
 
+.road-item-result{
+    @apply flex justify-center items-center text-[16px] dark:text-black;
+}
+
 //路圖圖示區
 //珠仔路
 .BeadPlate-B {
@@ -80,103 +84,103 @@
 //大路
 .big-T {
     @extend %tie;
-    @include tiePosition(0, 0, 0.19);
+    @include tiePosition(0, 0, $game_road_BigRoad_min_size);
 }
 
 .big-B {
     //莊
     @extend %hisRoad;
-    @include hisRoadSpritePosition(0, 100, 0.19);
+    @include hisRoadSpritePosition(0, 100, $game_road_BigRoad_min_size);
 }
 
 .big-B-BPair {
     //莊對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-100, 100, 0.19);
+    @include hisRoadSpritePosition(-100, 100, $game_road_BigRoad_min_size);
 }
 
 .big-B-PPair {
     //莊、閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-200, 100, 0.19);
+    @include hisRoadSpritePosition(-200, 100, $game_road_BigRoad_min_size);
 }
 
 .big-B-BothPair {
     // 莊對、閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-300, 100, 0.19);
+    @include hisRoadSpritePosition(-300, 100, $game_road_BigRoad_min_size);
 }
 
 .big-BT {
     //莊和
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-400, 100, 0.19);
+    @include hisRoadSpritePosition(-400, 100, $game_road_BigRoad_min_size);
 }
 
 .big-BT-BPair {
     //莊和 莊對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-500, 100, 0.19);
+    @include hisRoadSpritePosition(-500, 100, $game_road_BigRoad_min_size);
 }
 
 .big-BT-PPair {
     //莊和 閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-600, 100, 0.19);
+    @include hisRoadSpritePosition(-600, 100, $game_road_BigRoad_min_size);
 }
 
 .big-BT-BothPair {
     //莊和 莊閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-700, 100, 0.19);
+    @include hisRoadSpritePosition(-700, 100, $game_road_BigRoad_min_size);
 }
 
 .big-P {
     //閒
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-800, 100, 0.19);
+    @include hisRoadSpritePosition(-800, 100, $game_road_BigRoad_min_size);
 }
 
 .big-P-BPair {
     //閒、莊對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-900, 100, 0.19);
+    @include hisRoadSpritePosition(-900,100,$game_road_BigRoad_min_1024_size);
 }
 
 .big-P-PPair {
     //閒、閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1000, 100, 0.19);
+    @include hisRoadSpritePosition(-1000, 100, $game_road_BigRoad_min_size);
 }
 
 .big-P-BothPair {
     // 閒對、莊對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1100, 100, 0.19);
+    @include hisRoadSpritePosition(-1100, 100, $game_road_BigRoad_min_size);
 }
 
 .big-PT {
     //閒和
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1200, 100, 0.19);
+    @include hisRoadSpritePosition(-1200, 100, $game_road_BigRoad_min_size);
 }
 
 .big-PT-BPair {
     //閒和 閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1300, 100, 0.19);
+    @include hisRoadSpritePosition(-1300, 100, $game_road_BigRoad_min_size);
 }
 
 .big-PT-PPair {
     //閒和 閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1400, 100, 0.19);
+    @include hisRoadSpritePosition(-1400, 100, $game_road_BigRoad_min_size);
 }
 
 .big-PT-BothPair {
     //閒和 莊閒對
     @extend %hisRoad;
-    @include hisRoadSpritePosition(-1500, 100, 0.19);
+    @include hisRoadSpritePosition(-1500, 100, $game_road_BigRoad_min_size);
 }
 
 //小路(左下角)
@@ -254,6 +258,93 @@
 }
 
 @media screen and (min-width:1024px) {
+
+    //大路
+    .big-T {
+        @include tiePosition(0, 0, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-B {
+        //莊
+        @include hisRoadSpritePosition(0, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-B-BPair {
+        //莊對
+        @include hisRoadSpritePosition(-100, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-B-PPair {
+        //莊、閒對
+        @include hisRoadSpritePosition(-200, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-B-BothPair {
+        // 莊對、閒對
+        @include hisRoadSpritePosition(-300, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-BT {
+        //莊和
+        @include hisRoadSpritePosition(-400, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-BT-BPair {
+        //莊和 莊對
+        @include hisRoadSpritePosition(-500, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-BT-PPair {
+        //莊和 閒對
+        @include hisRoadSpritePosition(-600, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-BT-BothPair {
+        //莊和 莊閒對
+        @include hisRoadSpritePosition(-700, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-P {
+        //閒
+        @include hisRoadSpritePosition(-800, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-P-BPair {
+        //閒、莊對
+        @include hisRoadSpritePosition(-900,100,$game_road_BigRoad_min_1024_size);
+    }
+
+    .big-P-PPair {
+        //閒、閒對
+        @include hisRoadSpritePosition(-1000, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-P-BothPair {
+        // 閒對、莊對
+        @include hisRoadSpritePosition(-1100, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-PT {
+        //閒和
+        @include hisRoadSpritePosition(-1200, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-PT-BPair {
+        //閒和 閒對
+        @include hisRoadSpritePosition(-1300, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-PT-PPair {
+        //閒和 閒對
+        @include hisRoadSpritePosition(-1400, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    .big-PT-BothPair {
+        //閒和 莊閒對
+        @include hisRoadSpritePosition(-1500, 100, $game_road_BigRoad_min_1024_size);
+    }
+
+    //下三路
     .smallRoad-red {
         @include hisRoadSpritePosition(0, 100, $game_road_DownThreeRoad_min_1024_size);
     }

@@ -6,17 +6,17 @@
     <div
       :id ="`${RoadDomName.SMALLROAD}-column-${index}`"
       :class="[
-        `${RoadDomName.SMALLROAD}-column border-[1px] border-slate-500`,
+        `${RoadDomName.SMALLROAD}-column`,
       ]"
       v-for="(b1, index) in roadColumns"
       :key="index"
     >
       <div
-        :class="[`${RoadDomName.SMALLROAD}-item-${index} ${RoadDomName.SMALLROAD}-item border-[1px] border-slate-500 items-center justify-center`]"
+        :class="[`${RoadDomName.SMALLROAD}-item-${index} ${RoadDomName.SMALLROAD}-item`]"
         v-for="(bi, index) in roadRows"
         :key="index"
       >
-        <div>
+        <div class="road-item-result">
           <span class="item-result dark:text-black"></span>
         </div>
       </div>

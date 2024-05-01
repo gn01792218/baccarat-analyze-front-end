@@ -34,6 +34,10 @@
   border-radius: 44px;
 }
 
+.road-item-result {
+  @apply flex justify-center items-center text-[16px] dark:text-black;
+}
+
 .BeadPlate-B {
   width: 35px;
   height: 35px;
@@ -119,122 +123,122 @@
 }
 
 .big-T {
-  width: 19px;
-  height: 19px;
+  width: 6px;
+  height: 6px;
   background-position: 0px 0px;
-  background-size: 19px auto;
+  background-size: 6px auto;
 }
 
 .big-B {
-  width: 19px;
-  height: 19px;
-  background-position: 0px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: 0px 6px;
+  background-size: 96px auto;
 }
 
 .big-B-BPair {
-  width: 19px;
-  height: 19px;
-  background-position: -19px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -6px 6px;
+  background-size: 96px auto;
 }
 
 .big-B-PPair {
-  width: 19px;
-  height: 19px;
-  background-position: -38px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -12px 6px;
+  background-size: 96px auto;
 }
 
 .big-B-BothPair {
-  width: 19px;
-  height: 19px;
-  background-position: -57px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -18px 6px;
+  background-size: 96px auto;
 }
 
 .big-BT {
-  width: 19px;
-  height: 19px;
-  background-position: -76px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -24px 6px;
+  background-size: 96px auto;
 }
 
 .big-BT-BPair {
-  width: 19px;
-  height: 19px;
-  background-position: -95px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -30px 6px;
+  background-size: 96px auto;
 }
 
 .big-BT-PPair {
-  width: 19px;
-  height: 19px;
-  background-position: -114px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -36px 6px;
+  background-size: 96px auto;
 }
 
 .big-BT-BothPair {
-  width: 19px;
-  height: 19px;
-  background-position: -133px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -42px 6px;
+  background-size: 96px auto;
 }
 
 .big-P {
-  width: 19px;
-  height: 19px;
-  background-position: -152px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -48px 6px;
+  background-size: 96px auto;
 }
 
 .big-P-BPair {
-  width: 19px;
-  height: 19px;
-  background-position: -171px 19px;
-  background-size: 304px auto;
+  width: 29px;
+  height: 29px;
+  background-position: -261px 29px;
+  background-size: 464px auto;
 }
 
 .big-P-PPair {
-  width: 19px;
-  height: 19px;
-  background-position: -190px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -60px 6px;
+  background-size: 96px auto;
 }
 
 .big-P-BothPair {
-  width: 19px;
-  height: 19px;
-  background-position: -209px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -66px 6px;
+  background-size: 96px auto;
 }
 
 .big-PT {
-  width: 19px;
-  height: 19px;
-  background-position: -228px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -72px 6px;
+  background-size: 96px auto;
 }
 
 .big-PT-BPair {
-  width: 19px;
-  height: 19px;
-  background-position: -247px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -78px 6px;
+  background-size: 96px auto;
 }
 
 .big-PT-PPair {
-  width: 19px;
-  height: 19px;
-  background-position: -266px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -84px 6px;
+  background-size: 96px auto;
 }
 
 .big-PT-BothPair {
-  width: 19px;
-  height: 19px;
-  background-position: -285px 19px;
-  background-size: 304px auto;
+  width: 6px;
+  height: 6px;
+  background-position: -90px 6px;
+  background-size: 96px auto;
 }
 
 .smallRoad-red {
@@ -336,41 +340,143 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .big-T {
+    width: 29px;
+    height: 29px;
+    background-position: 0px 0px;
+    background-size: 29px auto;
+  }
+  .big-B {
+    width: 29px;
+    height: 29px;
+    background-position: 0px 29px;
+    background-size: 464px auto;
+  }
+  .big-B-BPair {
+    width: 29px;
+    height: 29px;
+    background-position: -29px 29px;
+    background-size: 464px auto;
+  }
+  .big-B-PPair {
+    width: 29px;
+    height: 29px;
+    background-position: -58px 29px;
+    background-size: 464px auto;
+  }
+  .big-B-BothPair {
+    width: 29px;
+    height: 29px;
+    background-position: -87px 29px;
+    background-size: 464px auto;
+  }
+  .big-BT {
+    width: 29px;
+    height: 29px;
+    background-position: -116px 29px;
+    background-size: 464px auto;
+  }
+  .big-BT-BPair {
+    width: 29px;
+    height: 29px;
+    background-position: -145px 29px;
+    background-size: 464px auto;
+  }
+  .big-BT-PPair {
+    width: 29px;
+    height: 29px;
+    background-position: -174px 29px;
+    background-size: 464px auto;
+  }
+  .big-BT-BothPair {
+    width: 29px;
+    height: 29px;
+    background-position: -203px 29px;
+    background-size: 464px auto;
+  }
+  .big-P {
+    width: 29px;
+    height: 29px;
+    background-position: -232px 29px;
+    background-size: 464px auto;
+  }
+  .big-P-BPair {
+    width: 29px;
+    height: 29px;
+    background-position: -261px 29px;
+    background-size: 464px auto;
+  }
+  .big-P-PPair {
+    width: 29px;
+    height: 29px;
+    background-position: -290px 29px;
+    background-size: 464px auto;
+  }
+  .big-P-BothPair {
+    width: 29px;
+    height: 29px;
+    background-position: -319px 29px;
+    background-size: 464px auto;
+  }
+  .big-PT {
+    width: 29px;
+    height: 29px;
+    background-position: -348px 29px;
+    background-size: 464px auto;
+  }
+  .big-PT-BPair {
+    width: 29px;
+    height: 29px;
+    background-position: -377px 29px;
+    background-size: 464px auto;
+  }
+  .big-PT-PPair {
+    width: 29px;
+    height: 29px;
+    background-position: -406px 29px;
+    background-size: 464px auto;
+  }
+  .big-PT-BothPair {
+    width: 29px;
+    height: 29px;
+    background-position: -435px 29px;
+    background-size: 464px auto;
+  }
   .smallRoad-red {
-    width: 20px;
-    height: 20px;
-    background-position: 0px 20px;
-    background-size: 320px auto;
+    width: 29px;
+    height: 29px;
+    background-position: 0px 29px;
+    background-size: 464px auto;
   }
   .smallRoad-blue {
-    width: 20px;
-    height: 20px;
-    background-position: -160px 20px;
-    background-size: 320px auto;
+    width: 29px;
+    height: 29px;
+    background-position: -232px 29px;
+    background-size: 464px auto;
   }
   .bigEyesRoad-red {
-    width: 20px;
-    height: 20px;
-    background-position: 0px 20px;
-    background-size: 320px auto;
+    width: 29px;
+    height: 29px;
+    background-position: 0px 29px;
+    background-size: 464px auto;
   }
   .bigEyesRoad-blue {
-    width: 20px;
-    height: 20px;
-    background-position: -160px 20px;
-    background-size: 320px auto;
+    width: 29px;
+    height: 29px;
+    background-position: -232px 29px;
+    background-size: 464px auto;
   }
   .cockroachRoad-red {
-    width: 20px;
-    height: 20px;
-    background-position: 0px 20px;
-    background-size: 320px auto;
+    width: 29px;
+    height: 29px;
+    background-position: 0px 29px;
+    background-size: 464px auto;
   }
   .cockroachRoad-blue {
-    width: 20px;
-    height: 20px;
-    background-position: -160px 20px;
-    background-size: 320px auto;
+    width: 29px;
+    height: 29px;
+    background-position: -232px 29px;
+    background-size: 464px auto;
   }
 }
 .beadPlateGrid {
@@ -438,59 +544,50 @@
   border-right: solid 1px rgba(0, 0, 0, 0.719);
 }
 
+.cockroachRoad-column, .smallRoad-column, .bigEyesRoad-column, .bigRoad-column {
+  @apply flex-col bg-white h-full border-[1px] border-slate-500;
+}
+
+.cockroachRoad-item, .smallRoad-item, .bigEyesRoad-item, .bigRoad-item {
+  @apply w-full border-r-0 border-[1px]  border-slate-500 flex flex-col items-center justify-center;
+}
+
 .bigRoad-column {
   width: 2.5%;
-  height: 100%;
-  flex-direction: column;
-  background-color: white;
 }
 
 .bigRoad-item {
-  border-right: none;
   height: 16.6666666667%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+}
+
+.total-road-item {
+  @apply h-full border-[1px] border-slate-500;
+}
+
+.total-road-result {
+  @apply dark:text-black;
 }
 
 .bigEyesRoad-column {
   width: 2.5%;
-  height: 100%;
-  flex-direction: column;
-  background-color: white;
 }
 
 .bigEyesRoad-item {
-  border-right: none;
-  width: 100%;
   height: 16.6666666667%;
-  flex-direction: column;
 }
 
 .smallRoad-column {
   width: 2.5%;
-  height: 100%;
-  flex-direction: column;
-  background-color: white;
 }
 
 .smallRoad-item {
-  border-right: none;
-  width: 100%;
   height: 16.6666666667%;
-  flex-direction: column;
 }
 
 .cockroachRoad-column {
   width: 2.5%;
-  height: 100%;
-  flex-direction: column;
-  background-color: white;
 }
 
 .cockroachRoad-item {
-  border-right: none;
-  width: 100%;
   height: 16.6666666667%;
-  flex-direction: column;
 }/*# sourceMappingURL=main.css.map */

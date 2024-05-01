@@ -1,12 +1,12 @@
 <template>
   <section class="w-full h-[200px] relative">
     <div :id="`${RoadDomName.T_BIGROAD}`" class="bigRoad flex w-full h-full absolute top-0 left-0">
-      <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.T_BIGROAD}-column-${index}`"
+      <div class="bigRoad-column" :id="`${RoadDomName.T_BIGROAD}-column-${index}`"
         v-for="(tc, index) in roadColumns" :key="index">
-        <div class="bigRoad-item flex border-[1px] border-slate-500" :class="[`bigRoad-item${index}`]"
+        <div class="bigRoad-item" :class="[`bigRoad-item${index}`]"
           v-for="(tci, index) in roadRows" :key="index">
-          <div>
-            <span class="item-result dark:text-black"></span>
+          <div class="road-item-result">
+            <span class="item-result"></span>
           </div>
         </div>
       </div>
@@ -14,10 +14,10 @@
   </section>
   <section class="w-full h-[30px] mt-2 relative">
    <div :id="`${RoadDomName.T_BIGROAD_COUNT}`" class="bigRoad flex w-full h-full absolute top-0 left-0">
-      <div class="bigRoad-column border-[1px] border-slate-500" :id="`${RoadDomName.T_BIGROAD_COUNT}-column-${index}`"
+      <div class="bigRoad-column" :id="`${RoadDomName.T_BIGROAD_COUNT}-column-${index}`"
         v-for="(tc, index) in roadColumns" :key="index">
-        <div class="h-full border-[1px] border-slate-500 flex justify-center items-center">
-          <span class="total dark:text-black"></span>
+        <div class="total-road-item">
+          <span class="total-road-result"></span>
         </div>
       </div>
     </div>

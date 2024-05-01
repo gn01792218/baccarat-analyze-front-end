@@ -289,7 +289,7 @@ export default function useBigRoad(
       `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`
     );
     const resultText = resultCountColumn?.querySelector(
-      ".total"
+      ".total-road-result"
     ) as HTMLSpanElement;
 
     if(total !== 0) resultText.innerHTML = total.toString();
@@ -341,22 +341,15 @@ export default function useBigRoad(
   function createNewColumn(roadColumnIndex:number) {
     const newCol = document.createElement("div");
     newCol.classList.add("bigRoad-column");
-    newCol.classList.add("border-[1px]");
-    newCol.classList.add("border-slate-500");
     newCol.id = `${getRoadDomName()}-column-${roadColumnIndex}`;
     for (let i = 0; i < roadRows.length; i++) {
       const newColItem = document.createElement("div");
       const itemDiv = document.createElement("div");
       const itemResultText = document.createElement("span");
       newColItem.classList.add("bigRoad-item");
-      newColItem.classList.add("border-[1px]");
-      newColItem.classList.add("border-slate-500");
-      newColItem.classList.add("flex");
       newColItem.classList.add(`bigRoad-item${i}`);
-      itemDiv.classList.add("text-center");
-      itemDiv.classList.add("text-[12px]");
+      itemDiv.classList.add("road-item-result");
       itemResultText.classList.add("item-result");
-      itemResultText.classList.add("dark:text-black");
       itemDiv.appendChild(itemResultText);
       newColItem.appendChild(itemDiv);
       newCol.appendChild(newColItem);
@@ -370,24 +363,7 @@ export default function useBigRoad(
     const firstResultChild =
       resultCountColumnElement?.firstElementChild as HTMLElement;
     resultCountColumnElement?.removeChild(firstResultChild);
-    const newResultCol = document.createElement("div");
-    newResultCol.classList.add("bigRoad-column");
-    newResultCol.classList.add("border-[1px]");
-    newResultCol.classList.add("border-slate-500");
-    newResultCol.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${roadColumn.value}`;
-
-    let newColItem = document.createElement("div");
-    let span = document.createElement("span");
-    newColItem.classList.add("!h-full");
-    newColItem.classList.add("bigRoad-item");
-    newColItem.classList.add("border-[1px]");
-    newColItem.classList.add("border-slate-500");
-    newColItem.classList.add("flex");
-    span.classList.add("total");
-    span.classList.add("dark:text-black");
-    newColItem.appendChild(span);
-    newResultCol.appendChild(newColItem);
-    resultCountColumnElement?.append(newResultCol);
+    createNewTotalColumn(roadColumn.value, resultCountColumnElement!);
   }
   function resetTotalColumns() {
     //1.直接刪除所有的column
@@ -401,30 +377,28 @@ export default function useBigRoad(
     }
     //2.建立新的n條col
     for (let i = 0; i < roadColumns.length; i++) {
-      let col = document.createElement("div");
-      col.classList.add("bigRoad-column");
-      col.classList.add("border-[1px]");
-      col.classList.add("border-slate-500");
-      col.classList.add("flex");
-      col.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${i}`;
-
-      let colItem = document.createElement("div");
-      let span = document.createElement("span");
-      span.classList.add("total");
-      span.classList.add("dark:text-black");
-      colItem.appendChild(span);
-      colItem.classList.add("!h-full");
-      colItem.classList.add("bigRoad-item");
-      colItem.classList.add("border-[1px]");
-      colItem.classList.add("border-slate-500");
-      colItem.classList.add("flex");
-      col.appendChild(colItem);
-
-      totalColumnsContainer.appendChild(col);
+      createNewTotalColumn(i, totalColumnsContainer);
     }
   }
+  function createNewTotalColumn(i: number, totalColumnsContainer: HTMLElement) {
+  let col = document.createElement("div");
+  col.classList.add("bigRoad-column");
+  col.id = `${RoadDomName.T_BIGROAD_COUNT}-column-${i}`;
+
+  let colItem = document.createElement("div");
+  let span = document.createElement("span");
+  colItem.classList.add("bigRoad-item");
+  colItem.classList.add("total-road-item");
+  span.classList.add("total-road-result");
+  colItem.appendChild(span);
+  col.appendChild(colItem);
+
+  totalColumnsContainer.appendChild(col);
+}
   return {
     showAllRoad,
     resetRoad,
   };
 }
+
+
