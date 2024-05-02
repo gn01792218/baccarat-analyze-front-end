@@ -1,5 +1,5 @@
 <template>
-    <UContainer class="p-5 mb-1 bg-primary-500 flex items-center justify-between h-[110px]">
+    <UContainer class="p-5 mb-1 flex items-center justify-between h-[110px]">
         <section class="mr-5 h-full flex flex-col justify-between">
             <UButton class="block" label="新局" color="blue" variant="outline" />
             <UButton class="block" label="存檔" color="blue" variant="outline" />

@@ -3,7 +3,7 @@
         <section class="flex items-center justify-between p-1">
             <UDivider class="my-1 mr-5 w-[300px]" :label="title" size="xl" type="dotted"
                 :ui="{ 
-                    label: 'text-xl text-black dark:text-black',
+                    label: 'text-xl text-black',
                     border: {
                         base: 'border-gray-800' 
                     }

@@ -11,4 +11,7 @@ export default defineNuxtConfig({
       apiBaseUrl: "http://172.233.74.117:8080/",
     },
   },
+  colorMode:{
+    preference:'light' //關閉NuxtUI預設的日夜切換模式，變成都只用日版
+  }
 });

@@ -18,7 +18,7 @@
         :key="index"
       >
         <div class="road-item-result">
-          <span class="item-result dark:text-black"></span>
+          <span class="item-result"></span>
         </div>
       </div>
     </div>

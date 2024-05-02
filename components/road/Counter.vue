@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-primary-500 flex justify-between items-center">
+    <div class="flex justify-between items-center">
         <p :class="[roadCounter.win >= 0 ? 'text-black' : 'text-red-500']" class="mr-5"><span class="font-extrabold">上下</span> {{ roadCounter.win }}</p>
         <p class="mr-5"> 轉碼 {{ roadCounter.total }}</p>
         <div class="flex items-center mr-5">
