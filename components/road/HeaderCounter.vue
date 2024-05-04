@@ -1,13 +1,13 @@
 <template>
     <section class="flex h-full">
         <div class="h-full flex flex-col justify-between mx-12">
-            <div class="flex" :class="[roadCounter.win >= 0 ? 'text-black' : 'text-red-500']">
+            <div class="flex" :class="[roadInfo.result >= 0 ? 'text-black' : 'text-red-500']">
                 <p class="mr-2">上下</p>
-                <p>{{ roadCounter.win }}</p>
+                <p>{{ roadInfo.result }}</p>
             </div>
             <div class="flex">
                 <p class="mr-2">轉碼</p>
-                <p>{{ roadCounter.total }}</p>
+                <p>{{ roadInfo.totalBet }}</p>
             </div>
         </div>
         <div class="h-full flex flex-col justify-between  mr-5">
@@ -28,9 +28,9 @@
 </template>
 
 <script lang="ts" setup>
-import { type RoadCounter, type RoadPrediction, BetArea } from "~/types/roadmap"
+import { type RoadInfo, type RoadPrediction, BetArea } from "~/types/roadmap"
 const props = defineProps<{
-    roadCounter: RoadCounter
+    roadInfo: RoadInfo
     roadPrediction: RoadPrediction | undefined
 }>()
 const { getPredictionText } = usePrediction()

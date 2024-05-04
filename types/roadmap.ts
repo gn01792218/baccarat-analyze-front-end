@@ -1,3 +1,7 @@
+interface RoadBase{
+  Result?:number,
+  TotalBet?:number
+}
 export interface Roadmap {
   totalRoad:BigRoad | null //目前和大路是一模一樣的
   beadPlate: BeadPlate | null;
@@ -13,16 +17,16 @@ export enum PatternSelector{
 export interface BeadPlate {
   blocks: RoadBlock[] | null;
 }
-export interface BigRoad {
+export interface BigRoad extends RoadBase{
   columns: RoadColumn[] | null;
 }
-export interface BigEyeRoad {
+export interface BigEyeRoad extends RoadBase{
   columns: RoadColumn[] | null;
 }
-export interface SmallRoad {
+export interface SmallRoad extends RoadBase{
   columns: RoadColumn[] | null;
 }
-export interface CockroachRoad {
+export interface CockroachRoad extends RoadBase{
   columns: RoadColumn[] | null;
 }
 
@@ -96,7 +100,7 @@ export interface DrawRoadRespon {
     SmallRoadCounts:RoadResultCounter
     CockroachRoadCounts:RoadResultCounter
   }
-  predictions:Predictions
+  predictions:Predictions,
 }
 export interface RestoreRoadRespon {
   roadmaps:Roadmap,
@@ -128,9 +132,9 @@ export enum BetArea{
   BANKER = 1,
   PLAYER = 2
 }
-export interface RoadCounter{
-  total:number,
-  win:number
+export interface RoadInfo{
+  totalBet:number,
+  result:number
 }
 export interface UpdateRoadMapPatternsRequest{
   pattern1:string,

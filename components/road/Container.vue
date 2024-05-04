@@ -8,7 +8,7 @@
                         base: 'border-gray-800' 
                     }
             }" />
-            <RoadCounter class="p-1 h-auto mr-5" :road-counter="roadCounter" :road-prediction="roadPrediction"/>
+            <RoadCounter class="p-1 h-auto mr-5" :road-info="roadInfo" :road-prediction="roadPrediction"/>
             <div class="flex justify-between items-center">
                 <MyChip class="mr-5" :counter="resultCounter.BankerCount" text="莊" color="red"/>
                 <MyChip class="mr-5" :counter="resultCounter.PlayerCount" text="閒" color="blue"/>
@@ -25,12 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { type RoadResultCounter, type RoadCounter, type RoadPrediction } from "~/types/roadmap"
+import { type RoadResultCounter, type RoadInfo, type RoadPrediction } from "~/types/roadmap"
 
  const props = defineProps<{
     title: string,
     resultCounter:RoadResultCounter
-    roadCounter:RoadCounter
+    roadInfo:RoadInfo
     roadPrediction:RoadPrediction | undefined
 }>()    
 const total = computed(()=>{

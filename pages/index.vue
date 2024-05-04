@@ -2,63 +2,58 @@
     <Header
     :road-uuid="roadUuid" 
     :road-prediction="predictions?.totalRoad"
-    :road-counter="{
-        total: 0,
-        win: 0
-    }" 
+    :road-info="totalRoadCount" 
     :total-road-result-count="totalRoadResultCount" 
     :draw-road-request="fetchDrawRoadRequest" 
     :road-back-request="fetchRoadBackRequest"
     />
-
     <UContainer class="w-[1300px] mb-3">
-        <RoadBigRoadTotal :roadmap="totalRoad" />
+        <RoadBigRoadTotal :roadmap="totalRoadMap" />
     </UContainer>
 
-    <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-counter="{ total: 0, win: 0 }" title="大路合計"
-        :total="0" :win="0">
+    <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-info="bigRoadCount" title="大路合計">
         <template #roadmap>
-            <RoadBigRoadMain :roadmap="bigRoad" />
+            <RoadBigRoadMain :roadmap="bigRoadMap" />
         </template>
     </RoadContainer>
     <RoadContainer class="mb-1" :road-prediction="predictions?.bigEyeRoad" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
-        :road-counter="{ total: 0, win: 0 }" :total="0" :win="0">
+        :road-info="bigEyesRoadCount">
         <template #roadmap>
-            <RoadBigEyesRoadMain :roadmap="bigEyesRoad" />
+            <RoadBigEyesRoadMain :roadmap="bigEyesRoadMap" />
         </template>
     </RoadContainer>
     <RoadContainer class="mb-1" :road-prediction="predictions?.smallRoad" :result-counter="smallRoadResultCount" title="小路合計"
-        :road-counter="{ total: 0, win: 0 }" :total="0" :win="0">
+        :road-info="smallRoadCount">
         <template #roadmap>
-            <RoadSmallRoadMain :roadmap="smallRoad" />
+            <RoadSmallRoadMain :roadmap="smallRoadMap" />
         </template>
     </RoadContainer>
     <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="蟑螂路合計"
-        :road-counter="{ total: 0, win: 0 }" :total="0" :win="0">
+        :road-info="cockroachRoadCount">
         <template #roadmap>
-            <RoadCockroachMain :roadmap="cockroachRoad" />
+            <RoadCockroachMain :roadmap="cockroachRoadMap" />
         </template>
     </RoadContainer>
 </template>
 
 <script setup lang="ts">
-import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter, type Predictions, type Roadmap } from "~/types/roadmap";
+import { RoadSymbol, type BigRoad, type BigEyeRoad, type SmallRoad, type CockroachRoad, type RoadResultCounter, type Predictions, type Roadmap, type RoadInfo } from "~/types/roadmap";
 import useRoadAPI from "~/api/useRoadAPI";
 const { initRoadRequest, drawRoadRequest, roadBackRequest } = useRoadAPI()
 
-const totalRoad = ref<BigRoad>({
+const totalRoadMap = ref<BigRoad>({
     columns:[]
 })
-const bigRoad = ref<BigRoad>({
+const bigRoadMap = ref<BigRoad>({
     columns: [],
 })
-const bigEyesRoad = ref<BigEyeRoad>({
+const bigEyesRoadMap = ref<BigEyeRoad>({
     columns: []
 })
-const smallRoad = ref<SmallRoad>({
+const smallRoadMap = ref<SmallRoad>({
     columns: []
 })
-const cockroachRoad = ref<CockroachRoad>({
+const cockroachRoadMap = ref<CockroachRoad>({
     columns: []
 })
 const totalRoadResultCount = ref<RoadResultCounter>({
@@ -66,6 +61,7 @@ const totalRoadResultCount = ref<RoadResultCounter>({
     PlayerCount: 0,
     BankerCount: 0
 })
+
 const bigRoadResultCount = ref<RoadResultCounter>({
     TieCount: 0,
     PlayerCount: 0,
@@ -86,6 +82,26 @@ const cockroachRoadResultCount = ref<RoadResultCounter>({
     PlayerCount: 0,
     BankerCount: 0
 })
+const totalRoadCount = ref<RoadInfo>({
+    totalBet:0,
+    result:0
+})
+const bigRoadCount = ref<RoadInfo>({
+    totalBet:0,
+    result:0
+})
+const bigEyesRoadCount = ref<RoadInfo>({
+    totalBet:0,
+    result:0
+})
+const smallRoadCount = ref<RoadInfo>({
+    totalBet:0,
+    result:0
+})
+const cockroachRoadCount = ref<RoadInfo>({
+    totalBet:0,
+    result:0
+})
 const predictions = ref<Predictions>() //各條路的下局預測、下局注碼
 const roadUuid = ref<string>('')
 
@@ -104,28 +120,47 @@ async function fetchRoadBackRequest(){
 }
 function setRoadMaps(predictionsRes: Predictions, roadmaps: Roadmap, result_counter: { BigRoadCounts: RoadResultCounter; BigEyeRoadCounts: RoadResultCounter; SmallRoadCounts: RoadResultCounter; CockroachRoadCounts: RoadResultCounter; }) {
   predictions.value=predictionsRes;
-
-  if(roadmaps.totalRoad) {
-    totalRoad.value=roadmaps.totalRoad;
+  const { totalRoad, bigRoad, bigEyeRoad, smallRoad, cockroachRoad } = roadmaps
+  if(totalRoad) {
+    totalRoadMap.value=totalRoad;
     totalRoadResultCount.value=result_counter.BigRoadCounts;
+    totalRoadCount.value = {
+        totalBet:totalRoad.TotalBet || 0,
+        result:totalRoad.Result || 0
+    }
   }
-  if(roadmaps.bigRoad) {
-    bigRoad.value=roadmaps.bigRoad;
+  if(bigRoad) {
+    bigRoadMap.value=bigRoad;
     bigRoadResultCount.value=result_counter.BigRoadCounts;
+    bigRoadCount.value = {
+        totalBet:bigRoad.TotalBet || 0,
+        result:bigRoad.Result || 0
+    }
   }
 
-  if(roadmaps.bigEyeRoad) {
-    bigEyesRoad.value=roadmaps.bigEyeRoad;
+  if(bigEyeRoad) {
+    bigEyesRoadMap.value=bigEyeRoad;
     bigEyesRoadResultCount.value=result_counter.BigEyeRoadCounts;
+    bigEyesRoadCount.value = {
+        totalBet:bigEyeRoad.TotalBet || 0,
+        result:bigEyeRoad.Result || 0
+    }
   }
-  if(roadmaps.smallRoad) {
-    smallRoad.value=roadmaps.smallRoad;
+  if(smallRoad) {
+    smallRoadMap.value=smallRoad;
     smallRoadResultCount.value=result_counter.SmallRoadCounts;
+    smallRoadCount.value = {
+        totalBet:smallRoad.TotalBet || 0,
+        result:smallRoad.Result || 0
+    }
   }
-  if(roadmaps.cockroachRoad) {
-    cockroachRoad.value=roadmaps.cockroachRoad;
+  if(cockroachRoad) {
+    cockroachRoadMap.value=cockroachRoad;
     cockroachRoadResultCount.value=result_counter.CockroachRoadCounts;
-    
+    cockroachRoadCount.value = {
+        totalBet:cockroachRoad.TotalBet || 0,
+        result:cockroachRoad.Result || 0
+    }
   }
 }
 </script>

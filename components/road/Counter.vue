@@ -1,7 +1,7 @@
 <template>
     <div class="flex justify-between items-center">
-        <p :class="[roadCounter.win >= 0 ? 'text-black' : 'text-red-500']" class="mr-5"><span class="font-extrabold">上下</span> {{ roadCounter.win }}</p>
-        <p class="mr-5"> 轉碼 {{ roadCounter.total }}</p>
+        <p :class="[roadInfo.result >= 0 ? 'text-black' : 'text-red-500']" class="mr-5"><span class="font-extrabold">上下</span> {{ roadInfo.result }}</p>
+        <p class="mr-5"> 轉碼 {{ roadInfo.totalBet }}</p>
         <div class="flex items-center mr-5">
             <p class="mr-1">下局預測</p>
             <UButton v-show="roadPrediction?.betArea === BetArea.BANKER" class="flex w-[30px] justify-center" :label="predictBetArea" color="red" />
@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import { type RoadCounter, type RoadPrediction, BetArea } from "~/types/roadmap"
+import { type RoadInfo, type RoadPrediction, BetArea } from "~/types/roadmap"
 const props = defineProps<{
-    roadCounter: RoadCounter
+    roadInfo: RoadInfo
     roadPrediction:RoadPrediction | undefined
 }>() 
 const { getPredictionText } = usePrediction()
