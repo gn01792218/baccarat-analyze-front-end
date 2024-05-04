@@ -1,8 +1,10 @@
 export default function useRoadBase(
-  roadColumns: number,
-  roadRows: number
+  roadColumns?: number,
+  roadRows?: number
 ) {
+  const roadElement = ref<HTMLElement | null>(null)
   function initRoadColArr() {
+    if(!roadColumns) return []
     let newArr = new Array<number[]>(roadColumns);
     for( let i = 0 ; i< newArr.length ; i++){
         newArr[i] = new Array(roadRows)
@@ -11,6 +13,7 @@ export default function useRoadBase(
     return newArr;
   }
   return {
+    roadElement,
     initRoadColArr,
   };
 }

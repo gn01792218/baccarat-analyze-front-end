@@ -2,7 +2,7 @@
   <section class="absolute w-full h-full left-0 top-0">
     <!-- BeadPlate -->
     <div class="beadPlate-container absolute">
-      <div :id="RoadDomName.BEADPLATE" class="beadPlate flex">
+      <div ref="roadElement" class="beadPlate flex">
         <div class="beadPlate-column flex border-[1px] border-slate-500" :id="`beadPlate-column-${index}`"
           v-for="(mc, index) in roadColumns" :key="index">
           <div class="beadPlate-item flex border-[1px] border-slate-500" v-for="(mr, index) in roadRows" :key="index"
@@ -27,6 +27,7 @@ const props = defineProps<{
 const roadColumns = new Array(40);
 const roadRows = new Array(6);
 const {
+  roadElement,
   showAllRoad,
   resetRoad
 } = useBeadPlate(

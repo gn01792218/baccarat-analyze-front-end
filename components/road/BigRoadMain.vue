@@ -1,5 +1,5 @@
 <template>
-  <section :id="`${RoadDomName.M_BIGROAD}`" class="bigRoad flex w-full h-full absolute top-0 left-0">
+  <section ref="roadElement" class="bigRoad flex w-full h-full absolute top-0 left-0">
     <div class="bigRoad-column" :id="`${RoadDomName.M_BIGROAD}-column-${index}`"
       v-for="(tc, index) in roadColumns" :key="index">
       <div class="bigRoad-item" :class="[`bigRoad-item${index}`]" v-for="(tci, index) in roadRows" :key="index">
@@ -25,6 +25,7 @@ const roadColumns = new Array(40); //寬有幾個columns
 const roadRows = new Array(6);     //高有幾個row
 
 const {
+  roadElement,
   showAllRoad,
   resetRoad,
 } = useBigRoad(

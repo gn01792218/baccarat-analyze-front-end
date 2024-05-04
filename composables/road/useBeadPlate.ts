@@ -1,9 +1,11 @@
 import { type BeadPlate, RoadType, RoadDomName, RoadSymbol, type RoadBlock } from "@/types/roadmap";
+import useRoadBase from "./useRoadBase";
 export default function useBeadPlate(
   roadType: RoadType,
   roadColumns: Array<number>,
   roadRows: Array<number>
 ) {
+  const { roadElement } = useRoadBase()
   const roadColumnCount = ref(0); //畫到第幾欄
   const roadIndex = ref(0); //畫到第幾格
   const overflowCount = ref(0);
@@ -13,9 +15,6 @@ export default function useBeadPlate(
       case RoadType.M_BEADPLATE:
         return RoadDomName.BEADPLATE;
     }
-  }
-  function getRoadContainerElement() {
-    return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
   }
   async function putRoad(
     columnNum: number,
@@ -91,7 +90,7 @@ export default function useBeadPlate(
     //滿格時一次增加一格的方法
     roadColumnCount.value++;
     roadIndex.value = 0;
-    let beadPlateContainer = getRoadContainerElement() as HTMLElement;
+    let beadPlateContainer = roadElement.value as HTMLElement;
     let firstChild = beadPlateContainer.firstElementChild as HTMLElement; //抓取第一個元素
     beadPlateContainer.removeChild(firstChild); //刪除第一行
     let newCol = document.createElement("div");
@@ -121,7 +120,7 @@ export default function useBeadPlate(
     //使用document.setAttribute("class","")
     //萬全版本:
     //1.直接刪除beadPlatRoadPlace下所有的beadPlate-column
-    let beadPlateContainer = getRoadContainerElement() as HTMLElement;
+    let beadPlateContainer = roadElement.value as HTMLElement;
     let firstChild = beadPlateContainer.lastElementChild;
     while (firstChild) {
       beadPlateContainer.removeChild(firstChild); //移除行數
@@ -150,6 +149,8 @@ export default function useBeadPlate(
     roadIndex.value = 0;
   }
   return {
+    //data
+    roadElement,
     showAllRoad,
     resetRoad,
   };

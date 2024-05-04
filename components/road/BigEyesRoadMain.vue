@@ -1,6 +1,6 @@
 <template>
   <section class="w-full h-full flex absolute top-0 left-0"  
-    :id="`${RoadDomName.BIGEYESROAD}`"
+    ref="roadElement"
     :class="[`${RoadDomName.BIGEYESROAD}`]"
     >
     <div
@@ -39,6 +39,7 @@ const props = defineProps<{
 const roadColumns = new Array(40);
 const roadRows = new Array(6);
 const { 
+  roadElement,
   showAllRoad, 
   resetRoad,
  }  = useDownThreeRoad(RoadType.M_BIGEYESROAD, roadColumns, roadRows)

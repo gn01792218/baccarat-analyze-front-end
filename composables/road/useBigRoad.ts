@@ -14,7 +14,7 @@ export default function useBigRoad(
   roadRows: Array<number>
 ) {
   //roadBase
-  const { initRoadColArr } = useRoadBase(roadColumns.length, roadRows.length);
+  const { roadElement, initRoadColArr } = useRoadBase(roadColumns.length, roadRows.length);
   //基本資料
   let roadColArr = initRoadColArr(); //大路的Array
   const roadColumn = ref(0); //畫到第幾欄
@@ -33,9 +33,6 @@ export default function useBigRoad(
       case RoadType.T_BIGROAD:
         return RoadDomName.T_BIGROAD;
     }
-  }
-  function getRoadContainerElement() {
-    return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
   }
   function recordBigRoad(gameResult: number) {
     switch (gameResult) {
@@ -299,7 +296,7 @@ export default function useBigRoad(
     //添加ResultTotal的格子
     if(roadType === RoadType.T_BIGROAD) addTotalColumn();
     //滿格時一次增加一格的方法
-    const bigRoad = getRoadContainerElement()!;
+    const bigRoad = roadElement.value!;
     const firstChild = bigRoad.firstElementChild as HTMLElement; //抓取第一個元素
     bigRoad.removeChild(firstChild); //刪除第一行
     bigRoad.appendChild(createNewColumn(roadColumn.value));
@@ -311,7 +308,7 @@ export default function useBigRoad(
   function resetRoad() {
     //1.直接刪除所有的column
     if(roadType === RoadType.T_BIGROAD) resetTotalColumns();
-    let bigRoadColContainer = getRoadContainerElement()!;
+    let bigRoadColContainer = roadElement.value!;
     let lastChild = bigRoadColContainer.lastElementChild;
     while (lastChild) {
       bigRoadColContainer.removeChild(lastChild); //移除行數
@@ -396,6 +393,9 @@ export default function useBigRoad(
   totalColumnsContainer.appendChild(col);
 }
   return {
+    //data
+    roadElement,
+    //methods
     showAllRoad,
     resetRoad,
   };

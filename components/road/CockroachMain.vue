@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full h-full absolute top-0 left-0" 
-  :id="`${RoadDomName.COCKROACHROAD}`"
+  ref="roadElement"
   :class="[`${RoadDomName.COCKROACHROAD}`]"
   >
     <div
@@ -35,6 +35,7 @@ const props = defineProps<{
 const roadColumns = new Array(40);
 const roadRows = new Array(6);
 const { 
+  roadElement,
   showAllRoad, 
   resetRoad,
  }  = useDownThreeRoad( RoadType.M_COCKROACHROAD, roadColumns, roadRows)

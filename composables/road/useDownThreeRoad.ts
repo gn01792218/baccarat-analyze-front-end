@@ -15,7 +15,7 @@ export default function useDownThreeRoad(
   roadRows: Array<number>
 ) {
   //roadBase
-  const { initRoadColArr } = useRoadBase(roadColumns.length, roadRows.length);
+  const { roadElement, initRoadColArr } = useRoadBase(roadColumns.length, roadRows.length);
 
   let roadColArr = initRoadColArr(); //大路的Array
   const roadColumn = ref(0); //畫到第幾欄
@@ -36,9 +36,6 @@ export default function useDownThreeRoad(
       case RoadType.M_COCKROACHROAD:
         return RoadDomName.COCKROACHROAD;
     }
-  }
-  function getRoadContainerElement() {
-    return document.getElementById(`${getRoadDomName()}`) as HTMLElement;
   }
   function putRoad(
     gameResult: number,
@@ -78,7 +75,7 @@ export default function useDownThreeRoad(
     }
   }
   function addRoadCoulmn() {
-    let Road = getRoadContainerElement()!;
+    let Road = roadElement.value!;
     let firstChild = Road.firstElementChild as HTMLElement; //抓取第一個元素
     Road.removeChild(firstChild); //刪除第一行
     Road.appendChild(createNewRoadColumn(roadColumn.value)); //貼上新的一行column
@@ -109,7 +106,7 @@ export default function useDownThreeRoad(
 
   function resetRoad() {
     //1.直接刪除所有column
-    let RoadColContainer = getRoadContainerElement()!;
+    let RoadColContainer = roadElement.value!;
     let lastChild = RoadColContainer.lastElementChild;
     while (lastChild) {
       RoadColContainer.removeChild(lastChild); //移除行數
@@ -128,7 +125,7 @@ export default function useDownThreeRoad(
     addRoadColumnCount.value = 0;
     //大路陣列也要規0
     roadColArr = initRoadColArr();
-    // console.log('先reset路圖',getRoadContainerElement())
+    // console.log('先reset路圖',roadElement.value)
   }
   function showRoad(
     roadNum: number,
@@ -224,6 +221,9 @@ export default function useDownThreeRoad(
   }
 
   return {
+    //data
+    roadElement,
+    //methods
     showAllRoad,
     resetRoad,
   };
