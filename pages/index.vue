@@ -163,4 +163,7 @@ function setRoadMaps(predictionsRes: Predictions, roadmaps: Roadmap, result_coun
     }
   }
 }
+definePageMeta({
+  colorMode: 'light',
+})
 </script>
