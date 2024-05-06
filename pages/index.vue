@@ -28,7 +28,7 @@
             <RoadSmallRoadMain :roadmap="smallRoadMap" />
         </template>
     </RoadContainer>
-    <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="蟑螂路合計"
+    <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="筆路合計"
         :road-info="cockroachRoadCount">
         <template #roadmap>
             <RoadCockroachMain :roadmap="cockroachRoadMap" />
