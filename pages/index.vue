@@ -7,33 +7,33 @@
     :draw-road-request="fetchDrawRoadRequest" 
     :road-back-request="fetchRoadBackRequest"
     />
-    <UContainer class="w-[1300px] mb-3">
+    <UContainer class="w-[1300px] mb-3 h-screen">
         <RoadBigRoadTotal :roadmap="totalRoadMap" />
     </UContainer>
 
-    <RoadContainer class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-info="bigRoadCount" title="大路合計">
+    <!-- <RoadContainer  class="mb-1" :road-prediction="predictions?.bigRoad" :result-counter="bigRoadResultCount" :road-info="bigRoadCount" title="大路合計">
         <template #roadmap>
             <RoadBigRoadMain :roadmap="bigRoadMap" />
         </template>
-    </RoadContainer>
-    <RoadContainer class="mb-1" :road-prediction="predictions?.bigEyeRoad" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
+    </RoadContainer> -->
+    <!-- <RoadContainer class="mb-1" :road-prediction="predictions?.bigEyeRoad" :result-counter="bigEyesRoadResultCount" title="大眼路合計"
         :road-info="bigEyesRoadCount">
         <template #roadmap>
             <RoadBigEyesRoadMain :roadmap="bigEyesRoadMap" />
         </template>
-    </RoadContainer>
-    <RoadContainer class="mb-1" :road-prediction="predictions?.smallRoad" :result-counter="smallRoadResultCount" title="小路合計"
+    </RoadContainer> -->
+    <!-- <RoadContainer class="mb-1" :road-prediction="predictions?.smallRoad" :result-counter="smallRoadResultCount" title="小路合計"
         :road-info="smallRoadCount">
         <template #roadmap>
             <RoadSmallRoadMain :roadmap="smallRoadMap" />
         </template>
-    </RoadContainer>
-    <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="筆路合計"
+    </RoadContainer> -->
+    <!-- <RoadContainer class="mb-1" :road-prediction="predictions?.cockroachRoad" :result-counter="cockroachRoadResultCount" title="筆路合計"
         :road-info="cockroachRoadCount">
         <template #roadmap>
             <RoadCockroachMain :roadmap="cockroachRoadMap" />
         </template>
-    </RoadContainer>
+    </RoadContainer> -->
 </template>
 
 <script setup lang="ts">
