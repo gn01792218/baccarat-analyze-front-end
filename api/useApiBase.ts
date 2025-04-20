@@ -1,5 +1,5 @@
 export default () => {
-  const toast = useToast()
+  //const toast = useToast()
   const { apiBaseUrl } = useRuntimeConfig().public
 
   async function fetchApiBase(url:string, method:'post' | 'get' | 'delete' | 'patch' | 'put',body?: any): Promise<any> {
@@ -9,11 +9,11 @@ export default () => {
       body
     });
     if (error.value) {
-      toast.add({ 
-        title:'請求發生錯誤',
-        description:`${error.value}`,
-        icon:'i-heroicons-exclamation-circle-16-solid',
-       })
+      // toast.add({ 
+      //   title:'請求發生錯誤',
+      //   description:`${error.value}`,
+      //   icon:'i-heroicons-exclamation-circle-16-solid',
+      //  })
       throw createError({ ...error.value, message: "資料異常" });
     }
     return data.value as unknown as any;
